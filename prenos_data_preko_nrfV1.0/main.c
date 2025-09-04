@@ -25,7 +25,7 @@ void startSlaveNodeSYS();
 
 
 
-volatile uint8_t frame_ready = 0;
+//volatile uint8_t frame_ready = 0;
 volatile uint8_t citamo_buffer = 0;
 
 
@@ -66,14 +66,14 @@ int main(void)
 
 
 
-  if (node_type == NRF24L01_NODE_TYPE_TX) {
-    startMasterNodeSYS();
-  }else {
-    startSlaveNodeSYS();
-  }
-  // NOTE:
-  //      U nRF modulu ovdje inace zavrsava kod jer u Maste i Slave funkcijama 
-  //      se nalazi while(1) petlja u kojoj se vrti program.
+//  if (node_type == NRF24L01_NODE_TYPE_TX) {
+//    startMasterNodeSYS();
+//  }else {
+//    startSlaveNodeSYS();
+//  }
+//  // NOTE:
+//  //      U nRF modulu ovdje inace zavrsava kod jer u Maste i Slave funkcijama 
+//  //      se nalazi while(1) petlja u kojoj se vrti program.
 
 
 
