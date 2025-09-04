@@ -1336,7 +1336,7 @@ void send_next_packet(volatile uint16_t* buffer, uint32_t size)
     // Ako ima još podataka
     if (send_index < total_size) {
         uint8_t packet[CHUNK_SIZE];
-        printUSART2("%d \n",send_index);
+        //printUSART2("%d \n",send_index);
         for (int i = 0; i < CHUNK_SIZE/2 && send_index < total_size; i++) {
             uint16_t pixel = current_buffer[send_index++];
             packet[i*2]   = (pixel >> 8) & 0xFF;

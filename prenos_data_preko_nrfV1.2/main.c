@@ -23,6 +23,8 @@ int8_t accel_data[ACC_DATA_LENGTH];
 
 
 
+  
+uint8_t node_type = NRF24L01_NODE_TYPE_RX;
 volatile uint8_t citamo_buffer = 0;
 
 
@@ -34,7 +36,15 @@ int main(void)
     initUSART2(USART2_BAUDRATE_921600);
     initSYSTIMER_TIM7();
     initSYSTIMER();     // raditi provjeru vremena
+
+    // TX or RX check
+    initGPIOC6_GND();
+    delay_ms(10);
+    chkConnection_GPIOC6_GND(&node_type); // 0->RX->(nije spojen na GND) | 1->TX->(spojen je na GND)
   }
+
+  if(node_type == NRF24L01_NODE_TYPE_TX){
+
   printUSART2("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n");
   printUSART2("WWWWWWWWWWW  Circular buffer od OV7679   WWWWWWWWWWWWW\n");
   printUSART2("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWwWWWWWWW\n\n\n");
@@ -86,6 +96,8 @@ int main(void)
   checkDMA2_Stream1_status();
 
 
+  } // end if block TX
+
   // WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
   // WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW             WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
   // WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW  NRF MODUL  WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
@@ -93,13 +105,7 @@ int main(void)
   // WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
   //
   // INICIJALIZACIJA START -----------------------------------------------  ovo je za nRF modul
-  uint8_t node_type = NRF24L01_NODE_TYPE_RX;
   {
-    // TX or RX check
-    initGPIOC6_GND();
-    delay_ms(10);
-    chkConnection_GPIOC6_GND(&node_type); // 0->RX->(nije spojen na GND) | 1->TX->(spojen je na GND)
-
     initPWM();
 
     initLIS320DL();
@@ -116,16 +122,14 @@ int main(void)
   printUSART2("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n");
 
 
+  if (node_type == NRF24L01_NODE_TYPE_TX) {
+    DCMI_start_continuous_mode();
+  }
 
-  DCMI_start_continuous_mode();
-  uint32_t i_frm = 600;
-  uint32_t vrijeme = getSYSTIMER();
 
-//  current_buffer = frame_buffer0;
 
   while (1){
 
-//    printUSART2("trenutni buffer je 0x%xw\n", current_buffer);
 
     if (node_type == NRF24L01_NODE_TYPE_TX ) {
       // NOTE: Kontrola za autic ide prije DMA logike "OVDJE"
