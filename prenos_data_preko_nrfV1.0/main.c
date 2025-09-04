@@ -19,8 +19,8 @@
 
 int8_t accel_data[ACC_DATA_LENGTH];
 
-void startMasterNodeSYS();
-void startSlaveNodeSYS();
+//void startMasterNodeSYS();
+//void startSlaveNodeSYS();
 // --------------------------------------
 
 
@@ -39,6 +39,7 @@ int main(void)
     initSYSTIMER();     // raditi provjeru vremena
   }
 
+  printUSART2("inicijlaizacija usarta\n");
 
   uint8_t node_type = NRF24L01_NODE_TYPE_RX;
 
@@ -126,84 +127,84 @@ int main(void)
   //OV7670_SetupQQVGA_Custom_sa_neta_deep_seek();
   // OV7670_InitQQVGA_RGB565();    // upisujemo potrebne vrijendosti u registre kamere
   delay_ms(1000);
-
-  // NOTE:
-  // Nakon upisivanja vrsimo provjeru upisa, tj. da li su dobro upisane zeljene vrijednosti
-
-  //OV7670_VerifyRegisters();
-  OV7670_VerifyRegisters_Custom();
-  //  printUSART2("MISMATCH! u COM14 je navodno takav, provjeri detaljno kasnije\n");
-  printUSART2("================================================================\n");
-
-  //DCMI_Init_OV7670();   // igraje se sa PCLPOL vjerovatno pogresan ili ne...
-  DCMI_Init_OV7670_continuous_mode();   // ovo je za continuos mode
-
-  printUSART2("DCMI inicijalizacija je zavrsena, vrsimo provjeru: \n\n");
-  DCMI_CheckConfig(); // NOTE:  pin D0 je 0 zato sto je mracna soba, upali svjetlo 
-
-
-  //initDMA2_for_OV7670_continuous_mode(frame_buffer, FRAME_MAX);
-  initDMA2_for_OV7670_continuous_mode_double_buffer(frame_buffer0, frame_buffer1, FRAME_MAX);
-  delay_ms(100);
-
-  checkDMA2_Stream1_status();
-
-
-
-  DCMI_start_continuous_mode();
-  uint32_t i_frm = 600;
-  uint32_t vrijeme = getSYSTIMER();
-
-
-  //while(1) {
-  //    // 1. Kontrola autića
-  //    getDataLIS302DL(accel_data);
-  //    txDataNRF24L01((uint8_t*)c_nrf_slave_addr, (uint8_t*)accel_data);
-  //    updateMotors(accel_data);
-  //
-  //    // 2. Video slanje (ako imamo spreman frame)
-  //    if(frame_ready) {
-  //        send_chunk();
-  //
-  //        if (send_index >= IMG_W*IMG_H) {
-  //            send_index = 0;   // reset za sljedeći frame
-  //            frame_ready = 0;  // čekaj novi DMA frame
-  //        }
-  //    }
-  //}
-
-
-
-
-
-  while (1){
-
-    if (node_type == NRF24L01_NODE_TYPE_TX ) {
-
-      // NOTE: Kontrola za autic ide prije DMA logike "OVDJE"
-      
-      if ((DMA2_Stream1->CR & DMA_SxCR_CT) == DMA_SxCR_CT) { // ovo znaci current_target = 1, a to znaci da se upisuju podaci u M1AR, a M0AR je slobodan za citanje
-        // Citamo M0AR
-        if (citamo_buffer == 0) {
-          send_data_via_nrfmodul(frame_buffer0, FRAME_MAX);  // to je kao startMasterNodeSYS() 
-          citamo_buffer = 1;
-        }
-      }else { 
-        // citamo M1AR
-        if (citamo_buffer == 1) {
-          send_data_via_nrfmodul(frame_buffer1, FRAME_MAX); // to je kao startMasterNodeSYS()
-          citamo_buffer = 0;
-        }
-      }// else CT blok
-
-    }else { // ako je RX
-      // NOTE: Ovo treba izmjeniti kada se uvede autic ovaj blok za primanje podataka jer ce se primati i podaci od autica :)
-      //       RX FUNKCIJA NE SMIJE VIŠE BITI BESKONAČNA PETLJA KADA SE UVEDE KONTROLA AUTICA PREKO ISTOG NRF MODULA
-      startSlaveNodeRX();;
-    }
-  } // while petlja
-
-
+//
+//  // NOTE:
+//  // Nakon upisivanja vrsimo provjeru upisa, tj. da li su dobro upisane zeljene vrijednosti
+//
+//  //OV7670_VerifyRegisters();
+//  OV7670_VerifyRegisters_Custom();
+//  //  printUSART2("MISMATCH! u COM14 je navodno takav, provjeri detaljno kasnije\n");
+//  printUSART2("================================================================\n");
+//
+//  //DCMI_Init_OV7670();   // igraje se sa PCLPOL vjerovatno pogresan ili ne...
+//  DCMI_Init_OV7670_continuous_mode();   // ovo je za continuos mode
+//
+//  printUSART2("DCMI inicijalizacija je zavrsena, vrsimo provjeru: \n\n");
+//  DCMI_CheckConfig(); // NOTE:  pin D0 je 0 zato sto je mracna soba, upali svjetlo 
+//
+//
+//  //initDMA2_for_OV7670_continuous_mode(frame_buffer, FRAME_MAX);
+//  initDMA2_for_OV7670_continuous_mode_double_buffer(frame_buffer0, frame_buffer1, FRAME_MAX);
+//  delay_ms(100);
+//
+//  checkDMA2_Stream1_status();
+//
+//
+//
+//  DCMI_start_continuous_mode();
+//  uint32_t i_frm = 600;
+//  uint32_t vrijeme = getSYSTIMER();
+//
+//
+//  //while(1) {
+//  //    // 1. Kontrola autića
+//  //    getDataLIS302DL(accel_data);
+//  //    txDataNRF24L01((uint8_t*)c_nrf_slave_addr, (uint8_t*)accel_data);
+//  //    updateMotors(accel_data);
+//  //
+//  //    // 2. Video slanje (ako imamo spreman frame)
+//  //    if(frame_ready) {
+//  //        send_chunk();
+//  //
+//  //        if (send_index >= IMG_W*IMG_H) {
+//  //            send_index = 0;   // reset za sljedeći frame
+//  //            frame_ready = 0;  // čekaj novi DMA frame
+//  //        }
+//  //    }
+//  //}
+//
+//
+//
+//
+//
+//  while (1){
+//
+//    if (node_type == NRF24L01_NODE_TYPE_TX ) {
+//
+//      // NOTE: Kontrola za autic ide prije DMA logike "OVDJE"
+//      
+//      if ((DMA2_Stream1->CR & DMA_SxCR_CT) == DMA_SxCR_CT) { // ovo znaci current_target = 1, a to znaci da se upisuju podaci u M1AR, a M0AR je slobodan za citanje
+//        // Citamo M0AR
+//        if (citamo_buffer == 0) {
+//          send_data_via_nrfmodul(frame_buffer0, FRAME_MAX);  // to je kao startMasterNodeSYS() 
+//          citamo_buffer = 1;
+//        }
+//      }else { 
+//        // citamo M1AR
+//        if (citamo_buffer == 1) {
+//          send_data_via_nrfmodul(frame_buffer1, FRAME_MAX); // to je kao startMasterNodeSYS()
+//          citamo_buffer = 0;
+//        }
+//      }// else CT blok
+//
+//    }else { // ako je RX
+//      // NOTE: Ovo treba izmjeniti kada se uvede autic ovaj blok za primanje podataka jer ce se primati i podaci od autica :)
+//      //       RX FUNKCIJA NE SMIJE VIŠE BITI BESKONAČNA PETLJA KADA SE UVEDE KONTROLA AUTICA PREKO ISTOG NRF MODULA
+//      startSlaveNodeRX();;
+//    }
+//  } // while petlja
+//
+//
   return 0;
 }
 

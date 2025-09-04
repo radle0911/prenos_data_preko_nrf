@@ -18,8 +18,8 @@ SRCS += ./i2c/i2c.c
 SRCS += ./ov7670/ov7670.c
 #SRCS += ./ov7670/ov7670_init.c
 SRCS += ./DCMI/dcmi.c
-#SRCS += ./dma/dma.c
-#SRCS += ./check/check.c
+SRCS += ./dma/dma.c
+SRCS += ./check/check.c
 # Normally you shouldn't need to change anything below this line!
 #######################################################################################
 # GNUGCC = $(STM_COMMON)/gcc-arm-none-eabi/bin
