@@ -15,6 +15,11 @@ SRCS += ./ov7670/ov7670.c
 SRCS += ./DCMI/dcmi.c
 SRCS += ./dma/dma.c
 SRCS += ./check/check.c
+SRCS += ./gpio/gpioc.c
+SRCS += ./led/led.c
+SRCS += ./lis302dl/lis302dl.c
+SRCS += ./nRF24L01/nRF24L01.c
+SRCS += ./spi/spi.c
 
 # Normally you shouldn't need to change anything below this line!
 #######################################################################################
