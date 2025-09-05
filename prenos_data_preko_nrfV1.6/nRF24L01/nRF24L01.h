@@ -185,7 +185,7 @@ void rxDataNRF24L01(uint8_t * data);
 void setTxModeNRF24L01(void);
 void flushTxNRF24L01(void);
 uint8_t	txOverNRF24L01(void);
-void setMaxSpeedNRF24L01(uint8_t use_ack);
+void setMaxSpeedNRF24L01();
 
 // ---------------------------------------------------------------------
 //WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW

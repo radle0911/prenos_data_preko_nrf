@@ -95,8 +95,8 @@ void initnRF24L01(uint8_t node_type)
 
   //prvo je sto radimo da podesavamo Rx adresu od nRF modula
 
-  setMaxSpeedNRF24L01(0);   // ovo je testno bez ACK
-
+  setMaxSpeedNRF24L01();   // postavljamo max speed
+  
   setRxAddrNRF24L01((uint8_t *)g_node_address,NRF24L01_RX_ADDR_P1);		        // set Rx address 
   /*
     Postavljanjem adrese u RX_ADDR_P1, omogućavaš modulu da prima podatke koji su poslati na tu adresu.
@@ -515,7 +515,7 @@ void setTxModeNRF24L01(void)
 }
 
 
-void setMaxSpeedNRF24L01(uint8_t use_ack)
+void setMaxSpeedNRF24L01()
 {
     uint8_t rf_setup;
 
@@ -527,10 +527,6 @@ void setMaxSpeedNRF24L01(uint8_t use_ack)
     // Postavi RF_PWR = 11 (0 dBm) i RF_DR_HIGH = 1 (2 Mbps)
     rf_setup |= (1<<2)|(1<<1)|(1<<3);      // 11 + 2Mbps
     setRegNRF24L01(NRF24L01_RF_SETUP, &rf_setup, 1);
-
-    // 2️⃣ Auto-ACK uključi ili isključi
-    uint8_t en_aa = use_ack ? 0x3F : 0x00;
-    setRegNRF24L01(NRF24L01_EN_AA, &en_aa, 1);
 }
 
 

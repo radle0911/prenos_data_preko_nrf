@@ -907,7 +907,7 @@ void OV7670_SetupQQVGA_Custom_sa_neta(void)
 
 
     // Smanji kontrast
-    val = 0x40;   // bilo 40
+    val = 0x50;   // bilo 40
     writeI2C(0x56, &val, 1);  // CONTRAST
 
   

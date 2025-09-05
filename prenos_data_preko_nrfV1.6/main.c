@@ -119,7 +119,7 @@ int main(void)
 
   }
 
-  conRegNRF24L01(NRF24L01_EN_AA, 0x00);
+  conRegNRF24L01(NRF24L01_EN_AA, 0x00);     // gasimo ACK
   delay_ms(200);
   printUSART2("#################################################################\n");
   printUSART2("Da li su upisane vrijednosti u nRF modul ???\n");
