@@ -19,6 +19,8 @@
 #define FRAME_START_2 0x55
 
 
+void autic_dma_interrupt();
+void DMA2_Stream1_IRQHandler(void);
 
 void autic_double_buffer();
 void kontroler_double_buffer();
@@ -120,7 +122,8 @@ int main(void)
   
 
   if (node_type == NRF24L01_NODE_TYPE_TX) {
-    autic_double_buffer();
+    //autic_double_buffer();
+    autic_dma_interrupt();
   }else {
     kontroler_double_buffer();  // za ovo se ne bi trebalo imati nista mjenjati
   }
