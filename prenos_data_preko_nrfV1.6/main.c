@@ -119,7 +119,13 @@ int main(void)
 
   }
 
+  printUSART2("#################################################################\n");
+  printUSART2("Da li su upisane vrijednosti u nRF modul ???\n");
+  printUSART2("NRF24L01_RF_SETUP = 0x%xh\n", getRegNRF24L01(NRF24L01_RF_SETUP));
+  printUSART2("NRF24L01_EN_AA = 0x%xh\n", getRegNRF24L01(NRF24L01_EN_AA));
+  printUSART2("#################################################################\n");
   
+
 
   if (node_type == NRF24L01_NODE_TYPE_TX) {
     //autic_double_buffer();
@@ -170,7 +176,7 @@ void autic_double_buffer()
       if (citamo_buffer == 0) {
 
 
-        printUSART2("frame_buffer0 = 0x%xh\n",frame_buffer0[500]);
+        //printUSART2("frame_buffer0 = 0x%xh\n",frame_buffer0[500]);
         sendFrameNRF((uint16_t*)frame_buffer0, FRAME_MAX); // send frame via nRF to MCU 
 
         citamo_buffer = 1;
@@ -180,7 +186,7 @@ void autic_double_buffer()
       if (citamo_buffer == 1) {
 
 
-        printUSART2("frame_buffer1 = 0x%xh\n",frame_buffer1[500]);
+        //printUSART2("frame_buffer1 = 0x%xh\n",frame_buffer1[500]);
         sendFrameNRF((uint16_t*)frame_buffer1, FRAME_MAX); // send frame via nRF to MCU 
         
         
