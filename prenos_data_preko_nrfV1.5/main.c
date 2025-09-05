@@ -12,7 +12,7 @@
 #include "nRF24L01/nRF24L01.h"
 #include "gpio/gpioc.h"
 #include <stdint.h>
-
+#include <stddef.h>  // <--- za NULL
 
 
 #define FRAME_START_1 0xAA
@@ -23,10 +23,12 @@
 void autic_double_buffer();
 void kontroler_double_buffer();
 
-void sendFrameNRF(uint16_t* frame_buffer, uint32_t length);
+void sendFrameNRF(volatile uint16_t* frame_buffer, uint32_t length);
 void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length);
 
 
+volatile uint16_t* frame_to_send = NULL; // pokazuje koji buffer je spreman za slanje
+volatile uint8_t buffer_ready = 0; // 0 = ništa, 1 = M0AR spreman, 2 = M1AR spreman
 
 
 volatile uint8_t frame_ready = 0;
@@ -188,7 +190,7 @@ void autic_double_buffer()
 
 
 
-void sendFrameNRF(uint16_t* frame_buffer, uint32_t length) {
+void sendFrameNRF(volatile uint16_t* frame_buffer, uint32_t length) {
   uint8_t packet[32];  // maksimalno što nRF24L01 može poslati odjednom
   uint32_t i, j = 0;
 
@@ -226,49 +228,104 @@ void kontroler_double_buffer()
 
 
 
-
 void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length) {
-  uint8_t packet[32];
-  uint32_t bytes_received = 0;
-  uint32_t total_bytes = length * 2; // jer svaki pixel = 2 bajta
-  uint8_t waiting_for_start = 1;
+    uint8_t packet[32];
+    uint32_t bytes_received = 0;
+    uint32_t total_bytes = length * 2; // svaki pixel = 2 bajta
 
-  while (1) {
-    // cekaj dok ne stigne paket
-    if (dataReadyNRF24L01() == NRF_DATA_READY) {
-      rxDataNRF24L01(packet);
+    while (1) {
+        // čekaj paket
+        if (dataReadyNRF24L01() == NRF_DATA_READY) {
+            rxDataNRF24L01(packet);
 
-      if (waiting_for_start) {
-        // provjera da li je stigao start frame
-        if (packet[0] == FRAME_START_1 && packet[1] == FRAME_START_2) {
-          waiting_for_start = 0;
-          bytes_received = 0;
-        }
-      } else {
-        // kopiraj podatke iz paketa u frame_buffer
-        for (int i = 0; i < 32 && bytes_received < total_bytes; i++) {
-          uint32_t index = bytes_received / 2;
-          if (bytes_received % 2 == 0) {
-            // low byte
-            frame_buffer[index] = packet[i];
-          } else {
-            // high byte
-            frame_buffer[index] |= ((uint16_t)packet[i] << 8);
-          }
-          bytes_received++;
-        }
+            // Ako paket počinje sa FRAME_START, resetujemo buffer
+            if (packet[0] == FRAME_START_1 && packet[1] == FRAME_START_2) {
+                bytes_received = 0;  // počinje novi frame
+                continue;            // preskoči start bajtove
+            }
 
-        // ako smo primili cijeli frame -> break
-        if (bytes_received >= total_bytes) {
-          //printUSART2("Frame primljen, bar msm da je\n\n\n\n");
-          send_frame_buffer(frame_buffer, FRAME_MAX);   // send via USART to pc 
-          //printUSART2("0x%xh\n",frame_buffer[500]);
-          break;
+            // kopiraj podatke u frame buffer
+            for (int i = 0; i < 32 && bytes_received < total_bytes; i++) {
+                uint32_t index = bytes_received / 2;
+                if (bytes_received % 2 == 0) {
+                    // low byte
+                    frame_buffer[index] = packet[i];
+                } else {
+                    // high byte
+                    frame_buffer[index] |= ((uint16_t)packet[i] << 8);
+                }
+                bytes_received++;
+            }
+
+            // ako je frame kompletiran
+            if (bytes_received >= total_bytes) {
+                send_frame_buffer(frame_buffer, FRAME_MAX);  // pošalji dalje
+                break;
+            }
         }
-      }
     }
-  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// WARN: ova funkcija ispod je ispravna i ona je prva koja treba da se koristi !!!
+//
+//void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length) 
+//{
+//  uint8_t packet[32];
+//  uint32_t bytes_received = 0;
+//  uint32_t total_bytes = length * 2; // jer svaki pixel = 2 bajta
+//  uint8_t waiting_for_start = 1;
+//
+//  while (1) {
+//    // cekaj dok ne stigne paket
+//    if (dataReadyNRF24L01() == NRF_DATA_READY) {
+//      rxDataNRF24L01(packet);
+//
+//      if (waiting_for_start) {
+//        // provjera da li je stigao start frame
+//        if (packet[0] == FRAME_START_1 && packet[1] == FRAME_START_2) {
+//          waiting_for_start = 0;
+//          bytes_received = 0;
+//        }
+//      } else {
+//        // kopiraj podatke iz paketa u frame_buffer
+//        for (int i = 0; i < 32 && bytes_received < total_bytes; i++) {
+//          uint32_t index = bytes_received / 2;
+//          if (bytes_received % 2 == 0) {
+//            // low byte
+//            frame_buffer[index] = packet[i];
+//          } else {
+//            // high byte
+//            frame_buffer[index] |= ((uint16_t)packet[i] << 8);
+//          }
+//          bytes_received++;
+//        }
+//
+//        // ako smo primili cijeli frame -> break
+//        if (bytes_received >= total_bytes) {
+//          //printUSART2("Frame primljen, bar msm da je\n\n\n\n");
+//          send_frame_buffer(frame_buffer, FRAME_MAX);   // send via USART to pc 
+//          //printUSART2("0x%xh\n",frame_buffer[500]);
+//          break;
+//        }
+//      }
+//    }
+//  }
+//}
 
 
 
@@ -325,51 +382,49 @@ void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length) {
 // NOTE: ove 2 funk ispod su ako budem zelio da probam sa interuptima:  (kaze da je CPU frendly)
 //
 //
-/*
-void DMA2_Stream1_IRQHandler(void)
-{
-    // Half Transfer (prva polovina M0AR ili M1AR gotova)
-    if(DMA2->LISR & DMA_LISR_HTIF1) {
-        DMA2->LIFCR = DMA_LIFCR_CHTIF1;  // clear flag
-        // možeš ovdje signalizirati polu-buffer ako želiš
-    }
-
-    // Transfer Complete (full buffer gotov)
-    if(DMA2->LISR & DMA_LISR_TCIF1) {
-        DMA2->LIFCR = DMA_LIFCR_CTCIF1;  // clear flag
-
-        if ((DMA2_Stream1->CR & DMA_SxCR_CT) == 0) {
-            // DMA je trenutno pisao M0AR → M1AR je sada slobodan za čitanje
-            frame_to_send = frame_buffer1;
-        } else {
-            // DMA je trenutno pisao M1AR → M0AR je sada slobodan
-            frame_to_send = frame_buffer0;
-        }
-
-        buffer_ready = 1; // flag da je buffer spreman za slanje
-    }
-}
-
-
-void autic_dma_interrupt() {
-    while(1) {
-        if(buffer_ready) {
-            // pošalji frame
-            sendFrameNRF(frame_to_send, FRAME_MAX);
-            buffer_ready = 0; // reset flag
-        }
-
-        // ovdje možeš raditi i druge stvari, npr. LED blink, UART, itd.
-    }
-}
-
+//void DMA2_Stream1_IRQHandler(void)
+//{
+//    // Half Transfer (prva polovina M0AR ili M1AR gotova)
+//    if(DMA2->LISR & DMA_LISR_HTIF1) {
+//        DMA2->LIFCR = DMA_LIFCR_CHTIF1;  // clear flag
+//        // možeš ovdje signalizirati polu-buffer ako želiš
+//    }
+//
+//    // Transfer Complete (full buffer gotov)
+//    if(DMA2->LISR & DMA_LISR_TCIF1) {
+//        DMA2->LIFCR = DMA_LIFCR_CTCIF1;  // clear flag
+//
+//        if ((DMA2_Stream1->CR & DMA_SxCR_CT) == 0) {
+//            // DMA je trenutno pisao M0AR → M1AR je sada slobodan za čitanje
+//            frame_to_send = frame_buffer1;
+//        } else {
+//            // DMA je trenutno pisao M1AR → M0AR je sada slobodan
+//            frame_to_send = frame_buffer0;
+//        }
+//
+//        buffer_ready = 1; // flag da je buffer spreman za slanje
+//    }
+//}
+//
+//
+//void autic_dma_interrupt() {
+//    while(1) {
+//        if(buffer_ready) {
+//            // pošalji frame
+//            sendFrameNRF(frame_to_send, FRAME_MAX);
+//            buffer_ready = 0; // reset flag
+//        }
+//
+//        // ovdje možeš raditi i druge stvari, npr. LED blink, UART, itd.
+//    }
+//}
 
 
 
 
 
 
-*/
+
 
 
 /*

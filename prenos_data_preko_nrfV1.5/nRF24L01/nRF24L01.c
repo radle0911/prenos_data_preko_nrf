@@ -519,15 +519,15 @@ void setMaxSpeedNRF24L01(uint8_t use_ack)
 {
     uint8_t rf_setup;
 
-//    // 1️⃣ Postavi maksimalnu TX snagu i 2 Mbps data rate
-//    rf_setup = getRegNRF24L01(NRF24L01_RF_SETUP);
-//    
-//    // Reset RF_PWR[2:1] i RF_DR_LOW
-//    rf_setup &= ~((1<<2)|(1<<1)|(1<<5));  
-//    // Postavi RF_PWR = 11 (0 dBm) i RF_DR_HIGH = 1 (2 Mbps)
-//    rf_setup |= (1<<2)|(1<<1)|(1<<3);      // 11 + 2Mbps
-//    setRegNRF24L01(NRF24L01_RF_SETUP, &rf_setup, 1);
-//
+    // 1️⃣ Postavi maksimalnu TX snagu i 2 Mbps data rate
+    rf_setup = getRegNRF24L01(NRF24L01_RF_SETUP);
+    
+    // Reset RF_PWR[2:1] i RF_DR_LOW
+    rf_setup &= ~((1<<2)|(1<<1)|(1<<5));  
+    // Postavi RF_PWR = 11 (0 dBm) i RF_DR_HIGH = 1 (2 Mbps)
+    rf_setup |= (1<<2)|(1<<1)|(1<<3);      // 11 + 2Mbps
+    setRegNRF24L01(NRF24L01_RF_SETUP, &rf_setup, 1);
+
     // 2️⃣ Auto-ACK uključi ili isključi
     uint8_t en_aa = use_ack ? 0x3F : 0x00;
     setRegNRF24L01(NRF24L01_EN_AA, &en_aa, 1);
