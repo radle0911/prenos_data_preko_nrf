@@ -119,6 +119,8 @@ int main(void)
 
   }
 
+  conRegNRF24L01(NRF24L01_EN_AA, 0x00);
+  delay_ms(200);
   printUSART2("#################################################################\n");
   printUSART2("Da li su upisane vrijednosti u nRF modul ???\n");
   printUSART2("NRF24L01_RF_SETUP = 0x%xh\n", getRegNRF24L01(NRF24L01_RF_SETUP));
