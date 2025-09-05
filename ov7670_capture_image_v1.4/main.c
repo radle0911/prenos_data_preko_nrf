@@ -39,6 +39,7 @@ int main(void)
     initSYSTIMER();     // raditi provjeru vremena
   }
 
+  printUSART2("start code\n");
   // nrf modul inicijlaiziacija
 
   initGPIOC6_GND();
@@ -58,6 +59,8 @@ int main(void)
 
 
 
+  if (node_type == NRF24L01_NODE_TYPE_TX) {
+  
 
   printUSART2("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWw\n");
   printUSART2("WWWWWWWWWWW  Snapshot od OV7679   WWWWWWWWWWWWW\n");
@@ -144,6 +147,7 @@ int main(void)
   //
   //  send_frame_buffer(frame_buffer, FRAME_MAX);
 
+  }
 
   if (node_type == NRF24L01_NODE_TYPE_TX) {
     autic();
@@ -160,7 +164,7 @@ void autic()
 {
   while (1) {
     DCMI_snapshot_debug(frame_buffer, FRAME_MAX); // get snapshot in frame_buffer
-    //send_frame_buffer(frame_buffer, FRAME_MAX);   // send via USART to pc 
+    send_frame_buffer(frame_buffer, FRAME_MAX);   // send via USART to pc 
     sendFrameNRF((uint16_t*)frame_buffer, FRAME_MAX);
   }
 }
@@ -194,10 +198,6 @@ void sendFrameNRF(uint16_t* frame_buffer, uint32_t length) {
     txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);
   }
 }
-
-
-
-
 
 
 
