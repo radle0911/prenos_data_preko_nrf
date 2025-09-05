@@ -919,33 +919,33 @@ void OV7670_SetupQQVGA_Custom_sa_neta(void)
   // ovo ispod je dodatak proba da se dobije boja : --------------------------------
 //  
 //
-//// COM13 - Gamma, color matrix enable
-//    val = 0x80;
-//    writeI2C(0x3D, &val, 1);
-//
-//    // Matrica boja - OVO JE KLJUČNO ZA BOJU!
-//    // Standardna matrica za OV7670
-//    val = 0x80; // MTX1
-//    writeI2C(0x4F, &val, 1);
-//    val = 0x80; // MTX2
-//    writeI2C(0x50, &val, 1);
-//    val = 0x00; // MTX3
-//    writeI2C(0x51, &val, 1);
-//    val = 0x18; // MTX4  0x34
-//    writeI2C(0x52, &val, 1);
-//    val = 0x48; // MTX5 0x5A
-//    writeI2C(0x53, &val, 1);
-//    val = 0x40; // MTX6 0x11
-//    writeI2C(0x54, &val, 1);
-//    
-//    // Sign matrix coefficients
-//    val = 0x1E; // MTXS
-//    writeI2C(0x58, &val, 1);
-//
-//  // Smanji saturation za prirodnije boje:
-//  val = 0x30;  // Umjesto 0x40 (smanji za 0x10)
-//  writeI2C(0x4C, &val, 1);
-//
+// COM13 - Gamma, color matrix enable
+    val = 0x80;
+    writeI2C(0x3D, &val, 1);
+
+    // Matrica boja - OVO JE KLJUČNO ZA BOJU!
+    // Standardna matrica za OV7670
+    val = 0x80; // MTX1
+    writeI2C(0x4F, &val, 1);
+    val = 0x80; // MTX2
+    writeI2C(0x50, &val, 1);
+    val = 0x00; // MTX3
+    writeI2C(0x51, &val, 1);
+    val = 0x18; // MTX4  0x34
+    writeI2C(0x52, &val, 1);
+    val = 0x48; // MTX5 0x5A
+    writeI2C(0x53, &val, 1);
+    val = 0x40; // MTX6 0x11
+    writeI2C(0x54, &val, 1);
+    
+    // Sign matrix coefficients
+    val = 0x1E; // MTXS
+    writeI2C(0x58, &val, 1);
+
+  // Smanji saturation za prirodnije boje:
+  val = 0x30;  // Umjesto 0x40 (smanji za 0x10)
+  writeI2C(0x4C, &val, 1);
+
   //------------------------------------------------ovo ispod manje vise
 //    // Gamma values - poboljšava kontrast boja
 //    val = 0x00; // GAM1
