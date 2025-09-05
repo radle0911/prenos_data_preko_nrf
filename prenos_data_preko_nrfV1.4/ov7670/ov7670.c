@@ -860,11 +860,11 @@ void OV7670_SetupQQVGA_Custom_sa_neta(void)
     writeI2C(OV7670_REG_COM3, &val, 1);
 
     // COM7 - QCIF / QQVGA mode
-    val = (0x04 ); // | 0x02 za RGB treba dodati
+    val = (0x04); // | 0x02 za RGB treba dodati
     writeI2C(OV7670_REG_COM7, &val, 1);
 
     // COM14 - enable DCW + PCLK divider /4
-    val = 0x1A;
+    val = 0x1A; // bilo je 1A
     writeI2C(OV7670_REG_COM14, &val, 1);
 
     // Horizontal window
@@ -906,15 +906,88 @@ void OV7670_SetupQQVGA_Custom_sa_neta(void)
     writeI2C(0xA2, &val, 1);
 
 
-
     // Smanji kontrast
-    val = 0x50;   // bilo 40
+    val = 0x40;   // bilo 40
     writeI2C(0x56, &val, 1);  // CONTRAST
 
   
     // Enable AWB
     val = 0xE7;
     writeI2C(0x13, &val, 1);  // COM8
+  
+
+  // ovo ispod je dodatak proba da se dobije boja : --------------------------------
+//  
+//
+//// COM13 - Gamma, color matrix enable
+//    val = 0x80;
+//    writeI2C(0x3D, &val, 1);
+//
+//    // Matrica boja - OVO JE KLJUČNO ZA BOJU!
+//    // Standardna matrica za OV7670
+//    val = 0x80; // MTX1
+//    writeI2C(0x4F, &val, 1);
+//    val = 0x80; // MTX2
+//    writeI2C(0x50, &val, 1);
+//    val = 0x00; // MTX3
+//    writeI2C(0x51, &val, 1);
+//    val = 0x18; // MTX4  0x34
+//    writeI2C(0x52, &val, 1);
+//    val = 0x48; // MTX5 0x5A
+//    writeI2C(0x53, &val, 1);
+//    val = 0x40; // MTX6 0x11
+//    writeI2C(0x54, &val, 1);
+//    
+//    // Sign matrix coefficients
+//    val = 0x1E; // MTXS
+//    writeI2C(0x58, &val, 1);
+//
+//  // Smanji saturation za prirodnije boje:
+//  val = 0x30;  // Umjesto 0x40 (smanji za 0x10)
+//  writeI2C(0x4C, &val, 1);
+//
+  //------------------------------------------------ovo ispod manje vise
+//    // Gamma values - poboljšava kontrast boja
+//    val = 0x00; // GAM1
+//    writeI2C(0x7A, &val, 1);
+//    val = 0x08; // GAM2
+//    writeI2C(0x7B, &val, 1);
+//    val = 0x10; // GAM3
+//    writeI2C(0x7C, &val, 1);
+//    val = 0x20; // GAM4
+//    writeI2C(0x7D, &val, 1);
+//    val = 0x30; // GAM5
+//    writeI2C(0x7E, &val, 1);
+//    val = 0x40; // GAM6
+//    writeI2C(0x7F, &val, 1);
+//    val = 0x50; // GAM7
+//    writeI2C(0x80, &val, 1);
+//    val = 0x60; // GAM8
+//    writeI2C(0x81, &val, 1);
+//    val = 0x70; // GAM9
+//    writeI2C(0x82, &val, 1);
+//    val = 0x80; // GAM10
+//    writeI2C(0x83, &val, 1);
+//    val = 0x90; // GAM11
+//    writeI2C(0x84, &val, 1);
+//    val = 0xA0; // GAM12
+//    writeI2C(0x85, &val, 1);
+//    val = 0xB0; // GAM13
+//    writeI2C(0x86, &val, 1);
+//    val = 0xC0; // GAM14
+//    writeI2C(0x87, &val, 1);
+//    val = 0xD0; // GAM15
+//    writeI2C(0x88, &val, 1);
+
+
+
+
+
+
+
+
+
+
 
 // ----------------------------------------- 
   // ZA RGB ISPOD AL NE RADI

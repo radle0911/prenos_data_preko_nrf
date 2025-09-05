@@ -16,6 +16,8 @@ SRCS += ./DCMI/dcmi.c
 SRCS += ./dma/dma.c
 SRCS += ./check/check.c
 SRCS += ./nRF24L01/nRF24L01.c
+SRCS += ./spi/spi.c
+SRCS += ./gpio/gpioc.c
 
 # Normally you shouldn't need to change anything below this line!
 #######################################################################################
