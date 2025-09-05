@@ -165,7 +165,7 @@ void autic()
   while (1) {
     DCMI_snapshot_debug(frame_buffer, FRAME_MAX); // get snapshot in frame_buffer
     send_frame_buffer(frame_buffer, FRAME_MAX);   // send via USART to pc 
-    sendFrameNRF((uint16_t*)frame_buffer, FRAME_MAX);
+    sendFrameNRF((uint16_t*)frame_buffer, FRAME_MAX); // send frame via nRF to MCU 
   }
 }
 
@@ -245,6 +245,7 @@ void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length) {
         // ako smo primili cijeli frame -> break
         if (bytes_received >= total_bytes) {
           printUSART2("Frame primljen, bar msm da je\n\n\n\n");
+          send_frame_buffer(frame_buffer, FRAME_MAX);   // send via USART to pc 
           break;
         }
       }
