@@ -81,14 +81,14 @@ int main(void)
 
   getOV7670_ID();   // Vrsi ispis PID i VER
   delay_ms(50);
-  
+
 
   // NOTE:
   // Kada smo se uvjerili da je kamera "ziva" upisujemo zeljene vrijednosti u kameru
 
 
   OV7670_SetupQQVGA_Custom_sa_neta();
- // OV7670_InitQQVGA_RGB565();    // upisujemo potrebne vrijendosti u registre kamere
+  // OV7670_InitQQVGA_RGB565();    // upisujemo potrebne vrijendosti u registre kamere
   delay_ms(1000);
 
   // NOTE:
@@ -96,18 +96,18 @@ int main(void)
 
   //OV7670_VerifyRegisters();
   OV7670_VerifyRegisters_Custom();
-//  printUSART2("MISMATCH! u COM14 je navodno takav, provjeri detaljno kasnije\n");
+  //  printUSART2("MISMATCH! u COM14 je navodno takav, provjeri detaljno kasnije\n");
   printUSART2("================================================================\n");
 
   DCMI_Init_OV7670();   // igraje se sa PCLPOL vjerovatno pogresan ili ne...
-  
+
   printUSART2("DCMI inicijalizacija je zavrsena, vrsimo provjeru: \n\n");
   DCMI_CheckConfig(); // NOTE:  pin D0 je 0 zato sto je mracna soba, upali svjetlo 
 
 
-//  check_frame_activity(); // Broj linija je malan radi delay_ms(1);
-  
-//  check_frame_detailed();  // NOTE: prevelik i ruzan ispis, al potvrdjuje da sve ispravno radi
+  //  check_frame_activity(); // Broj linija je malan radi delay_ms(1);
+
+  //  check_frame_detailed();  // NOTE: prevelik i ruzan ispis, al potvrdjuje da sve ispravno radi
 
 
 
@@ -120,29 +120,29 @@ int main(void)
 
   // ovo je kao generalna funk, ako zelim preko userbtn da radim snapshot
   DCMI_snapshot_debug(frame_buffer, FRAME_MAX); // ovo radi savrseno !!!
-//  DCMI_snapshot_debug_full(frame_buffer, FRAME_MAX);
+  //  DCMI_snapshot_debug_full(frame_buffer, FRAME_MAX);
 
-//  DCMI_debugStatus();
-//
-//  printUSART2("_______SVE IZVRSENE PROVJERAVAMO ELEMENTE________\n");
-//
-//int count = 0;
-//int prikaz = 0;
-//for (int i = 0; i < FRAME_MAX ; i++) {
-//    if (frame_buffer[i] != 0) {
-//      if (prikaz < 10) {
-//        printUSART2("frame_buffer[%d] = %d (0x%xb)\n", i, frame_buffer[i], frame_buffer[i]);
-//      }
-//        count++;
-//        prikaz++;
-//      //  if (count >= 20) break;
-//    }
-//}
-//
-//  printUSART2("Ukupan broj elemenata u frame_buffer-u je = %d\n",count);
-//  printUSART2("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n",count);
-//
-//  send_frame_buffer(frame_buffer, FRAME_MAX);
+  //  DCMI_debugStatus();
+  //
+  //  printUSART2("_______SVE IZVRSENE PROVJERAVAMO ELEMENTE________\n");
+  //
+  //int count = 0;
+  //int prikaz = 0;
+  //for (int i = 0; i < FRAME_MAX ; i++) {
+  //    if (frame_buffer[i] != 0) {
+  //      if (prikaz < 10) {
+  //        printUSART2("frame_buffer[%d] = %d (0x%xb)\n", i, frame_buffer[i], frame_buffer[i]);
+  //      }
+  //        count++;
+  //        prikaz++;
+  //      //  if (count >= 20) break;
+  //    }
+  //}
+  //
+  //  printUSART2("Ukupan broj elemenata u frame_buffer-u je = %d\n",count);
+  //  printUSART2("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n",count);
+  //
+  //  send_frame_buffer(frame_buffer, FRAME_MAX);
 
 
   if (node_type == NRF24L01_NODE_TYPE_TX) {
@@ -169,30 +169,30 @@ void autic()
 
 
 void sendFrameNRF(uint16_t* frame_buffer, uint32_t length) {
-    uint8_t packet[32];  // maksimalno što nRF24L01 može poslati odjednom
-    uint32_t i, j = 0;
+  uint8_t packet[32];  // maksimalno što nRF24L01 može poslati odjednom
+  uint32_t i, j = 0;
 
-    // --- 1) Pošalji start frame signale (2 bajta) ---
-    packet[0] = 0xAA;  // primjer, start byte 1
-    packet[1] = 0x55;  // primjer, start byte 2
-    txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);  // šalje samo ova dva bajta, ostatak paketa se ignoriše
+  // --- 1) Pošalji start frame signale (2 bajta) ---
+  packet[0] = 0xAA;  // primjer, start byte 1
+  packet[1] = 0x55;  // primjer, start byte 2
+  txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);  // šalje samo ova dva bajta, ostatak paketa se ignoriše
 
-    for (i = 0; i < length; i++) {
-        // niz od 16 bita se pretvara u 2 bajta
-        packet[j++] = (uint8_t)(frame_buffer[i] & 0xFF);        // low byte
-        packet[j++] = (uint8_t)((frame_buffer[i] >> 8) & 0xFF); // high byte
+  for (i = 0; i < length; i++) {
+    // niz od 16 bita se pretvara u 2 bajta
+    packet[j++] = (uint8_t)(frame_buffer[i] & 0xFF);        // low byte
+    packet[j++] = (uint8_t)((frame_buffer[i] >> 8) & 0xFF); // high byte
 
-        // kad popunimo paket do 32 bajta, šaljemo ga
-        if (j == 32) {
-            txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);
-            j = 0;
-        }
+    // kad popunimo paket do 32 bajta, šaljemo ga
+    if (j == 32) {
+      txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);
+      j = 0;
     }
+  }
 
-    // ako ostane još nešto što nije poslano (manje od 32 bajta)
-    if (j > 0) {
-        txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);
-    }
+  // ako ostane još nešto što nije poslano (manje od 32 bajta)
+  if (j > 0) {
+    txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);
+  }
 }
 
 
@@ -204,7 +204,7 @@ void sendFrameNRF(uint16_t* frame_buffer, uint32_t length) {
 void kontroler()
 {
   while (1) {
-  receiveFrameNRF((uint16_t*)frame_buffer, FRAME_MAX);
+    receiveFrameNRF((uint16_t*)frame_buffer, FRAME_MAX);
   }
 }
 
@@ -212,47 +212,48 @@ void kontroler()
 
 
 void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length) {
-    uint8_t packet[32];
-    uint32_t bytes_received = 0;
-    uint32_t total_bytes = length * 2; // jer svaki pixel = 2 bajta
-    uint8_t waiting_for_start = 1;
+  uint8_t packet[32];
+  uint32_t bytes_received = 0;
+  uint32_t total_bytes = length * 2; // jer svaki pixel = 2 bajta
+  uint8_t waiting_for_start = 1;
 
-    while (1) {
-        // cekaj dok ne stigne paket
-        if (dataReadyNRF24L01() == NRF_DATA_READY) {
-            rxDataNRF24L01(packet);
+  while (1) {
+    // cekaj dok ne stigne paket
+    if (dataReadyNRF24L01() == NRF_DATA_READY) {
+      rxDataNRF24L01(packet);
 
-            if (waiting_for_start) {
-                // provjera da li je stigao start frame
-                if (packet[0] == FRAME_START_1 && packet[1] == FRAME_START_2) {
-                    waiting_for_start = 0;
-                    bytes_received = 0;
-                }
-            } else {
-                // kopiraj podatke iz paketa u frame_buffer
-                for (int i = 0; i < 32 && bytes_received < total_bytes; i++) {
-                    uint32_t index = bytes_received / 2;
-                    if (bytes_received % 2 == 0) {
-                        // low byte
-                        frame_buffer[index] = packet[i];
-                    } else {
-                        // high byte
-                        frame_buffer[index] |= ((uint16_t)packet[i] << 8);
-                    }
-                    bytes_received++;
-                }
-
-                // ako smo primili cijeli frame -> break
-                if (bytes_received >= total_bytes) {
-                    break;
-                }
-            }
+      if (waiting_for_start) {
+        // provjera da li je stigao start frame
+        if (packet[0] == FRAME_START_1 && packet[1] == FRAME_START_2) {
+          waiting_for_start = 0;
+          bytes_received = 0;
         }
+      } else {
+        // kopiraj podatke iz paketa u frame_buffer
+        for (int i = 0; i < 32 && bytes_received < total_bytes; i++) {
+          uint32_t index = bytes_received / 2;
+          if (bytes_received % 2 == 0) {
+            // low byte
+            frame_buffer[index] = packet[i];
+          } else {
+            // high byte
+            frame_buffer[index] |= ((uint16_t)packet[i] << 8);
+          }
+          bytes_received++;
+        }
+
+        // ako smo primili cijeli frame -> break
+        if (bytes_received >= total_bytes) {
+          printUSART2("Frame primljen, bar msm da je\n\n\n\n");
+          break;
+        }
+      }
     }
+  }
 }
 
 /*
- 
+
  NOTE: ovo sada ispod je za non-blockin primanje podataka :
         👉 Ovu processFrameNonBlocking() funkciju pozivaš u glavnoj while(1) petlji.
         Ako nema paketa, samo odmah izađe.
