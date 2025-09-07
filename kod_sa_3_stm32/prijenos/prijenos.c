@@ -1,4 +1,4 @@
-#include "prenos.h"
+#include "prijenos.h"
 #include "../check/check.h"
 #include "../DCMI/dcmi.h"
 #include "../nRF24L01/nRF24L01.h"
@@ -16,10 +16,6 @@ volatile uint8_t citamo_buffer = 0;
 
 // za kontrolu autica
 int8_t accel_data[ACC_DATA_LENGTH];
-
-
-
-
 
 
 

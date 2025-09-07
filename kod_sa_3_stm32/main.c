@@ -1,8 +1,6 @@
 #include "ov7670/ov7670.h"
-#include "stm32f4xx.h"
 #include "usart/usart.h"
 #include "delay/delay.h"
-#include "check/check.h"
 #include "./dma/dma.h"
 #include "DCMI/dcmi.h"
 #include "nRF24L01/nRF24L01.h"
@@ -10,8 +8,7 @@
 #include <stdint.h>
 #include "lis302dl/lis302dl.h"
 #include "led/led.h"
-#include "prenos/prenos.h"
-#include <string.h>
+#include "prijenos/prijenos.h"
 
 int main(void)
 {
@@ -42,33 +39,33 @@ int main(void)
     printUSART2("WWWWWWWWWWW  Circular buffer od OV7679   WWWWWWWWWWWWW\n");
     printUSART2("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWwWWWWWWW\n\n\n");
 
+
     // NOTE:
     // Da bi provjerili da li je OV7670 "ziv" potrebno je da upostavimo 
     // komunikaciju i dobiojemo ID. Da bi dobili ID, potrebno je da dovedemo
     // XCLK clock na OV7670:
-
     OV7670_XCLK_TIM1_init();
     delay_ms(100);
+
+
 
     // NOTE:
     // Nakon toka mozemo mozemo dobiti ID kamere. Pozivamo funk. koja vrsi u sebi
     // inicijalizaciju I2C : "initI2C1(OV7670_REG_WRITE);" gdje je "OV7670_REG_WRITE == 0x42"
-
     getOV7670_ID();   // Vrsi ispis PID i VER
     delay_ms(50);
 
 
-    OV7670_SetupQQVGA_Custom();     // OVO JE MOJA I OVO JE ISPRAVNOA 
+
+    OV7670_SetupQQVGA_Custom();     // OVO JE MOJA I OVO JE ISPRAVNOA
     delay_ms(1000);
-
-    // NOTE:
-    // Nakon upisivanja vrsimo provjeru upisa, tj. da li su dobro upisane zeljene vrijednosti
-
     printUSART2("================================================================\n");
 
-    DCMI_Init_OV7670_continuous_mode();   // ovo je za continuos mode
 
+
+    DCMI_Init_OV7670_continuous_mode();   // ovo je za continuos mode
     printUSART2("DCMI inicijalizacija je zavrsena\n\n");
+
 
 
     initDMA2_for_OV7670_continuous_mode_double_buffer(frame_buffer0, frame_buffer1, FRAME_MAX);
@@ -88,6 +85,8 @@ int main(void)
     delay_ms(1000);
   }
 
+
+
   conRegNRF24L01(NRF24L01_EN_AA, 0x00);     // gasimo ACK
   delay_ms(200);
 
@@ -104,6 +103,7 @@ int main(void)
   }else {
     kontroler_double_buffer();  // RX -> pc
   }
+
 
   return 0;
 }

@@ -1,5 +1,5 @@
-#ifndef PRENOS_H
-#define PRENOS_H
+#ifndef PRIJENOS_H
+#define PRIJENOS_H
 // -------------------------------
 #include <stdint.h>
 #include <stddef.h>  // <--- za NULL
@@ -7,7 +7,7 @@
 
 
 
-#define FRAME_START_1 0xA
+#define FRAME_START_1 0xAA
 #define FRAME_START_2 0x55
 
 
@@ -36,4 +36,4 @@ void startMasterNodeSYS();
 
 
 // -------------------------------
-#endif // !PRENOS_H
+#endif // !PRIJENOS_H
