@@ -199,7 +199,7 @@ void sendFrameNRF(volatile uint16_t* frame_buffer, uint32_t length)
 void kontroler_double_buffer()
 {
   while (1) {
-    receiveFrameNRF((uint16_t*)frame_buffer, FRAME_MAX);
+    receiveFrameNRF((uint16_t*)frame_buffer0, FRAME_MAX);
   }
 }
 

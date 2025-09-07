@@ -36,9 +36,6 @@ void getOV7670_ID()
 
 
 
-
-
-
 void OV7670_XCLK_TIM1_init(void)
 {
   // inicijalizacija pin-a na kojem cemo dovesti xclk

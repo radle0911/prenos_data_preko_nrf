@@ -10,7 +10,7 @@
 
 
 
- volatile uint16_t frame_buffer[IMG_W*IMG_H] = {0xAA, 0xAA, 0xAA, 0xAA, 0xAA}; // Za snapshot mode koristimo 
+//volatile uint16_t frame_buffer[IMG_W*IMG_H] = {0xAA, 0xAA, 0xAA, 0xAA, 0xAA}; // Za snapshot mode koristimo 
 
 // Ova dva niza koristimo za circular mode double buffer
 volatile uint16_t frame_buffer0[IMG_W*IMG_H]; // 160*120 = 19 200
@@ -48,21 +48,12 @@ void DCMI_Init_OV7670(void)
             GPIOA->AFR[1] &= ~0x00000FF0;     // AFR -> Pin9 & Pin10 cleaning
             GPIOA->AFR[1] |= 0x00000DD0;      // AFR -> PA9 & PA10
 
-//            // chat gpt reko da ovak porbam 
-//            // PA6 => AFR[0] bits 24..27
-//            GPIOA->MODER &= ~(0x3 << (6*2));          // clear mode for PA6
-//            GPIOA->MODER |=  (0x2 << (6*2));          // set AF mode (10)
-//
-//            GPIOA->AFR[0] &= ~(0xF << (6*4));         // clear AF nibble for PA6
-//            GPIOA->AFR[0] |=  (0xD << (6*4));         // AF13 = 0xD
-
-
             // PA6 kao alternativna funkcija AF13
             GPIOA->MODER &= ~0x00003000;   // reset MODER6
             GPIOA->MODER |=  0x00002000;   // set AF mode za PA6
             
             GPIOA->AFR[0] &= ~0x0F000000;  // reset AFR6
-            GPIOA->AFR[0] |=  0x0D000000;  // set AF13 (0xD)
+            GPIOA->AFR[0] |=  0x0D000000;  // set AF13 
 
             printUSART2("GPIOA MODER=0x%xw AFR0=0x%xw AFR1=0x%xw IDR=0x%xh\n",
                         GPIOA->MODER, GPIOA->AFR[0], GPIOA->AFR[1], GPIOA->IDR);
@@ -327,46 +318,6 @@ void OV7670_CheckPins(void)
 
 
 
-void OV7670_CaptureSnapshot(void)
-{
-
-    DCMI->ICR = 0xFFFFFFFF; // Reset all flags
-
-    // 1️⃣ Reset DMA
-    DMA2_Stream1->CR &= ~DMA_SxCR_EN;
-    while(DMA2_Stream1->CR & DMA_SxCR_EN);
-
-    // 2️⃣ Broj 32-bit reči za transfer
-    DMA2_Stream1->NDTR = FRAME_MAX / 2;
-
-    // 3️⃣ Omogući DMA
-    DMA2_Stream1->CR |= DMA_SxCR_EN;
-
-    // 4️⃣ Start DCMI capture
-    DCMI->CR |= DCMI_CR_CAPTURE;
-
-    // 5️⃣ Čekaj završetak DMA transfera (TC flag)
-    uint32_t timeout = 5000000;
-
-    while (!(DMA2->LISR & DMA_LISR_TCIF1)) {
-        if(--timeout == 0) {
-            printUSART2("ERROR: DMA timeout!\n");
-            return;
-        }
-    }
-
-    // Reset TC flag
-    DMA2->LIFCR |= DMA_LIFCR_CTCIF1;
-    printUSART2("Snapshot završen, frame_buffer popunjen.\n");
-}
-
-
-
-
-
-
-
-
 
 // ovo je kao generalna funk, ako zelim preko userbtn da radim snapshot
 // ZA SNAPSHOT FUNKCIJA
@@ -387,8 +338,8 @@ void DCMI_snapshot_debug(volatile uint16_t* buffer, uint16_t frame_size)
     // enable DMA stream
     DMA2_Stream1->CR |= DMA_SxCR_EN;
 
-    // ovo sve prethodno gore i CM se radi radi toga da bude kao generalna
-    // funk, ako budem htio da frame fatamo preko pushBTN ili while petlji
+    // ovo sve prethodno gore i CM se radi zbog toga da bude kao generalna
+    // funk, ako budem htio da frame uzimamo preko pushBTN ili while petlji
 
     // Start DCMI snapshot
     DCMI->CR |= DCMI_CR_CAPTURE | DCMI_CR_CM; // Single frame
