@@ -25,7 +25,7 @@
 
 
 
-// potrebne funkcije PIN je Pnesto
+// potrebne funkcije PIN je Px
 
 void initSPI1_accelerometer(uint16_t prescaler);    // PA6=>prijemnik, PA7=>predajnik
 uint8_t rxByteSPI1(void);

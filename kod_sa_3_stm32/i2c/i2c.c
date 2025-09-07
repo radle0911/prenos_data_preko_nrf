@@ -29,8 +29,8 @@ void initI2C1(uint8_t adresa)
     GPIOB->PUPDR &= ~(GPIO_PUPDR_PUPDR8 | GPIO_PUPDR_PUPDR9);
     GPIOB->PUPDR |= (GPIO_PUPDR_PUPDR8_0 | GPIO_PUPDR_PUPDR9_0);              // pull-up 
 
-    GPIOB->AFR[1] &= ~(0x000000FF);                                             // AFR
-    GPIOB->AFR[1] |= 0x00000044;                                             // AFR
+    GPIOB->AFR[1] &= ~(0x000000FF);                                           // AFR
+    GPIOB->AFR[1] |= 0x00000044;                                              // AFR
   }
 
   // inicijalizacija I2C1 protokola
@@ -42,13 +42,12 @@ void initI2C1(uint8_t adresa)
 
     I2C1->CR1 &= ~(I2C_CR1_PE);           // 0 -> periferal disable | 1 -> periferan enable (PE)
 
-    //I2C1->CR2 = I2C_CR2_FREQ_3;           // 0x0008 -> 8Mhz -> Fpclk1 // NAVODNO OVO NIJE TACNO I MORA ICI FREK KOJA JE U APB1 (42MHz)
+    //I2C1->CR2 = I2C_CR2_FREQ_3;           // 0x0008 -> 8Mhz -> Fpclk1 // TREBA DA IDE FREK KOJA JE U APB1 (42MHz)
     I2C1->CR2 = 42; // 42 dec 0x2A
 
     //I2C1->CCR = 0x00000028;               // 40(dec) --->> je broj taktova  :SCL = Fpclk1 / (2 * CCR) = 8Mhz / 2*40 = 100khz
     I2C1->CCR = 210;
 
-    //I2C1->TRISE = 0x000000009;            // sta je ovooo ??? 
     I2C1->TRISE = 43;
     /*
         Maksimalno dozvoljeno vrijeme porasta SCL, izraženo u broju PCLK1 ciklusa + 1.
@@ -57,7 +56,6 @@ void initI2C1(uint8_t adresa)
         Za 8 MHz → 8 + 1 = 9. Zato je 0x09 ispravno.
     */
 
-    //I2C1->OAR1 = 0x4033;                  // sta se desava ovdje? sta je ovoo ?? 
     I2C1->OAR1 = 0x4032;
     /*
         OAR1 je tvoja (MCU) vlastita I2C adresa kada glumiš slave (nema veze s adresom uređaja na koji ideš kao master).
@@ -200,9 +198,6 @@ void txByteI2C1(uint8_t data)
   }
   I2C1->DR = data;
 
-  //printUSART2("dodje do while petlje\n");
-  // sada čekamo da bajt bude kompletno poslat (BTF)
-  // while (!(I2C1->SR1 & I2C_SR1_BTF));
 
 
   uint32_t timeout;
@@ -238,173 +233,35 @@ void stopI2C1()
   }
 }
 
-/*
-void stopI2C1(void)
+
+
+
+void startI2C1(uint8_t type) 
 {
-    // 1. Sačekaj da se završi prijenos
-    while (!(I2C1->SR1 & I2C_SR1_BTF) && !(I2C1->SR1 & I2C_SR1_TXE));
-
-    // 2. Pošalji STOP condition
-    I2C1->CR1 |= I2C_CR1_STOP;
-
-    // 3. Sačekaj da BUSY flag padne (bus slobodan)
-    while (I2C1->SR2 & I2C_SR2_BUSY);
-}
-*/
-
-
-
-
-
-void startI2C1(uint8_t type) {
     uint32_t timeout = 100000;
 
-    // čekaj da bus bude slobodan
+    // cekaj da bus bude slobodan
     while ((I2C1->SR2 & I2C_SR2_BUSY) && --timeout);
 
-    // generiši START
     I2C1->CR1 |= I2C_CR1_START;
 
-    // čekaj SB=1
+    // cekamo start da se pokrene
     while (!(I2C1->SR1 & I2C_SR1_SB));
 
-    // pošalji adresu
     if (type == I2C_READ)
         I2C1->DR = i2c1_addresa | 0x01;
     else
         I2C1->DR = i2c1_addresa;
 
-    // čekaj ADDR=1
+    // cekamo ADDR=1
     while (!(I2C1->SR1 & I2C_SR1_ADDR));
 
     // clear ADDR
     (void)I2C1->SR1;
     (void)I2C1->SR2;
 
-    // ako je write, čekaj TXE
+    // ako je write, wait TXE
     if (type == I2C_WRITE)
         while (!(I2C1->SR1 & I2C_SR1_TXE));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// OVO ISPOD JE GOGINO A OVO INAD JE CHATGPT ANAPISAO
-//void startI2C1(uint8_t type) 
-//{
-//  uint32_t sreg, utmp32;
-//
-//
-//  // -------------- Chat GPT rekao da dodam ovo START ------------
-//
-//  uint32_t timeout;
-//
-////  printUSART2("start 1.\n");
-//  // čekaj da bus bude slobodan
-//  timeout = 100000;
-//  while (I2C1->SR2 & I2C_SR2_BUSY) {
-//      if (--timeout == 0) return; // timeout fail
-//  }
-//
-// // printUSART2("start 2.\n");
-//  // -------------- Chat GPT rekao da dodam ovo END ------------
-//
-//  sreg = I2C1->SR2;
-//  sreg = I2C1->SR1;   // clear SR2 & SR1 registers by reading it
-//  
-//
-//  I2C1->CR1 |= I2C_CR1_START;   
-//
-//  
-//  /*
-//      START: Start generation
-//
-//      This bit is set and cleared by software and cleared by hardware when start is sent or PE=0.
-//      In Master Mode:
-//      0: No Start generation
-//      1: Repeated start generation
-//      In Slave mode:
-//      0: No Start generation
-//      1: Start generation when the bus is free
-//  */
-//
-//  //printUSART2("dodje do 2. while petlje\n");
-// // printUSART2("start 3.\n");
-//  // ------------------while-------------------------------------------
-//  while (1) {
-//    sreg = (I2C1->SR2) << 16;     // pomjera SR2 u gornjih 16 bita  
-//    sreg |= I2C1->SR1;            // dodaje SR1 u donjih 16 bita    
-//   // printUSART2("SR1: 0x%xb, SR2: 0x%xb\n", I2C1->SR1, I2C1->SR2);
-//    if ((sreg & 0x00030001) == 0x00030001) {
-//          /*
-//          bit 0   (SR1.SB)    → Start Bit = 1 (generisan START)
-//          bit 16  (SR2.MSL)   → Master mode = 1
-//          bit 17  (SR2.BUSY)  → Busy = 1
-//          */
-//      break;
-//    }
-//  }
-//  // ------------------while-------------------------------------------
-//
-//  printUSART2("izadje iz 2. while petlje\n");
-//  // --------- IF-ELSE ------------------------------------------------
-//  //printUSART2("start 4.\n");
-//  if (type == I2C_READ) {
-//    
-// // printUSART2("start 5.\n");
-//    I2C1->DR = i2c1_addresa | 0x01;
-//    while (1) {
-//      sreg = (I2C1->SR2) << 16;
-//      sreg |= I2C1->SR1;
-//      if ((sreg & 0x00030002) == 0x00030002) {
-//        /*
-//          bit 1   (SR1.ADDR)  → Address sent/received (ADDR flag)
-//          bit 16  (SR2.MSL)   → Master mode = 1
-//          bit 17  (SR2.BUSY)  → Busy = 1
-//         */
-//        break;
-//      }
-//    }
-//  }else {
-//
-////  printUSART2("start 6.\n");
-////printUSART2("Saljem I2C adresu: 0x%xb\n", i2c1_addresa);
-//    I2C1->DR = i2c1_addresa;
-//
-//
-// // printUSART2("dodje do 4. while petlje i treba jer je write \n");
-//    while (1) {
-//      sreg = (I2C1->SR2) << 16;     
-//      sreg |= I2C1->SR1;
-//      //printUSART2("DEBUG: SR1=0x%xb, SR2=0x%xb\n", I2C1->SR1, I2C1->SR2);
-//      if ((sreg & 0x00070082) == 0x00070082) {
-//          /*
-//          bit 1  (SR1.ADDR) → Address flag = 1
-//          bit 7  (SR1.TXE)  → Transmit data register empty (spreman da primi bajt)
-//          bit 15 (SR1.TRA)  → Transmitter/receiver = 1 (master u transmit modu)
-//          bit 16 (SR2.MSL)  → Master mode = 1
-//          bit 17 (SR2.BUSY) → Busy = 1
-//          */
-//        break;
-//      }
-//    }
-//
-//  printUSART2("izadje iz 4. while petlje i treba jer je write \n");
-//  }
-//  printUSART2("start 7.\n");
-///*
-//          0x00030001 → START poslano, master mode, busy
-//          0x00030002 → Adresa poslata + ACK, master read mode
-//          0x00070082 → Adresa poslata + ACK, master write mode, DR prazan
-//*/
-//  // --------- IF-ELSE ------------------------------------------------
-//}
 

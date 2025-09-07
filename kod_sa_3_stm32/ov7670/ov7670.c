@@ -55,7 +55,6 @@ void OV7670_XCLK_TIM1_init(void)
                                               // odredili smo sqer sig. 50% high 50% low  freq je 24MHz
 
 
-    // CR1 za ovaj slucaj nije obavezan ??  (2 linije ispod)
     TIM1->CR1 |= TIM_CR1_ARPE | TIM_CR1_URS;
     TIM1->CR1 &= ~(TIM_CR1_CMS | TIM_CR1_DIR);
 
@@ -122,7 +121,7 @@ void OV7670_SetupQQVGA_Custom(void)
     // Scaling
     val = 0x22;
     writeI2C(OV7670_REG_SCALING_DCWCTR, &val, 1);
-    val = 0xF2; // 0xF2 bilo ------------------------>  // puno ljepse je sa 0xF2, ali sporije 
+    val = 0xF2; //0xF2 bolja kvaliteta, ali sporije
     writeI2C(OV7670_REG_SCALING_PCLK_DIV, &val, 1);
 
     // COM10 - PCLK & VSYNC polaritet
@@ -156,7 +155,7 @@ void OV7670_SetupQQVGA_Custom(void)
   // NOTE: Ovo je za boju setup
 
 
-// ispod je dodatak, proba za boju : --------> radi nesto, nekako, malo ...
+// --------------- test za boju -------------------
 //  
 //
 // COM13 - Gamma, color matrix enable
@@ -192,7 +191,7 @@ void OV7670_SetupQQVGA_Custom(void)
 
 
 
-void initOV7670() // NOTE: prva funkcija koja se ne korsiti, ali je sve detaljno objasnjeno :|
+void initOV7670() // NOTE:  detaljno objasnjeno
 {
   uint8_t data[4];
   uint32_t utmp32;
@@ -212,7 +211,6 @@ void initOV7670() // NOTE: prva funkcija koja se ne korsiti, ali je sve detaljno
   printUSART2("-> OV7670 version (VER) [0x%xb]\n",utmp32);
 
 
-  // Reset kamere
   val = OV7670_REG_COM7_RESET;
   writeI2C(OV7670_REG_COM7, &val, 1);
   delay_ms(200);
@@ -265,7 +263,7 @@ void initOV7670() // NOTE: prva funkcija koja se ne korsiti, ali je sve detaljno
 
 
   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   REG_DBLV    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  val = 0x4A; // DBL: PLL x4  (what ???)
+  val = 0x4A; // DBL: PLL x4  
   writeI2C(OV7670_REG_DBLV, &val, 1);
   delay_ms(5);
   // NOTE: 

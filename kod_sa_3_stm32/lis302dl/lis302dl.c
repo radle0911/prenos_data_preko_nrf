@@ -14,9 +14,8 @@ void initLIS320DL(void)
 
   initSPI1_accelerometer(SPI_BaudRate_Prescaler_32);
 
-
-  // za upisivanje mora biti low i kada se zavrsi high
-  // samo ovdje vrsimo upisivanje, na ostale vrsimo citanje i ispis
+  //CS pin mora biti LOW tokom upisa, a zatim HIGH nakon zavrsetka
+  //upisujemo konfiguraciju; ostala citanja sluze samo za ocitavanje
   SPI1_CS_LOW;
   txByteSPI1(lis302dl_CTRL_REG1);     // prvo je potrebno odabrati adresu u kojoj zelimo da upisemo podatke 
   txByteSPI1(0x47);                   // PD control: 1 active mode, enable x,y,z axis
@@ -62,14 +61,14 @@ void getDataLIS302DL(int8_t *accel_data){
 
   SPI1_CS_LOW;  // da bi mogli izvrsiti citanje
   txByteSPI1(lis302dl_STATUS_REG|lis302dl_CTRL_REG1_DR_READ); // status registra
-  utmp32 = rxByteSPI1();                                      // new data available and that stuf
+  utmp32 = rxByteSPI1();                                      // new data available
   SPI1_CS_HIGH;
   delay_us(100);
 
   uint8_t k, data[6]={0x00,0x00,0x00,0x00,0x00,0x00};
   SPI1_CS_LOW;
   txByteSPI1(lis302dl_OUT_X | lis302dl_CTRL_REG1_DR_READ); 
-  for (k=0; k<6; k++) {     // prolazimo kroz svaki element i upisujemo ga u niz
+  for (k=0; k<6; k++) {     // upisujemo elemente u niz
     data[k] = rxByteSPI1(); // 
   }
   SPI1_CS_HIGH;

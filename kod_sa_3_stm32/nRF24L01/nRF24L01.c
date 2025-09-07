@@ -23,11 +23,11 @@ volatile uint8_t* g_node_address_komande;
 
 
 
-// ovo je za SPI300000000000000000000000000000000000000
+// WWWWWWWWWWWWWW za SPI3 WWWWWWWWWWWWWWWWWWW
 volatile uint8_t g_nrf24l01_novi_node_type;
 volatile uint8_t* g_node_address_novi;
 volatile uint8_t nrf_mode_novi;
-// ovo je za SPI300000000000000000000000000000000000000
+// WWWWWWWWWWWWWW za SPI3 WWWWWWWWWWWWWWWWWWW
 
 
 
@@ -296,7 +296,7 @@ uint8_t txDataNRF24L01(uint8_t *daddr, uint8_t *data)    // data_address, data
   uint32_t tajmer = getSYSTIMER_TIM7();
   uint8_t rezultat = NRF24L01_TX_COMPLETED;
   setTxAddrNRF24L01(daddr);   // podesavaomo u TX_addr da bude isto od rx ACK
-  txPacketNRF24L01(data);     //ovo je ogromna funkcija
+  txPacketNRF24L01(data);     
 
   while (txStatusNRF() == NRF_TX_IN_PROGRESS) {	// prof. je txOverNRF24L01() oznacio ovu funk.
     if (chk4TimeoutSYSTIMER_TIM7(tajmer, NRF24L01_TX_WAIT_PERIOD) == SYSTIMER_TIMEOUT) {   // ako se ne zavrsi za 1ms fail je 
@@ -682,7 +682,6 @@ void txPacketNRF24L01_SPI3(uint8_t* data)
     NRF_CE_HIGH_SPI3;  // ------------------
 
     delay_us(130);
-    // ima i bolji nacin da se ova funk. zapise chatGPT
 }
 
 
@@ -726,7 +725,7 @@ uint8_t txDataNRF24L01_SPI3(uint8_t *daddr, uint8_t *data)    // data_address, d
   uint32_t tajmer = getSYSTIMER_TIM7();
   uint8_t rezultat = NRF24L01_TX_COMPLETED;
   setTxAddrNRF24L01_SPI3(daddr);   // podesavaomo u TX_addr da bude isto od rx ACK
-  txPacketNRF24L01_SPI3(data);     //ovo je ogromna funkcija
+  txPacketNRF24L01_SPI3(data);     
 
   while (txStatusNRF_SPI3() == NRF_TX_IN_PROGRESS) {	// prof. je txOverNRF24L01() oznacio ovu funk.
     if (chk4TimeoutSYSTIMER_TIM7(tajmer, NRF24L01_TX_WAIT_PERIOD) == SYSTIMER_TIMEOUT) {   // ako se ne zavrsi za 1ms fail je 
@@ -818,6 +817,5 @@ void setTxModeNRF24L01_SPI3(void)
 	nrf_mode = (NRF_MODE_TX);
 	conRegNRF24L01_SPI3(NRF24L01_CONFIG,((1<<(NRF24L01_CONFIG_EN_CRC))|(0<<(NRF24L01_CONFIG_CRCO)))|((1<<(NRF24L01_CONFIG_POWER_UP))|(0<<(NRF24L01_CONFIG_PRIM_RX))));
 }
-
 
 
