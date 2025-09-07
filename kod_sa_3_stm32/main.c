@@ -36,6 +36,9 @@ volatile uint8_t citamo_buffer = 0;
 
 // za kontrolu autica
 int8_t accel_data[ACC_DATA_LENGTH];
+
+
+
 void startMasterNodeSYS();
 
 int main(void)

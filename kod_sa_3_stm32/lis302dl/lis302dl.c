@@ -22,19 +22,19 @@ void initLIS320DL(void)
   txByteSPI1(0x47);                   // PD control: 1 active mode, enable x,y,z axis
   SPI1_CS_HIGH;
 
-  delay_ms(100);                      // iz nekog razloga, valjda da podesi sto treba ...
+  delay_ms(100);                      
 
   SPI1_CS_LOW;
   txByteSPI1(lis302dl_CTRL_REG1|lis302dl_CTRL_REG1_DR_READ);    // ovo je DR registar 400Hz output data rate
-  utmp32 = rxByteSPI1();        // nakon sto smo "enable" read tj povecali frek. --> izvrsavamo citanje
-  printUSART2("-> LIS302: LIS302_CTRL_REG1 [%x]\n",utmp32);   // procitana vrijednost 
+  utmp32 = rxByteSPI1();                                        // nakon sto smo "enable" read tj povecali frek. --> izvrsavamo citanje
+  printUSART2("-> LIS302: LIS302_CTRL_REG1 [%x]\n",utmp32);     // procitana vrijednost 
   SPI1_CS_HIGH;
 
 
   SPI1_CS_LOW;                                                    // To govori LIS302DL da će naredni bajt koji pošalje biti čitani sadržaj sa te adrese.
   txByteSPI1(lis302dl_CTRL_REG2 | lis302dl_CTRL_REG1_DR_READ);    // adresa reg2 i ponovo enable 400hz za citanje 
   utmp32 = rxByteSPI1();
-  printUSART2("-> LIS302: LIS302_CTRL_REG2 [%x]\n",utmp32);   // procitana vrijednost 
+  printUSART2("-> LIS302: LIS302_CTRL_REG2 [%x]\n",utmp32);       // procitana vrijednost 
   SPI1_CS_HIGH;
 
   SPI1_CS_LOW;
@@ -69,7 +69,7 @@ void getDataLIS302DL(int8_t *accel_data){
   uint8_t k, data[6]={0x00,0x00,0x00,0x00,0x00,0x00};
   SPI1_CS_LOW;
   txByteSPI1(lis302dl_OUT_X | lis302dl_CTRL_REG1_DR_READ); 
-  for (k=0; k<6; k++) { // prolazimo kroz svaki element i upisujemo ga u niz
+  for (k=0; k<6; k++) {     // prolazimo kroz svaki element i upisujemo ga u niz
     data[k] = rxByteSPI1(); // 
   }
   SPI1_CS_HIGH;
