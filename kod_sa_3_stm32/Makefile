@@ -20,6 +20,7 @@ SRCS += ./spi/spi.c
 SRCS += ./gpio/gpioc.c
 SRCS += ./led/led.c
 SRCS +=	./lis302dl/lis302dl.c
+SRCS += ./prenos/prenos.c
 
 # Normally you shouldn't need to change anything below this line!
 #######################################################################################
