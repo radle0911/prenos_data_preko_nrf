@@ -123,29 +123,6 @@ int main(void)
 
   // ovo je kao generalna funk, ako zelim preko userbtn da radim snapshot
   DCMI_snapshot_debug(frame_buffer, FRAME_MAX); // ovo radi savrseno !!!
-  //  DCMI_snapshot_debug_full(frame_buffer, FRAME_MAX);
-
-  //  DCMI_debugStatus();
-  //
-  //  printUSART2("_______SVE IZVRSENE PROVJERAVAMO ELEMENTE________\n");
-  //
-  //int count = 0;
-  //int prikaz = 0;
-  //for (int i = 0; i < FRAME_MAX ; i++) {
-  //    if (frame_buffer[i] != 0) {
-  //      if (prikaz < 10) {
-  //        printUSART2("frame_buffer[%d] = %d (0x%xb)\n", i, frame_buffer[i], frame_buffer[i]);
-  //      }
-  //        count++;
-  //        prikaz++;
-  //      //  if (count >= 20) break;
-  //    }
-  //}
-  //
-  //  printUSART2("Ukupan broj elemenata u frame_buffer-u je = %d\n",count);
-  //  printUSART2("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n",count);
-  //
-  //  send_frame_buffer(frame_buffer, FRAME_MAX);
 
   }
 
@@ -164,7 +141,8 @@ void autic()
 {
   while (1) {
     DCMI_snapshot_debug(frame_buffer, FRAME_MAX); // get snapshot in frame_buffer
-    send_frame_buffer(frame_buffer, FRAME_MAX);   // send via USART to pc 
+    //send_frame_buffer(frame_buffer, FRAME_MAX);   // send via USART to pc 
+    printUSART2("0x%xh\n",frame_buffer[500]);
     sendFrameNRF((uint16_t*)frame_buffer, FRAME_MAX); // send frame via nRF to MCU 
   }
 }
@@ -244,8 +222,9 @@ void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length) {
 
         // ako smo primili cijeli frame -> break
         if (bytes_received >= total_bytes) {
-          printUSART2("Frame primljen, bar msm da je\n\n\n\n");
+          //printUSART2("Frame primljen, bar msm da je\n\n\n\n");
           send_frame_buffer(frame_buffer, FRAME_MAX);   // send via USART to pc 
+          //printUSART2("0x%xh\n",frame_buffer[500]);
           break;
         }
       }

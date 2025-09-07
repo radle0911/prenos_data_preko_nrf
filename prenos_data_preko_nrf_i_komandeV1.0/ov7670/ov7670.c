@@ -883,7 +883,7 @@ void OV7670_SetupQQVGA_Custom_sa_neta(void)
     // Scaling
     val = 0x22;
     writeI2C(OV7670_REG_SCALING_DCWCTR, &val, 1);
-    val = 0xF1; // 0xF2 bilo ------------------------>  // puno ljepse je sa 0xF2 al i sporije
+    val = 0xF2; // 0xF2 bilo ------------------------>  // puno ljepse je sa 0xF2 al i sporije
     writeI2C(OV7670_REG_SCALING_PCLK_DIV, &val, 1);
 
     // COM10 - PCLK & VSYNC polaritet

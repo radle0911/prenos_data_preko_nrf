@@ -1313,6 +1313,7 @@ void startSlaveNodeRX() {
         // OVDE možeš dodati logiku za prikaz slike ili obradu
         if (frame_ready) {
             // npr. prikaz ili dalja obrada
+            printUSART2("frame je stigao, sada se moze raditi prikaz\n");
             send_frame_buffer_USART(frame_buffer0, FRAME_MAX);
             frame_ready = 0; // reset za sljedeći frame
         }
