@@ -17,7 +17,6 @@ extern volatile uint16_t frame_buffer[IMG_W*IMG_H]; // 160*120 = 19 200
 extern volatile uint16_t frame_buffer0[IMG_W*IMG_H]; // 160*120 = 19 200
 extern volatile uint16_t frame_buffer1[IMG_W*IMG_H]; // 160*120 = 19 200
 
-//extern volatile uint32_t frame_buffer[(IMG_W*IMG_H)/2]; // 9600
 
 void DCMI_Init_OV7670(void);
 void DCMI_CaptureFrame(void);
