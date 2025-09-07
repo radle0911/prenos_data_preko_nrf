@@ -13,6 +13,7 @@
 #include "gpio/gpioc.h"
 #include <stdint.h>
 #include "lis302dl/lis302dl.h"
+#include "led/led.h"
 #include <string.h>
 #include <stddef.h>  // <--- za NULL
 
@@ -122,6 +123,8 @@ int main(void)
   DCMI_start_continuous_mode();
 
   }else { // NOTE: Ovo je za RX blok (kontrolor)
+    initPWM();
+    delay_ms(10);
     initLIS320DL(); // akcelerometar
     delay_ms(10);
     initnRF24L01_SPI3(NRF24L01_NODE_TYPE_TX);
