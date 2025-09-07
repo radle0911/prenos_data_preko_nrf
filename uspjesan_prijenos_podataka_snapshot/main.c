@@ -165,7 +165,7 @@ void autic()
   while (1) {
     DCMI_snapshot_debug(frame_buffer, FRAME_MAX); // get snapshot in frame_buffer
     //send_frame_buffer(frame_buffer, FRAME_MAX);   // send via USART to pc 
-    printUSART2("0x%xh\n",frame_buffer[500]);
+    //printUSART2("0x%xh\n",frame_buffer[500]);
     sendFrameNRF((uint16_t*)frame_buffer, FRAME_MAX); // send frame via nRF to MCU 
   }
 }

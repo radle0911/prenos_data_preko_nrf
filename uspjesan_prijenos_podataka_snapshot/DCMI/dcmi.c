@@ -715,7 +715,7 @@ void OV7670_PrepareForCapture(void)
 // ovo je kao generalna funk, ako zelim preko userbtn da radim snapshot
 void DCMI_snapshot_debug(volatile uint16_t* buffer, uint16_t frame_size)
 {
-    printUSART2("=== DCMI FULL DEBUG START ===\n");
+    //printUSART2("=== DCMI FULL DEBUG START ===\n");
 
     // 1️⃣ Očisti sve DMA flagove pre novog transfera
     DMA2->LIFCR = (DMA_LIFCR_CFEIF1 |
@@ -758,18 +758,18 @@ void DCMI_snapshot_debug(volatile uint16_t* buffer, uint16_t frame_size)
     DMA2->LIFCR = DMA_LIFCR_CTCIF1;
 
     // 1️⃣1️⃣ Provjera ostatka NDTR
-    printUSART2("NDTR after capture: %d\n", DMA2_Stream1->NDTR);
+    //printUSART2("NDTR after capture: %d\n", DMA2_Stream1->NDTR);
 
     // 1️⃣2️⃣ Provjera DCMI statusa na kraju
-    uint32_t sr_end = DCMI->SR;
-    printUSART2("DCMI SR end: 0x%x | FIFO empty=%d, VSYNC=%d, HSYNC=%d\n",
-                sr_end,
-                (sr_end & DCMI_SR_FNE) ? 1 : 0,
-                (sr_end & DCMI_SR_VSYNC) ? 1 : 0,
-                (sr_end & DCMI_SR_HSYNC) ? 1 : 0);
+    //uint32_t sr_end = DCMI->SR;
+    //printUSART2("DCMI SR end: 0x%x | FIFO empty=%d, VSYNC=%d, HSYNC=%d\n",
+    //            sr_end,
+    //            (sr_end & DCMI_SR_FNE) ? 1 : 0,
+    //            (sr_end & DCMI_SR_VSYNC) ? 1 : 0,
+    //            (sr_end & DCMI_SR_HSYNC) ? 1 : 0);
 
 //    DCMI->CR &= ~DCMI_CR_CAPTURE;
-    printUSART2("=== Snapshot complete ===\n");
+    //printUSART2("=== Snapshot complete ===\n");
 }
 
 
