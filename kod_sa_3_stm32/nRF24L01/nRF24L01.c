@@ -218,51 +218,6 @@ uint8_t getRegNRF24L01(uint8_t reg)
 }
 
 
-/*
-void txPacketNRF24L01(uint8_t * data)
-{
-	uint8_t status, k, tmp;
-	uint32_t timer = getSYSTIMER_TIM7();
-	
-	//printUSART2("Ulazi al je nrf_mode = %d treba 0 \n",nrf_mode);
-	while(nrf_mode == NRF_MODE_TX)
-	{
-		status = getRegNRF24L01(NRF24L01_STATUS);
-		if(status & ((1 << (NRF24L01_STATUS_TX_DS))|(1<<(NRF24L01_STATUS_MAX_RT)))) // tx_ds je setovan kada je ack primljen, max br retransmisije interupta
-		{
-			nrf_mode = NRF_MODE_RX; 
-			break;
-		}
-		
-		if(chk4TimeoutSYSTIMER_TIM7(timer, 1000) == (SYSTIMER_TIMEOUT))
-		{
-			printUSART2("TIMEOUT\n");
-			//delay_ms(1000);
-			return;
-		}
-	}
-	
-	NRF_CE_LOW;															// clear CE bit
-	setTxModeNRF24L01();												// set Tx mode
-	
-	flushTxNRF24L01();
-	
-	SPI2_CS_LOW;														// clear SS bit
-	tmp = NRF_W_TX_PAYLOAD;
-	txSPI2_nRF_carrier(&tmp , 1);													// write cmd to write payload
-	txSPI2_nRF_carrier(data, (NRF24L01_PIPE_LENGTH));
-	SPI2_CS_HIGH;
-	NRF_CE_HIGH;
-	delay_us(130);														// delay >10us
-  
-	//printUSART2("kraj funkcije nrf_mode = %d treba 1 \n",nrf_mode);	 // ovo izbrisati kasnije   
-	//delay_ms(1000);							 // ovo izbrisati kasnije 
-	
-}
-*/
-
-
-
 
 void txPacketNRF24L01(uint8_t* data){
   uint32_t tajmer = getSYSTIMER_TIM7();
@@ -297,35 +252,7 @@ void txPacketNRF24L01(uint8_t* data){
     NRF_CE_HIGH;  // ------------------
 
     delay_us(130);
-    // ima i bolji nacin da se ova funk. zapise chatGPT
 }
-
-//
-//uint8_t	txOverNRF24L01(void)
-//{
-//	uint8_t status;
-//	if(nrf_mode == (NRF_MODE_TX))
-//	{
-//		status = getRegNRF24L01(NRF24L01_STATUS);
-//		if(status & ((1 << (NRF24L01_STATUS_TX_DS))|(1<<(NRF24L01_STATUS_MAX_RT))))
-//		{
-//			setRxModeNRF24L01();
-//			status = (NRF_TX_FINISHED); 
-//		}
-//		else
-//		{
-//			status = (NRF_TX_IN_PROGRESS); 
-//		}	
-//	}
-//	else
-//	{
-//		status = (NRF_TX_FINISHED); 
-//	}
-//	
-//	return status;
-//}
-//
-
 
 
 
@@ -361,32 +288,6 @@ uint8_t txStatusNRF(){
   return status;
 }
 
-
-/*
-uint8_t txDataNRF24L01(uint8_t * daddr, uint8_t * data)
-{
-	uint8_t res = (NRF24L01_TX_COMPLETED);
-	uint32_t timer = getSYSTIMER_TIM7();
-	uint32_t tim;
-
-	setTxAddrNRF24L01(daddr);	
-	txPacketNRF24L01(data);					
-	//printUSART2("-> izlazi iz txPacket funk %d\n",global_cnt);
-	while(txStatusNRF() == (NRF_TX_IN_PROGRESS))
-	{
-		if(chk4TimeoutSYSTIMER_TIM7(timer, NRF24L01_TX_WAIT_PERIOD) == (SYSTIMER_TIMEOUT))
-		{
-			res = (NRF24L01_TX_FAILED);
-			break;
-		}
-	}
-	
-	
-	tim = getSYSTIMER_TIM7();
-	//printUSART2("-> timer = %d\n\n\n",tim-timer);
-	return res;
-}
-*/
 
 
 

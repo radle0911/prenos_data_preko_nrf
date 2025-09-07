@@ -16,7 +16,7 @@ void initGPIOC6_GND(void){
 
 
 void chkConnection_GPIOC6_GND(uint8_t* node_type){
-  if ((GPIOC->IDR & GPIO_IDR_IDR_6) == GPIOC6_CONNECTED_GND) {  // kada je 0 onda je conektovan, a kada je 1 onda nije jer je pull_up (kad lebdi onda nije connected)
+  if ((GPIOC->IDR & GPIO_IDR_IDR_6) == GPIOC6_CONNECTED_GND) {  // 0 -> connected, 1 not connected
     *node_type = NRF24L01_NODE_TYPE_TX;
   }
 }
