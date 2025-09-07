@@ -255,54 +255,6 @@ const OV7670_RegCheck regs_to_verify[] = {
     {OV7670_REG_SCALING_DCWCTR, 0x11, "SCALING_DCWCTR"},
 };
 
-void verify_ov7670_regs(void)
-{
-    uint8_t buf[1];
-    uint16_t i = 0;   // koristi uint16_t za veću tabelu
-    uint32_t retry;
-
-    // Mali delay da se reset kamere stabilizuje
-    delay_ms(100);
-
-    for(i = 0;; i++) {
-        uint8_t reg = ov7670_qqvga_rgb565[i].reg;
-        uint8_t expected = ov7670_qqvga_rgb565[i].val;
-
-        // kraj tabele
-        if (reg == 0xFF && expected == 0xFF ) break;
-
-        if (reg == 0xFF) {
-            // samo delay marker, nastavi na sledeći element
-            delay_ms(100);
-            continue;
-        }
-
-        // COM7 posle reset-a očekuje 0x00
-        if (reg == OV7670_REG_COM7) expected = 0x00;
-
-        // retry loop za čitanje registra
-        retry = 3; // probaj max 3 puta
-        while (retry--) {
-            readI2C(reg, buf, 1);
-            if (buf[0] == expected) break; // uspešno očitano
-            delay_ms(1);
-        }
-
-        if (buf[0] == expected) {
-            printUSART2("OK:   reg 0x%xb = 0x%xb\n", reg, buf[0]);
-        } else {
-            printUSART2("ERROR: reg 0x%xb = 0x%xb, expected 0x%xb\n",
-                        reg, buf[0], expected);
-        }
-
-        delay_ms(2); // mali delay da ne blokira bus
-    }
-
-    printUSART2("OV7670 -> verify regs zavrsen!\n");
-}
-
-
-// ---------------------- za provjeru registara
 
 
 

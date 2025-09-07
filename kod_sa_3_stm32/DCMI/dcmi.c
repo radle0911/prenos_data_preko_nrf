@@ -828,24 +828,6 @@ void OV7670_CaptureSnapshot_VSYNC(void)
 
 
 
-void OV7670_PrepareForCapture(void)
-{
-    // 1️⃣ Soft reset DCMI
-    DCMI->CR = 0;
-    DCMI->SR = 0;
-    DCMI->IER = 0;
-    DCMI->CR |= DCMI_CR_CM | DCMI_CR_ENABLE;
-
-    // 2️⃣ Soft reset DMA
-    DMA2_Stream1->CR &= ~DMA_SxCR_EN;
-    while(DMA2_Stream1->CR & DMA_SxCR_EN);
-    DMA2->LIFCR |= DMA_LIFCR_CTCIF1;
-    DMA2_Stream1->NDTR = FRAME_MAX/2;
-    DMA2_Stream1->CR |= DMA_SxCR_EN;
-
-    // 3️⃣ Kamera I2C inicijalizacija i registri
-    OV7670_InitQQVGA_RGB565();
-}
 
 
 
