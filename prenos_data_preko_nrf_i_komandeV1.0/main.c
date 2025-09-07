@@ -125,8 +125,10 @@ int main(void)
   }else { // NOTE: Ovo je za RX blok (kontrolor)
     initPWM();
     delay_ms(10);
+
     initLIS320DL(); // akcelerometar
     delay_ms(10);
+
     initnRF24L01_SPI3(NRF24L01_NODE_TYPE_TX);
     delay_ms(1000);
   }
