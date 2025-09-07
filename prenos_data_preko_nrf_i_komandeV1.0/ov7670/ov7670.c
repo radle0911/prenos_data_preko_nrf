@@ -883,7 +883,7 @@ void OV7670_SetupQQVGA_Custom_sa_neta(void)
     // Scaling
     val = 0x22;
     writeI2C(OV7670_REG_SCALING_DCWCTR, &val, 1);
-    val = 0xF2; // 0xF2 bilo ------------------------>  // puno ljepse je sa 0xF2 al i sporije
+    val = 0xF1; // 0xF2 bilo ------------------------>  // puno ljepse je sa 0xF2 al i sporije
     writeI2C(OV7670_REG_SCALING_PCLK_DIV, &val, 1);
 
     // COM10 - PCLK & VSYNC polaritet
@@ -917,37 +917,37 @@ void OV7670_SetupQQVGA_Custom_sa_neta(void)
   // NOTE: Ovo je za boju setup
 
 
-  // ovo ispod je dodatak proba da se dobije boja : --------------------------------
+  // ovo ispod je dodatak proba da se dobije boja : -------------------------------- radi ovaj dio nesto nekako malo...
 //  
 //
 // COM13 - Gamma, color matrix enable
-    val = 0x80; // bilo 0x80
-    writeI2C(0x3D, &val, 1);
+//    val = 0x80; // bilo 0x80
+//    writeI2C(0x3D, &val, 1);
+//
+//    // Matrica boja - OVO JE KLJUČNO ZA BOJU!
+//    // Standardna matrica za OV7670
+//    val = 0x80; // MTX1
+//    writeI2C(0x4F, &val, 1);
+//    val = 0x80; // MTX2
+//    writeI2C(0x50, &val, 1);
+//    val = 0x00; // MTX3
+//    writeI2C(0x51, &val, 1);
+//    val = 0x18; // MTX4  0x34
+//    writeI2C(0x52, &val, 1);
+//    val = 0x48; // MTX5 0x5A
+//    writeI2C(0x53, &val, 1);
+//    val = 0x40; // MTX6 0x11
+//    writeI2C(0x54, &val, 1);
+//    
+//    // Sign matrix coefficients
+//    val = 0x1E; // MTXS
+//    writeI2C(0x58, &val, 1);
+//
+//  // Smanji saturation za prirodnije boje:
+//  val = 0x30;  // Umjesto 0x40 (smanji za 0x10)
+//  writeI2C(0x4C, &val, 1);
 
-    // Matrica boja - OVO JE KLJUČNO ZA BOJU!
-    // Standardna matrica za OV7670
-    val = 0x80; // MTX1
-    writeI2C(0x4F, &val, 1);
-    val = 0x80; // MTX2
-    writeI2C(0x50, &val, 1);
-    val = 0x00; // MTX3
-    writeI2C(0x51, &val, 1);
-    val = 0x18; // MTX4  0x34
-    writeI2C(0x52, &val, 1);
-    val = 0x48; // MTX5 0x5A
-    writeI2C(0x53, &val, 1);
-    val = 0x40; // MTX6 0x11
-    writeI2C(0x54, &val, 1);
-    
-    // Sign matrix coefficients
-    val = 0x1E; // MTXS
-    writeI2C(0x58, &val, 1);
-
-  // Smanji saturation za prirodnije boje:
-  val = 0x30;  // Umjesto 0x40 (smanji za 0x10)
-  writeI2C(0x4C, &val, 1);
-
-  //------------------------------------------------ovo ispod manje vise
+  //------------------------------------------------------------------------------------------------------------------------ovo ispod manje vise
 //    // Gamma values - poboljšava kontrast boja
 //    val = 0x00; // GAM1
 //    writeI2C(0x7A, &val, 1);

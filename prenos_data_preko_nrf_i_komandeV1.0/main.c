@@ -245,47 +245,6 @@ void kontroler_double_buffer()
 }
 
 
-void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length) 
-{
-    uint8_t packet[32];
-    uint32_t bytes_received = 0;
-    uint32_t total_bytes = length * 2; // svaki pixel = 2 bajta
-
-    while (1) {
-        if (dataReadyNRF24L01() == NRF_DATA_READY) {
-            rxDataNRF24L01(packet);
-
-            // provjera start bajtova
-            if (packet[0] == FRAME_START_1 && packet[1] == FRAME_START_2) {
-                bytes_received = 0;
-                continue;
-            }
-
-            // koliko bajtova još fali do kraja frame-a
-            uint32_t remaining = total_bytes - bytes_received;
-            uint32_t copy_size = (remaining >= 32) ? 32 : remaining;
-
-            // direktno kopiranje bajtova u frame buffer
-            memcpy(((uint8_t*)frame_buffer) + bytes_received, packet, copy_size);
-
-            bytes_received += copy_size;
-
-            if (bytes_received >= total_bytes) {
-                send_frame_buffer(frame_buffer, length);
-                break;
-            }
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
 //void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length) 
 //{
 //    uint8_t packet[32];
@@ -293,37 +252,78 @@ void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length)
 //    uint32_t total_bytes = length * 2; // svaki pixel = 2 bajta
 //
 //    while (1) {
-//        // čekaj paket
 //        if (dataReadyNRF24L01() == NRF_DATA_READY) {
 //            rxDataNRF24L01(packet);
 //
-//            // Ako paket počinje sa FRAME_START, resetujemo buffer
+//            // provjera start bajtova
 //            if (packet[0] == FRAME_START_1 && packet[1] == FRAME_START_2) {
-//                bytes_received = 0;  // počinje novi frame
-//                continue;            // preskoči start bajtove
+//                bytes_received = 0;
+//                continue;
 //            }
 //
-//            // kopiraj podatke u frame buffer
-//            for (int i = 0; i < 32 && bytes_received < total_bytes; i++) {
-//                uint32_t index = bytes_received / 2;
-//                if (bytes_received % 2 == 0) {
-//                    // low byte
-//                    frame_buffer[index] = packet[i];
-//                } else {
-//                    // high byte
-//                    frame_buffer[index] |= ((uint16_t)packet[i] << 8);
-//                }
-//                bytes_received++;
-//            }
+//            // koliko bajtova još fali do kraja frame-a
+//            uint32_t remaining = total_bytes - bytes_received;
+//            uint32_t copy_size = (remaining >= 32) ? 32 : remaining;
 //
-//            // ako je frame kompletiran
+//            // direktno kopiranje bajtova u frame buffer
+//            memcpy(((uint8_t*)frame_buffer) + bytes_received, packet, copy_size);
+//
+//            bytes_received += copy_size;
+//
 //            if (bytes_received >= total_bytes) {
-//                send_frame_buffer(frame_buffer, FRAME_MAX);  // pošalji dalje
+//                send_frame_buffer(frame_buffer, length);
 //                break;
 //            }
 //        }
 //    }
 //}
+
+
+
+
+
+
+
+
+
+void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length) 
+{
+    uint8_t packet[32];
+    uint32_t bytes_received = 0;
+    uint32_t total_bytes = length * 2; // svaki pixel = 2 bajta
+
+    while (1) {
+        // čekaj paket
+        if (dataReadyNRF24L01() == NRF_DATA_READY) {
+            rxDataNRF24L01(packet);
+
+            // Ako paket počinje sa FRAME_START, resetujemo buffer
+            if (packet[0] == FRAME_START_1 && packet[1] == FRAME_START_2) {
+                bytes_received = 0;  // počinje novi frame
+                continue;            // preskoči start bajtove
+            }
+
+            // kopiraj podatke u frame buffer
+            for (int i = 0; i < 32 && bytes_received < total_bytes; i++) {
+                uint32_t index = bytes_received / 2;
+                if (bytes_received % 2 == 0) {
+                    // low byte
+                    frame_buffer[index] = packet[i];
+                } else {
+                    // high byte
+                    frame_buffer[index] |= ((uint16_t)packet[i] << 8);
+                }
+                bytes_received++;
+            }
+
+            // ako je frame kompletiran
+            if (bytes_received >= total_bytes) {
+                send_frame_buffer(frame_buffer, FRAME_MAX);  // pošalji dalje
+                break;
+            }
+        }
+    }
+}
 
 
 
