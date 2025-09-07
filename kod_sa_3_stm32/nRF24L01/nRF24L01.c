@@ -80,7 +80,7 @@ void initnRF24L01(uint8_t node_type)
   { // podesavanje pina PB11 kao CE (chip enable)
     GPIOB->MODER &= ~GPIO_MODER_MODER11;          // reset moder
     GPIOB->MODER |= GPIO_MODER_MODER11_0;         // output mode
-    GPIOB->OTYPER &= ~(0x00C00000);		  // bio podesio : GPIO_OTYPER_OT_11 i nije radilo
+    GPIOB->OTYPER &= ~(0x00C00000);		  // 
     GPIOB->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR11_1;  // fast speed
     //GPIOB->PUPDR &= ~GPIO_PUPDR_PUPDR11;          // 
   }
@@ -501,7 +501,7 @@ void initnRF24L01_SPI3(uint8_t node_type)
   { // podesavanje pina PD6 kao CE (chip enable)
     GPIOD->MODER &= ~GPIO_MODER_MODER6;          // reset moder
     GPIOD->MODER |= GPIO_MODER_MODER6_0;         // output mode
-    GPIOD->OTYPER &= ~(GPIO_OTYPER_OT_6);	 // bio podesio : GPIO_OTYPER_OT_11 i nije radilo GPIOD->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR11_1;  // fast speed
+    GPIOD->OTYPER &= ~(GPIO_OTYPER_OT_6);	 // fast speed
     //GPIOD->PUPDR &= ~GPIO_PUPDR_PUPDR6;          // 
   }
   //---------------------------------------------------------------------------------------------
