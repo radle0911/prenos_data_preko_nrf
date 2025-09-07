@@ -152,6 +152,8 @@ extern volatile uint8_t nrf_mode;
 extern const char c_nrf_master_addr[6];
 extern const char c_nrf_slave_addr[6];
 
+extern const char c_nrf_master_addr_spi3[6];
+extern const char c_nrf_slave_addr_spi3[6];
 
 
 

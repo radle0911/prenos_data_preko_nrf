@@ -287,7 +287,7 @@ void startMasterNodeSYS(){
   uint8_t* send_msg = (uint8_t*)accel_data;
  // while (1) {
     getDataLIS302DL(accel_data);
-    txDataNRF24L01_SPI3((uint8_t*)c_nrf_slave_addr, send_msg);
+    txDataNRF24L01_SPI3((uint8_t*)c_nrf_slave_addr_spi3, send_msg);
 
     // ------------------------------------------------------------
     // zelena (PD12 = CCR1) 

@@ -12,6 +12,9 @@ const char c_nrf_master_addr[6] = "MDR01";
 const char c_nrf_slave_addr[6] = "SDR00";
 
 
+const char c_nrf_master_addr_spi3[6] = "MDR11";
+const char c_nrf_slave_addr_spi3[6] = "SDR22";
+
 volatile uint8_t* g_node_address;
 volatile uint8_t nrf_mode;
 
@@ -569,9 +572,9 @@ void initnRF24L01_SPI3(uint8_t node_type)
   g_nrf24l01_novi_node_type = node_type;
   if (g_nrf24l01_novi_node_type == NRF24L01_NODE_TYPE_RX) {
     // inicijaliziramo adresu za prijemnik
-    g_node_address_novi = (uint8_t*)c_nrf_slave_addr;	  // ovo se koristi za uporedjivanje 2 nRF modula pri komunikaciji izmedju (moraju biti isti na oba)
+    g_node_address_novi = (uint8_t*)c_nrf_slave_addr_spi3;	  // ovo se koristi za uporedjivanje 2 nRF modula pri komunikaciji izmedju (moraju biti isti na oba)
   }else {                                                 // kako bi komunikacija izmedju njih funkcionisala 
-    g_node_address_novi = (uint8_t*)c_nrf_master_addr;
+    g_node_address_novi = (uint8_t*)c_nrf_master_addr_spi3;
   }
 
   
