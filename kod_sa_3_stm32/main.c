@@ -100,8 +100,6 @@ int main(void)
     delay_ms(100);
 
 
-
-
     DCMI_start_continuous_mode();   // Start
 
   }else { // NOTE: Ovo je za RX blok (kontrolor)

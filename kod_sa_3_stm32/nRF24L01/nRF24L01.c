@@ -66,7 +66,7 @@ void initnRF24L01(uint8_t node_type)
   // Master = onaj koji inicira komunikaciju (prvi šalje podatke)
   // Slave = onaj koji uglavnom samo sluša i odgovara kad primi podatke
 
-  initSPI2_nRF24lO1_carrier(SPI_BaudRate_Prescaler_8);
+  initSPI2_nRF24lO1_carrier(SPI_BaudRate_Prescaler_16);
   // CS, CLK, MISO, MOSI su podeseni u funkciji iznad. Potrebno je podesiti
   // jos CE (chip enable); 
   //
