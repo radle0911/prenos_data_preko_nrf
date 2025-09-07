@@ -180,23 +180,32 @@ void autic_double_buffer()
 
 
 
-void sendFrameNRF(volatile uint16_t* frame_buffer, uint32_t length)
+void sendFrameNRF(volatile uint16_t* frame_buffer, uint32_t length) 
 {
-    uint8_t packet[32];
+  uint8_t packet[32];  // maksimalno što nRF24L01 može poslati odjednom
+  uint32_t i, j = 0;
 
-    // pošalji start-frame marker u posebnom paketu
-    packet[0] = FRAME_START_1;
-    packet[1] = FRAME_START_2;
-    txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);  // šalje samo ova dva bajta, ostatak paketa se ignoriše
+  // --- 1) Pošalji start frame signale (2 bajta) ---
+  packet[0] = 0xAA;  // primjer, start byte 1
+  packet[1] = 0x55;  // primjer, start byte 2
+  txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);  // šalje samo ova dva bajta, ostatak paketa se ignoriše
 
-    uint32_t total_bytes = length * 2;  // jer su pikseli 16-bit
-    uint8_t* byte_ptr = (uint8_t*)frame_buffer;
+  for (i = 0; i < length; i++) {
+    // niz od 16 bita se pretvara u 2 bajta
+    packet[j++] = (uint8_t)(frame_buffer[i] & 0xFF);        // low byte
+    packet[j++] = (uint8_t)((frame_buffer[i] >> 8) & 0xFF); // high byte
 
-    for (uint32_t i = 0; i < total_bytes; i += 32) {
-        uint32_t chunk = (total_bytes - i >= 32) ? 32 : (total_bytes - i);
-        memcpy(packet, byte_ptr + i, chunk);
-        txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);  // šalje samo ova dva bajta, ostatak paketa se ignoriše
+    // kad popunimo paket do 32 bajta, šaljemo ga
+    if (j == 32) {
+      txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);
+      j = 0;
     }
+  }
+
+  // ako ostane još nešto što nije poslano (manje od 32 bajta)
+  if (j > 0) {
+    txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);
+  }
 }
 
 
@@ -214,31 +223,41 @@ void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length)
 {
     uint8_t packet[32];
     uint32_t bytes_received = 0;
-    uint32_t total_bytes = length * 2;
+    uint32_t total_bytes = length * 2; // svaki pixel = 2 bajta
 
     while (1) {
+        // čekaj paket
         if (dataReadyNRF24L01() == NRF_DATA_READY) {
             rxDataNRF24L01(packet);
 
-            // provjera da li je start-frame
+            // Ako paket počinje sa FRAME_START, resetujemo buffer
             if (packet[0] == FRAME_START_1 && packet[1] == FRAME_START_2) {
-                bytes_received = 0;
-                continue;
+                bytes_received = 0;  // počinje novi frame
+                continue;            // preskoči start bajtove
             }
 
-            uint32_t remaining = total_bytes - bytes_received;
-            uint32_t copy_size = (remaining >= 32) ? 32 : remaining;
+            // kopiraj podatke u frame buffer
+            for (int i = 0; i < 32 && bytes_received < total_bytes; i++) {
+                uint32_t index = bytes_received / 2;
+                if (bytes_received % 2 == 0) {
+                    // low byte
+                    frame_buffer[index] = packet[i];
+                } else {
+                    // high byte
+                    frame_buffer[index] |= ((uint16_t)packet[i] << 8);
+                }
+                bytes_received++;
+            }
 
-            memcpy(((uint8_t*)frame_buffer) + bytes_received, packet, copy_size);
-            bytes_received += copy_size;
-
+            // ako je frame kompletiran
             if (bytes_received >= total_bytes) {
-                send_frame_buffer(frame_buffer, length);
+                send_frame_buffer(frame_buffer, FRAME_MAX);  // pošalji dalje
                 break;
             }
         }
     }
 }
+
 
 
 
