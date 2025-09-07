@@ -767,13 +767,11 @@ chkConnection_GPIOC6_GND:
 	.ascii	"long long unsigned int\000"
 .LASF5:
 	.ascii	"uint8_t\000"
-.LASF51:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF21:
 	.ascii	"CFGR\000"
-.LASF22:
-	.ascii	"AHB1RSTR\000"
+.LASF51:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF15:
 	.ascii	"PUPDR\000"
 .LASF3:
@@ -784,6 +782,8 @@ chkConnection_GPIOC6_GND:
 	.ascii	"char\000"
 .LASF54:
 	.ascii	"initGPIOC6_GND\000"
+.LASF22:
+	.ascii	"AHB1RSTR\000"
 .LASF1:
 	.ascii	"short int\000"
 .LASF6:

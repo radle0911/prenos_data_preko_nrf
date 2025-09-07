@@ -3231,6 +3231,9 @@ g_tim7_val:
 	.ascii	"recision-constant\000"
 .LASF146:
 	.ascii	"AHB2LPENR\000"
+.LASF196:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF19:
 	.ascii	"PendSV_IRQn\000"
 .LASF63:
@@ -3447,9 +3450,6 @@ g_tim7_val:
 	.ascii	"UART5_IRQn\000"
 .LASF13:
 	.ascii	"NonMaskableInt_IRQn\000"
-.LASF196:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF78:
 	.ascii	"DMA2_Stream1_IRQn\000"
 .LASF191:

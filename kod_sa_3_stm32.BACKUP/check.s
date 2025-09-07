@@ -18920,9 +18920,6 @@ regs_to_verify:
 	.ascii	"__NOP\000"
 .LASF44:
 	.ascii	"AHB1RSTR\000"
-.LASF207:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF73:
 	.ascii	"putcharUSART2\000"
 .LASF10:
@@ -18990,8 +18987,9 @@ regs_to_verify:
 	.ascii	"pu=cortex-m4 -mthumb-interwork -mfloat-abi=hard -mf"
 	.ascii	"pu=fpv4-sp-d16 -march=armv7e-m+fp -g -O2 -fsingle-p"
 	.ascii	"recision-constant\000"
-.LASF95:
-	.ascii	"d5_count\000"
+.LASF207:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF179:
 	.ascii	"d4_high\000"
 .LASF33:
@@ -19096,6 +19094,8 @@ regs_to_verify:
 	.ascii	"frame_count\000"
 .LASF125:
 	.ascii	"line_count\000"
+.LASF95:
+	.ascii	"d5_count\000"
 .LASF175:
 	.ascii	"d0_high\000"
 .LASF171:

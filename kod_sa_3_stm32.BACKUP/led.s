@@ -1004,9 +1004,6 @@ initPWM:
 	.ascii	"CCMR1\000"
 .LASF51:
 	.ascii	"CCMR2\000"
-.LASF70:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF1:
 	.ascii	"short int\000"
 .LASF43:
@@ -1124,6 +1121,9 @@ initPWM:
 	.ascii	"pu=cortex-m4 -mthumb-interwork -mfloat-abi=hard -mf"
 	.ascii	"pu=fpv4-sp-d16 -march=armv7e-m+fp -g -O2 -fsingle-p"
 	.ascii	"recision-constant\000"
+.LASF70:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF29:
 	.ascii	"AHB1ENR\000"
 .LASF72:

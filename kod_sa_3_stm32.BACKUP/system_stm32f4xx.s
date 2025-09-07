@@ -1715,9 +1715,6 @@ SystemCoreClock:
 	.ascii	"APB1RSTR\000"
 .LASF43:
 	.ascii	"AHB2ENR\000"
-.LASF71:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF56:
 	.ascii	"BDCR\000"
 .LASF13:
@@ -1841,6 +1838,9 @@ SystemCoreClock:
 	.ascii	"pu=cortex-m4 -mthumb-interwork -mfloat-abi=hard -mf"
 	.ascii	"pu=fpv4-sp-d16 -march=armv7e-m+fp -g -O2 -fsingle-p"
 	.ascii	"recision-constant\000"
+.LASF71:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF42:
 	.ascii	"AHB1ENR\000"
 .LASF28:

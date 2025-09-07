@@ -2697,9 +2697,6 @@ printUSART2:
 	.ascii	"AHB2ENR\000"
 .LASF12:
 	.ascii	"uint64_t\000"
-.LASF69:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF3:
 	.ascii	"short int\000"
 .LASF46:
@@ -2817,6 +2814,9 @@ printUSART2:
 	.ascii	"pu=cortex-m4 -mthumb-interwork -mfloat-abi=hard -mf"
 	.ascii	"pu=fpv4-sp-d16 -march=armv7e-m+fp -g -O2 -fsingle-p"
 	.ascii	"recision-constant\000"
+.LASF69:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF32:
 	.ascii	"AHB1ENR\000"
 .LASF57:

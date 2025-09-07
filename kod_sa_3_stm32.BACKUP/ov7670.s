@@ -2138,24 +2138,23 @@ OV7670_SetupQQVGA_Custom_sa_neta:
 	.loc 1 844 5 view .LVU745
 	.loc 1 847 5 view .LVU746
 	.loc 1 843 1 is_stmt 0 view .LVU747
-	push	{r4, r5, r6, r7, r8, lr}
-	.cfi_def_cfa_offset 24
-	.cfi_offset 4, -24
-	.cfi_offset 5, -20
-	.cfi_offset 6, -16
-	.cfi_offset 7, -12
-	.cfi_offset 8, -8
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
+	.cfi_offset 4, -20
+	.cfi_offset 5, -16
+	.cfi_offset 6, -12
+	.cfi_offset 7, -8
 	.cfi_offset 14, -4
-	sub	sp, sp, #8
+	sub	sp, sp, #12
 	.cfi_def_cfa_offset 32
 	.loc 1 847 9 view .LVU748
-	movs	r4, #128
+	movs	r3, #128
 	.loc 1 848 5 view .LVU749
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #18
 	.loc 1 847 9 view .LVU750
-	strb	r4, [sp, #7]
+	strb	r3, [sp, #7]
 	.loc 1 848 5 is_stmt 1 view .LVU751
 	bl	writeI2C
 .LVL192:
@@ -2171,7 +2170,7 @@ OV7670_SetupQQVGA_Custom_sa_neta:
 	movs	r2, #1
 	movs	r0, #17
 	.loc 1 856 9 view .LVU756
-	movs	r6, #4
+	movs	r4, #4
 	.loc 1 852 9 view .LVU757
 	strb	r5, [sp, #7]
 	.loc 1 853 5 is_stmt 1 view .LVU758
@@ -2183,7 +2182,7 @@ OV7670_SetupQQVGA_Custom_sa_neta:
 	movs	r2, #1
 	movs	r0, #12
 	.loc 1 856 9 view .LVU761
-	strb	r6, [sp, #7]
+	strb	r4, [sp, #7]
 	.loc 1 857 5 is_stmt 1 view .LVU762
 	bl	writeI2C
 .LVL195:
@@ -2193,10 +2192,10 @@ OV7670_SetupQQVGA_Custom_sa_neta:
 	movs	r2, #1
 	movs	r0, #18
 	.loc 1 860 9 view .LVU765
-	strb	r6, [sp, #7]
+	strb	r4, [sp, #7]
 	.loc 1 861 5 is_stmt 1 view .LVU766
 	.loc 1 864 9 is_stmt 0 view .LVU767
-	mov	r8, #26
+	movs	r7, #26
 	.loc 1 861 5 view .LVU768
 	bl	writeI2C
 .LVL196:
@@ -2206,7 +2205,7 @@ OV7670_SetupQQVGA_Custom_sa_neta:
 	movs	r2, #1
 	movs	r0, #62
 	.loc 1 864 9 view .LVU771
-	strb	r8, [sp, #7]
+	strb	r7, [sp, #7]
 	.loc 1 865 5 is_stmt 1 view .LVU772
 	bl	writeI2C
 .LVL197:
@@ -2228,10 +2227,10 @@ OV7670_SetupQQVGA_Custom_sa_neta:
 	movs	r2, #1
 	movs	r0, #24
 	.loc 1 870 9 view .LVU780
-	strb	r6, [sp, #7]
+	strb	r4, [sp, #7]
 	.loc 1 871 5 is_stmt 1 view .LVU781
 	.loc 1 872 9 is_stmt 0 view .LVU782
-	movs	r7, #164
+	movs	r6, #164
 	.loc 1 871 5 view .LVU783
 	bl	writeI2C
 .LVL199:
@@ -2241,9 +2240,9 @@ OV7670_SetupQQVGA_Custom_sa_neta:
 	movs	r2, #1
 	movs	r0, #50
 	.loc 1 876 9 view .LVU786
-	movs	r6, #2
+	movs	r4, #2
 	.loc 1 872 9 view .LVU787
-	strb	r7, [sp, #7]
+	strb	r6, [sp, #7]
 	.loc 1 873 5 is_stmt 1 view .LVU788
 	bl	writeI2C
 .LVL200:
@@ -2253,7 +2252,7 @@ OV7670_SetupQQVGA_Custom_sa_neta:
 	movs	r2, #1
 	movs	r0, #25
 	.loc 1 876 9 view .LVU791
-	strb	r6, [sp, #7]
+	strb	r4, [sp, #7]
 	.loc 1 877 5 is_stmt 1 view .LVU792
 	bl	writeI2C
 .LVL201:
@@ -2261,7 +2260,7 @@ OV7670_SetupQQVGA_Custom_sa_neta:
 	.loc 1 878 9 is_stmt 0 view .LVU794
 	movs	r3, #122
 	.loc 1 879 5 view .LVU795
-	mov	r0, r8
+	mov	r0, r7
 	add	r1, sp, #7
 	movs	r2, #1
 	.loc 1 878 9 view .LVU796
@@ -2275,195 +2274,97 @@ OV7670_SetupQQVGA_Custom_sa_neta:
 	movs	r2, #1
 	movs	r0, #3
 	.loc 1 880 9 view .LVU800
-	strb	r7, [sp, #7]
+	strb	r6, [sp, #7]
 	.loc 1 881 5 is_stmt 1 view .LVU801
 	bl	writeI2C
 .LVL203:
 	.loc 1 884 5 view .LVU802
-	.loc 1 884 9 is_stmt 0 view .LVU803
-	movs	r3, #34
-	.loc 1 885 5 view .LVU804
+	.loc 1 885 5 is_stmt 0 view .LVU803
 	add	r1, sp, #7
+	.loc 1 884 9 view .LVU804
+	movs	r3, #34
+	.loc 1 885 5 view .LVU805
 	movs	r2, #1
 	movs	r0, #114
-	.loc 1 884 9 view .LVU805
+	.loc 1 884 9 view .LVU806
 	strb	r3, [sp, #7]
-	.loc 1 885 5 is_stmt 1 view .LVU806
+	.loc 1 885 5 is_stmt 1 view .LVU807
 	bl	writeI2C
 .LVL204:
-	.loc 1 886 5 view .LVU807
-	.loc 1 886 9 is_stmt 0 view .LVU808
+	.loc 1 886 5 view .LVU808
+	.loc 1 886 9 is_stmt 0 view .LVU809
 	movs	r3, #242
-	.loc 1 887 5 view .LVU809
+	.loc 1 887 5 view .LVU810
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #115
-	.loc 1 886 9 view .LVU810
+	.loc 1 886 9 view .LVU811
 	strb	r3, [sp, #7]
-	.loc 1 887 5 is_stmt 1 view .LVU811
+	.loc 1 887 5 is_stmt 1 view .LVU812
 	bl	writeI2C
 .LVL205:
-	.loc 1 890 5 view .LVU812
-	.loc 1 891 5 is_stmt 0 view .LVU813
+	.loc 1 890 5 view .LVU813
+	.loc 1 891 5 is_stmt 0 view .LVU814
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #21
-	.loc 1 890 9 view .LVU814
+	.loc 1 890 9 view .LVU815
 	strb	r5, [sp, #7]
-	.loc 1 891 5 is_stmt 1 view .LVU815
+	.loc 1 891 5 is_stmt 1 view .LVU816
 	bl	writeI2C
 .LVL206:
-	.loc 1 898 5 view .LVU816
-	.loc 1 898 9 is_stmt 0 view .LVU817
+	.loc 1 898 5 view .LVU817
+	.loc 1 898 9 is_stmt 0 view .LVU818
 	movs	r3, #208
-	.loc 1 899 5 view .LVU818
+	.loc 1 899 5 view .LVU819
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #64
-	.loc 1 898 9 view .LVU819
+	.loc 1 898 9 view .LVU820
 	strb	r3, [sp, #7]
-	.loc 1 899 5 is_stmt 1 view .LVU820
+	.loc 1 899 5 is_stmt 1 view .LVU821
 	bl	writeI2C
 .LVL207:
-	.loc 1 902 5 view .LVU821
-	.loc 1 903 5 is_stmt 0 view .LVU822
+	.loc 1 902 5 view .LVU822
+	.loc 1 903 5 is_stmt 0 view .LVU823
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #162
-	.loc 1 902 9 view .LVU823
-	strb	r6, [sp, #7]
-	.loc 1 903 5 is_stmt 1 view .LVU824
+	.loc 1 902 9 view .LVU824
+	strb	r4, [sp, #7]
+	.loc 1 903 5 is_stmt 1 view .LVU825
 	bl	writeI2C
 .LVL208:
-	.loc 1 908 5 view .LVU825
-	.loc 1 908 9 is_stmt 0 view .LVU826
-	movs	r6, #64
-	.loc 1 909 5 view .LVU827
+	.loc 1 908 5 view .LVU826
+	.loc 1 909 5 is_stmt 0 view .LVU827
 	add	r1, sp, #7
+	.loc 1 908 9 view .LVU828
+	movs	r3, #64
+	.loc 1 909 5 view .LVU829
 	movs	r2, #1
 	movs	r0, #86
-	.loc 1 908 9 view .LVU828
-	strb	r6, [sp, #7]
-	.loc 1 909 5 is_stmt 1 view .LVU829
+	.loc 1 908 9 view .LVU830
+	strb	r3, [sp, #7]
+	.loc 1 909 5 is_stmt 1 view .LVU831
 	bl	writeI2C
 .LVL209:
-	.loc 1 913 5 view .LVU830
-	.loc 1 913 9 is_stmt 0 view .LVU831
+	.loc 1 913 5 view .LVU832
+	.loc 1 913 9 is_stmt 0 view .LVU833
 	movs	r3, #231
-	.loc 1 914 5 view .LVU832
-	add	r1, sp, #7
+	.loc 1 914 5 view .LVU834
 	movs	r2, #1
+	add	r1, sp, #7
 	movs	r0, #19
-	.loc 1 913 9 view .LVU833
+	.loc 1 913 9 view .LVU835
 	strb	r3, [sp, #7]
-	.loc 1 914 5 is_stmt 1 view .LVU834
+	.loc 1 914 5 is_stmt 1 view .LVU836
 	bl	writeI2C
 .LVL210:
-	.loc 1 924 5 view .LVU835
-	.loc 1 925 5 is_stmt 0 view .LVU836
-	add	r1, sp, #7
-	movs	r2, #1
-	movs	r0, #61
-	.loc 1 924 9 view .LVU837
-	strb	r4, [sp, #7]
-	.loc 1 925 5 is_stmt 1 view .LVU838
-	bl	writeI2C
-.LVL211:
-	.loc 1 929 5 view .LVU839
-	.loc 1 930 5 is_stmt 0 view .LVU840
-	add	r1, sp, #7
-	movs	r2, #1
-	movs	r0, #79
-	.loc 1 929 9 view .LVU841
-	strb	r4, [sp, #7]
-	.loc 1 930 5 is_stmt 1 view .LVU842
-	bl	writeI2C
-.LVL212:
-	.loc 1 931 5 view .LVU843
-	.loc 1 932 5 is_stmt 0 view .LVU844
-	add	r1, sp, #7
-	movs	r2, #1
-	movs	r0, #80
-	.loc 1 931 9 view .LVU845
-	strb	r4, [sp, #7]
-	.loc 1 932 5 is_stmt 1 view .LVU846
-	bl	writeI2C
-.LVL213:
-	.loc 1 933 5 view .LVU847
-	.loc 1 934 5 is_stmt 0 view .LVU848
-	add	r1, sp, #7
-	movs	r2, #1
-	movs	r0, #81
-	.loc 1 933 9 view .LVU849
-	strb	r5, [sp, #7]
-	.loc 1 934 5 is_stmt 1 view .LVU850
-	bl	writeI2C
-.LVL214:
-	.loc 1 935 5 view .LVU851
-	.loc 1 936 5 is_stmt 0 view .LVU852
-	add	r1, sp, #7
-	.loc 1 935 9 view .LVU853
-	movs	r3, #24
-	.loc 1 936 5 view .LVU854
-	movs	r2, #1
-	movs	r0, #82
-	.loc 1 935 9 view .LVU855
-	strb	r3, [sp, #7]
-	.loc 1 936 5 is_stmt 1 view .LVU856
-	bl	writeI2C
-.LVL215:
-	.loc 1 937 5 view .LVU857
-	.loc 1 937 9 is_stmt 0 view .LVU858
-	movs	r3, #72
-	.loc 1 938 5 view .LVU859
-	add	r1, sp, #7
-	movs	r2, #1
-	movs	r0, #83
-	.loc 1 937 9 view .LVU860
-	strb	r3, [sp, #7]
-	.loc 1 938 5 is_stmt 1 view .LVU861
-	bl	writeI2C
-.LVL216:
-	.loc 1 939 5 view .LVU862
-	.loc 1 940 5 is_stmt 0 view .LVU863
-	add	r1, sp, #7
-	movs	r2, #1
-	movs	r0, #84
-	.loc 1 939 9 view .LVU864
-	strb	r6, [sp, #7]
-	.loc 1 940 5 is_stmt 1 view .LVU865
-	bl	writeI2C
-.LVL217:
-	.loc 1 943 5 view .LVU866
-	.loc 1 944 5 is_stmt 0 view .LVU867
-	add	r1, sp, #7
-	.loc 1 943 9 view .LVU868
-	movs	r3, #30
-	.loc 1 944 5 view .LVU869
-	movs	r2, #1
-	movs	r0, #88
-	.loc 1 943 9 view .LVU870
-	strb	r3, [sp, #7]
-	.loc 1 944 5 is_stmt 1 view .LVU871
-	bl	writeI2C
-.LVL218:
-	.loc 1 947 3 view .LVU872
-	.loc 1 947 7 is_stmt 0 view .LVU873
-	movs	r3, #48
-	.loc 1 948 3 view .LVU874
-	movs	r2, #1
-	add	r1, sp, #7
-	movs	r0, #76
-	.loc 1 947 7 view .LVU875
-	strb	r3, [sp, #7]
-	.loc 1 948 3 is_stmt 1 view .LVU876
-	bl	writeI2C
-.LVL219:
-	.loc 1 1022 1 is_stmt 0 view .LVU877
-	add	sp, sp, #8
-	.cfi_def_cfa_offset 24
+	.loc 1 1022 1 is_stmt 0 view .LVU837
+	add	sp, sp, #12
+	.cfi_def_cfa_offset 20
 	@ sp needed
-	pop	{r4, r5, r6, r7, r8, pc}
+	pop	{r4, r5, r6, r7, pc}
 	.cfi_endproc
 .LFE119:
 	.size	OV7670_SetupQQVGA_Custom_sa_neta, .-OV7670_SetupQQVGA_Custom_sa_neta
@@ -2480,9 +2381,9 @@ OV7670_SetupQQVGA_Custom_sa_neta_deep_seek:
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 0, uses_anonymous_args = 0
-	.loc 1 1197 5 view .LVU879
-	.loc 1 1200 5 view .LVU880
-	.loc 1 1196 1 is_stmt 0 view .LVU881
+	.loc 1 1197 5 view .LVU839
+	.loc 1 1200 5 view .LVU840
+	.loc 1 1196 1 is_stmt 0 view .LVU841
 	push	{r4, r5, r6, lr}
 	.cfi_def_cfa_offset 16
 	.cfi_offset 4, -16
@@ -2491,181 +2392,181 @@ OV7670_SetupQQVGA_Custom_sa_neta_deep_seek:
 	.cfi_offset 14, -4
 	sub	sp, sp, #8
 	.cfi_def_cfa_offset 24
-	.loc 1 1200 9 view .LVU882
+	.loc 1 1200 9 view .LVU842
 	movs	r4, #128
-	.loc 1 1201 5 view .LVU883
+	.loc 1 1201 5 view .LVU843
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #18
-	.loc 1 1200 9 view .LVU884
+	.loc 1 1200 9 view .LVU844
 	strb	r4, [sp, #7]
-	.loc 1 1201 5 is_stmt 1 view .LVU885
+	.loc 1 1201 5 is_stmt 1 view .LVU845
 	bl	writeI2C
-.LVL220:
-	.loc 1 1202 5 view .LVU886
+.LVL211:
+	.loc 1 1202 5 view .LVU846
 	movs	r0, #200
 	bl	delay_ms
-.LVL221:
-	.loc 1 1205 5 view .LVU887
-	.loc 1 1205 9 is_stmt 0 view .LVU888
+.LVL212:
+	.loc 1 1205 5 view .LVU847
+	.loc 1 1205 9 is_stmt 0 view .LVU848
 	movs	r5, #0
-	.loc 1 1206 5 view .LVU889
+	.loc 1 1206 5 view .LVU849
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #17
-	.loc 1 1205 9 view .LVU890
+	.loc 1 1205 9 view .LVU850
 	strb	r5, [sp, #7]
-	.loc 1 1206 5 is_stmt 1 view .LVU891
+	.loc 1 1206 5 is_stmt 1 view .LVU851
 	bl	writeI2C
-.LVL222:
-	.loc 1 1209 5 view .LVU892
-	.loc 1 1210 5 is_stmt 0 view .LVU893
+.LVL213:
+	.loc 1 1209 5 view .LVU852
+	.loc 1 1210 5 is_stmt 0 view .LVU853
 	add	r1, sp, #7
-	.loc 1 1209 9 view .LVU894
+	.loc 1 1209 9 view .LVU854
 	movs	r3, #6
-	.loc 1 1210 5 view .LVU895
+	.loc 1 1210 5 view .LVU855
 	movs	r2, #1
 	movs	r0, #18
-	.loc 1 1209 9 view .LVU896
+	.loc 1 1209 9 view .LVU856
 	strb	r3, [sp, #7]
-	.loc 1 1210 5 is_stmt 1 view .LVU897
+	.loc 1 1210 5 is_stmt 1 view .LVU857
 	bl	writeI2C
-.LVL223:
-	.loc 1 1213 5 view .LVU898
-	.loc 1 1214 5 is_stmt 0 view .LVU899
+.LVL214:
+	.loc 1 1213 5 view .LVU858
+	.loc 1 1214 5 is_stmt 0 view .LVU859
 	add	r1, sp, #7
-	.loc 1 1213 9 view .LVU900
+	.loc 1 1213 9 view .LVU860
 	movs	r3, #208
-	.loc 1 1214 5 view .LVU901
+	.loc 1 1214 5 view .LVU861
 	movs	r2, #1
 	movs	r0, #64
-	.loc 1 1213 9 view .LVU902
+	.loc 1 1213 9 view .LVU862
 	strb	r3, [sp, #7]
-	.loc 1 1214 5 is_stmt 1 view .LVU903
+	.loc 1 1214 5 is_stmt 1 view .LVU863
 	bl	writeI2C
-.LVL224:
-	.loc 1 1217 5 view .LVU904
-	.loc 1 1217 17 is_stmt 0 view .LVU905
+.LVL215:
+	.loc 1 1217 5 view .LVU864
+	.loc 1 1217 17 is_stmt 0 view .LVU865
 	add	r1, sp, #7
-	.loc 1 1217 9 view .LVU906
+	.loc 1 1217 9 view .LVU866
 	movs	r3, #22
-	.loc 1 1217 17 view .LVU907
+	.loc 1 1217 17 view .LVU867
 	movs	r2, #1
 	movs	r0, #23
-	.loc 1 1217 9 view .LVU908
+	.loc 1 1217 9 view .LVU868
 	strb	r3, [sp, #7]
-	.loc 1 1217 17 is_stmt 1 view .LVU909
+	.loc 1 1217 17 is_stmt 1 view .LVU869
 	bl	writeI2C
-.LVL225:
-	.loc 1 1218 5 view .LVU910
-	.loc 1 1218 9 is_stmt 0 view .LVU911
+.LVL216:
+	.loc 1 1218 5 view .LVU870
+	.loc 1 1218 9 is_stmt 0 view .LVU871
 	movs	r3, #4
-	.loc 1 1218 17 view .LVU912
+	.loc 1 1218 17 view .LVU872
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #24
-	.loc 1 1218 9 view .LVU913
+	.loc 1 1218 9 view .LVU873
 	strb	r3, [sp, #7]
-	.loc 1 1218 17 is_stmt 1 view .LVU914
+	.loc 1 1218 17 is_stmt 1 view .LVU874
 	bl	writeI2C
-.LVL226:
-	.loc 1 1219 5 view .LVU915
-	.loc 1 1219 17 is_stmt 0 view .LVU916
+.LVL217:
+	.loc 1 1219 5 view .LVU875
+	.loc 1 1219 17 is_stmt 0 view .LVU876
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #50
-	.loc 1 1220 9 view .LVU917
+	.loc 1 1220 9 view .LVU877
 	movs	r6, #2
-	.loc 1 1219 9 view .LVU918
+	.loc 1 1219 9 view .LVU878
 	strb	r4, [sp, #7]
-	.loc 1 1219 17 is_stmt 1 view .LVU919
+	.loc 1 1219 17 is_stmt 1 view .LVU879
 	bl	writeI2C
-.LVL227:
-	.loc 1 1220 5 view .LVU920
-	.loc 1 1220 17 is_stmt 0 view .LVU921
+.LVL218:
+	.loc 1 1220 5 view .LVU880
+	.loc 1 1220 17 is_stmt 0 view .LVU881
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #25
-	.loc 1 1220 9 view .LVU922
+	.loc 1 1220 9 view .LVU882
 	strb	r6, [sp, #7]
-	.loc 1 1220 17 is_stmt 1 view .LVU923
+	.loc 1 1220 17 is_stmt 1 view .LVU883
 	bl	writeI2C
-.LVL228:
-	.loc 1 1221 5 view .LVU924
-	.loc 1 1221 9 is_stmt 0 view .LVU925
+.LVL219:
+	.loc 1 1221 5 view .LVU884
+	.loc 1 1221 9 is_stmt 0 view .LVU885
 	movs	r3, #122
-	.loc 1 1221 17 view .LVU926
+	.loc 1 1221 17 view .LVU886
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #26
-	.loc 1 1221 9 view .LVU927
+	.loc 1 1221 9 view .LVU887
 	strb	r3, [sp, #7]
-	.loc 1 1221 17 is_stmt 1 view .LVU928
+	.loc 1 1221 17 is_stmt 1 view .LVU888
 	bl	writeI2C
-.LVL229:
-	.loc 1 1222 5 view .LVU929
-	.loc 1 1222 17 is_stmt 0 view .LVU930
+.LVL220:
+	.loc 1 1222 5 view .LVU889
+	.loc 1 1222 17 is_stmt 0 view .LVU890
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #3
-	.loc 1 1222 9 view .LVU931
+	.loc 1 1222 9 view .LVU891
 	strb	r5, [sp, #7]
-	.loc 1 1222 17 is_stmt 1 view .LVU932
+	.loc 1 1222 17 is_stmt 1 view .LVU892
 	bl	writeI2C
-.LVL230:
-	.loc 1 1225 5 view .LVU933
-	.loc 1 1226 5 is_stmt 0 view .LVU934
+.LVL221:
+	.loc 1 1225 5 view .LVU893
+	.loc 1 1226 5 is_stmt 0 view .LVU894
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #21
-	.loc 1 1225 9 view .LVU935
+	.loc 1 1225 9 view .LVU895
 	strb	r5, [sp, #7]
-	.loc 1 1226 5 is_stmt 1 view .LVU936
+	.loc 1 1226 5 is_stmt 1 view .LVU896
 	bl	writeI2C
-.LVL231:
-	.loc 1 1229 5 view .LVU937
-	.loc 1 1230 5 is_stmt 0 view .LVU938
+.LVL222:
+	.loc 1 1229 5 view .LVU897
+	.loc 1 1230 5 is_stmt 0 view .LVU898
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #162
-	.loc 1 1229 9 view .LVU939
+	.loc 1 1229 9 view .LVU899
 	strb	r6, [sp, #7]
-	.loc 1 1230 5 is_stmt 1 view .LVU940
+	.loc 1 1230 5 is_stmt 1 view .LVU900
 	bl	writeI2C
-.LVL232:
-	.loc 1 1233 5 view .LVU941
-	.loc 1 1233 9 is_stmt 0 view .LVU942
+.LVL223:
+	.loc 1 1233 5 view .LVU901
+	.loc 1 1233 9 is_stmt 0 view .LVU902
 	movs	r3, #231
-	.loc 1 1234 5 view .LVU943
+	.loc 1 1234 5 view .LVU903
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #19
-	.loc 1 1233 9 view .LVU944
+	.loc 1 1233 9 view .LVU904
 	strb	r3, [sp, #7]
-	.loc 1 1234 5 is_stmt 1 view .LVU945
+	.loc 1 1234 5 is_stmt 1 view .LVU905
 	bl	writeI2C
-.LVL233:
-	.loc 1 1237 5 view .LVU946
-	.loc 1 1237 17 is_stmt 0 view .LVU947
+.LVL224:
+	.loc 1 1237 5 view .LVU906
+	.loc 1 1237 17 is_stmt 0 view .LVU907
 	add	r1, sp, #7
 	movs	r2, #1
 	movs	r0, #79
-	.loc 1 1237 9 view .LVU948
+	.loc 1 1237 9 view .LVU908
 	strb	r4, [sp, #7]
-	.loc 1 1237 17 is_stmt 1 view .LVU949
+	.loc 1 1237 17 is_stmt 1 view .LVU909
 	bl	writeI2C
-.LVL234:
-	.loc 1 1238 5 view .LVU950
-	.loc 1 1238 17 is_stmt 0 view .LVU951
+.LVL225:
+	.loc 1 1238 5 view .LVU910
+	.loc 1 1238 17 is_stmt 0 view .LVU911
 	movs	r2, #1
 	add	r1, sp, #7
 	movs	r0, #84
-	.loc 1 1238 9 view .LVU952
+	.loc 1 1238 9 view .LVU912
 	strb	r4, [sp, #7]
-	.loc 1 1238 17 is_stmt 1 view .LVU953
+	.loc 1 1238 17 is_stmt 1 view .LVU913
 	bl	writeI2C
-.LVL235:
-	.loc 1 1239 1 is_stmt 0 view .LVU954
+.LVL226:
+	.loc 1 1239 1 is_stmt 0 view .LVU914
 	add	sp, sp, #8
 	.cfi_def_cfa_offset 16
 	@ sp needed
@@ -2692,9 +2593,9 @@ OV7670_SetupQQVGA_Fixed:
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 120
 	@ frame_needed = 0, uses_anonymous_args = 0
-	.loc 1 1249 5 view .LVU956
-	.loc 1 1252 5 view .LVU957
-	.loc 1 1248 1 is_stmt 0 view .LVU958
+	.loc 1 1249 5 view .LVU916
+	.loc 1 1252 5 view .LVU917
+	.loc 1 1248 1 is_stmt 0 view .LVU918
 	push	{r4, r5, r6, r7, lr}
 	.cfi_def_cfa_offset 20
 	.cfi_offset 4, -20
@@ -2704,369 +2605,369 @@ OV7670_SetupQQVGA_Fixed:
 	.cfi_offset 14, -4
 	sub	sp, sp, #124
 	.cfi_def_cfa_offset 144
-	.loc 1 1252 9 view .LVU959
+	.loc 1 1252 9 view .LVU919
 	movs	r4, #128
-	.loc 1 1253 5 view .LVU960
+	.loc 1 1253 5 view .LVU920
 	movs	r2, #1
 	add	r1, sp, #103
 	movs	r0, #18
-	.loc 1 1252 9 view .LVU961
+	.loc 1 1252 9 view .LVU921
 	strb	r4, [sp, #103]
-	.loc 1 1253 5 is_stmt 1 view .LVU962
+	.loc 1 1253 5 is_stmt 1 view .LVU922
 	bl	writeI2C
-.LVL236:
-	.loc 1 1254 5 view .LVU963
+.LVL227:
+	.loc 1 1254 5 view .LVU923
 	movs	r0, #200
 	bl	delay_ms
-.LVL237:
-	.loc 1 1257 5 view .LVU964
-	.loc 1 1257 9 is_stmt 0 view .LVU965
+.LVL228:
+	.loc 1 1257 5 view .LVU924
+	.loc 1 1257 9 is_stmt 0 view .LVU925
 	movs	r5, #0
-	.loc 1 1258 5 view .LVU966
+	.loc 1 1258 5 view .LVU926
 	movs	r2, #1
 	add	r1, sp, #103
 	movs	r0, #17
-	.loc 1 1261 9 view .LVU967
+	.loc 1 1261 9 view .LVU927
 	movs	r6, #4
-	.loc 1 1257 9 view .LVU968
+	.loc 1 1257 9 view .LVU928
 	strb	r5, [sp, #103]
-	.loc 1 1258 5 is_stmt 1 view .LVU969
+	.loc 1 1258 5 is_stmt 1 view .LVU929
 	bl	writeI2C
-.LVL238:
-	.loc 1 1261 5 view .LVU970
-	.loc 1 1262 5 is_stmt 0 view .LVU971
+.LVL229:
+	.loc 1 1261 5 view .LVU930
+	.loc 1 1262 5 is_stmt 0 view .LVU931
 	movs	r2, #1
 	add	r1, sp, #103
 	movs	r0, #12
-	.loc 1 1261 9 view .LVU972
+	.loc 1 1261 9 view .LVU932
 	strb	r6, [sp, #103]
-	.loc 1 1262 5 is_stmt 1 view .LVU973
+	.loc 1 1262 5 is_stmt 1 view .LVU933
 	bl	writeI2C
-.LVL239:
-	.loc 1 1265 5 view .LVU974
-	.loc 1 1266 5 is_stmt 0 view .LVU975
+.LVL230:
+	.loc 1 1265 5 view .LVU934
+	.loc 1 1266 5 is_stmt 0 view .LVU935
 	movs	r2, #1
 	add	r1, sp, #103
 	movs	r0, #18
-	.loc 1 1269 9 view .LVU976
+	.loc 1 1269 9 view .LVU936
 	movs	r7, #26
-	.loc 1 1265 9 view .LVU977
+	.loc 1 1265 9 view .LVU937
 	strb	r6, [sp, #103]
-	.loc 1 1266 5 is_stmt 1 view .LVU978
+	.loc 1 1266 5 is_stmt 1 view .LVU938
 	bl	writeI2C
-.LVL240:
-	.loc 1 1269 5 view .LVU979
-	.loc 1 1270 5 is_stmt 0 view .LVU980
+.LVL231:
+	.loc 1 1269 5 view .LVU939
+	.loc 1 1270 5 is_stmt 0 view .LVU940
 	add	r1, sp, #103
 	movs	r2, #1
 	movs	r0, #62
-	.loc 1 1269 9 view .LVU981
+	.loc 1 1269 9 view .LVU941
 	strb	r7, [sp, #103]
-	.loc 1 1270 5 is_stmt 1 view .LVU982
+	.loc 1 1270 5 is_stmt 1 view .LVU942
 	bl	writeI2C
-.LVL241:
-	.loc 1 1273 5 view .LVU983
-	.loc 1 1273 44 is_stmt 0 view .LVU984
+.LVL232:
+	.loc 1 1273 5 view .LVU943
+	.loc 1 1273 44 is_stmt 0 view .LVU944
 	movs	r3, #22
-	.loc 1 1273 5 view .LVU985
+	.loc 1 1273 5 view .LVU945
 	add	r1, sp, r6
 	movs	r2, #1
 	movs	r0, #23
-	.loc 1 1273 44 view .LVU986
+	.loc 1 1273 44 view .LVU946
 	strb	r3, [sp, #4]
-	.loc 1 1273 5 view .LVU987
+	.loc 1 1273 5 view .LVU947
 	bl	writeI2C
-.LVL242:
-	.loc 1 1274 5 is_stmt 1 view .LVU988
+.LVL233:
+	.loc 1 1274 5 is_stmt 1 view .LVU948
 	movs	r2, #1
 	add	r1, sp, #8
 	movs	r0, #24
-	.loc 1 1274 44 is_stmt 0 view .LVU989
+	.loc 1 1274 44 is_stmt 0 view .LVU949
 	strb	r6, [sp, #8]
-	.loc 1 1274 5 view .LVU990
+	.loc 1 1274 5 view .LVU950
 	bl	writeI2C
-.LVL243:
-	.loc 1 1275 5 is_stmt 1 view .LVU991
+.LVL234:
+	.loc 1 1275 5 is_stmt 1 view .LVU951
 	movs	r2, #1
 	add	r1, sp, #12
 	movs	r0, #50
-	.loc 1 1275 44 is_stmt 0 view .LVU992
+	.loc 1 1275 44 is_stmt 0 view .LVU952
 	strb	r4, [sp, #12]
-	.loc 1 1275 5 view .LVU993
+	.loc 1 1275 5 view .LVU953
 	bl	writeI2C
-.LVL244:
-	.loc 1 1278 5 is_stmt 1 view .LVU994
-	.loc 1 1278 44 is_stmt 0 view .LVU995
+.LVL235:
+	.loc 1 1278 5 is_stmt 1 view .LVU954
+	.loc 1 1278 44 is_stmt 0 view .LVU955
 	movs	r3, #2
-	.loc 1 1278 5 view .LVU996
+	.loc 1 1278 5 view .LVU956
 	movs	r2, #1
 	add	r1, sp, #16
 	movs	r0, #25
-	.loc 1 1278 44 view .LVU997
+	.loc 1 1278 44 view .LVU957
 	strb	r3, [sp, #16]
-	.loc 1 1278 5 view .LVU998
+	.loc 1 1278 5 view .LVU958
 	bl	writeI2C
-.LVL245:
-	.loc 1 1279 5 is_stmt 1 view .LVU999
+.LVL236:
+	.loc 1 1279 5 is_stmt 1 view .LVU959
 	mov	r0, r7
-	.loc 1 1279 44 is_stmt 0 view .LVU1000
+	.loc 1 1279 44 is_stmt 0 view .LVU960
 	movs	r3, #123
-	.loc 1 1279 5 view .LVU1001
+	.loc 1 1279 5 view .LVU961
 	movs	r2, #1
 	add	r1, sp, #20
-	.loc 1 1279 44 view .LVU1002
+	.loc 1 1279 44 view .LVU962
 	strb	r3, [sp, #20]
-	.loc 1 1279 5 view .LVU1003
+	.loc 1 1279 5 view .LVU963
 	bl	writeI2C
-.LVL246:
-	.loc 1 1280 5 is_stmt 1 view .LVU1004
-	.loc 1 1280 44 is_stmt 0 view .LVU1005
+.LVL237:
+	.loc 1 1280 5 is_stmt 1 view .LVU964
+	.loc 1 1280 44 is_stmt 0 view .LVU965
 	movs	r3, #10
-	.loc 1 1280 5 view .LVU1006
+	.loc 1 1280 5 view .LVU966
 	movs	r2, #1
 	add	r1, sp, #24
 	movs	r0, #3
-	.loc 1 1280 44 view .LVU1007
+	.loc 1 1280 44 view .LVU967
 	strb	r3, [sp, #24]
-	.loc 1 1283 52 view .LVU1008
+	.loc 1 1283 52 view .LVU968
 	movs	r7, #34
-	.loc 1 1280 5 view .LVU1009
+	.loc 1 1280 5 view .LVU969
 	bl	writeI2C
-.LVL247:
-	.loc 1 1283 5 is_stmt 1 view .LVU1010
+.LVL238:
+	.loc 1 1283 5 is_stmt 1 view .LVU970
 	movs	r2, #1
 	add	r1, sp, #28
 	movs	r0, #114
-	.loc 1 1283 52 is_stmt 0 view .LVU1011
+	.loc 1 1283 52 is_stmt 0 view .LVU971
 	strb	r7, [sp, #28]
-	.loc 1 1283 5 view .LVU1012
+	.loc 1 1283 5 view .LVU972
 	bl	writeI2C
-.LVL248:
-	.loc 1 1284 5 is_stmt 1 view .LVU1013
-	.loc 1 1284 54 is_stmt 0 view .LVU1014
+.LVL239:
+	.loc 1 1284 5 is_stmt 1 view .LVU973
+	.loc 1 1284 54 is_stmt 0 view .LVU974
 	movs	r3, #242
-	.loc 1 1284 5 view .LVU1015
+	.loc 1 1284 5 view .LVU975
 	movs	r2, #1
 	add	r1, sp, #32
 	movs	r0, #115
-	.loc 1 1284 54 view .LVU1016
+	.loc 1 1284 54 view .LVU976
 	strb	r3, [sp, #32]
-	.loc 1 1284 5 view .LVU1017
+	.loc 1 1284 5 view .LVU977
 	bl	writeI2C
-.LVL249:
-	.loc 1 1287 5 is_stmt 1 view .LVU1018
+.LVL240:
+	.loc 1 1287 5 is_stmt 1 view .LVU978
 	movs	r2, #1
 	add	r1, sp, #36
 	movs	r0, #21
-	.loc 1 1287 43 is_stmt 0 view .LVU1019
+	.loc 1 1287 43 is_stmt 0 view .LVU979
 	strb	r5, [sp, #36]
-	.loc 1 1287 5 view .LVU1020
+	.loc 1 1287 5 view .LVU980
 	bl	writeI2C
-.LVL250:
-	.loc 1 1290 5 is_stmt 1 view .LVU1021
+.LVL241:
+	.loc 1 1290 5 is_stmt 1 view .LVU981
 	movs	r2, #1
 	add	r1, sp, #40
 	movs	r0, #140
-	.loc 1 1290 31 is_stmt 0 view .LVU1022
+	.loc 1 1290 31 is_stmt 0 view .LVU982
 	strb	r5, [sp, #40]
-	.loc 1 1290 5 view .LVU1023
+	.loc 1 1290 5 view .LVU983
 	bl	writeI2C
-.LVL251:
-	.loc 1 1291 5 is_stmt 1 view .LVU1024
-	.loc 1 1291 31 is_stmt 0 view .LVU1025
+.LVL242:
+	.loc 1 1291 5 is_stmt 1 view .LVU984
+	.loc 1 1291 31 is_stmt 0 view .LVU985
 	movs	r3, #208
-	.loc 1 1291 5 view .LVU1026
+	.loc 1 1291 5 view .LVU986
 	movs	r2, #1
 	add	r1, sp, #44
 	movs	r0, #64
-	.loc 1 1291 31 view .LVU1027
+	.loc 1 1291 31 view .LVU987
 	strb	r3, [sp, #44]
-	.loc 1 1291 5 view .LVU1028
+	.loc 1 1291 5 view .LVU988
 	bl	writeI2C
-.LVL252:
-	.loc 1 1292 5 is_stmt 1 view .LVU1029
+.LVL243:
+	.loc 1 1292 5 is_stmt 1 view .LVU989
 	movs	r2, #1
 	add	r1, sp, #48
 	movs	r0, #58
-	.loc 1 1292 31 is_stmt 0 view .LVU1030
+	.loc 1 1292 31 is_stmt 0 view .LVU990
 	strb	r6, [sp, #48]
-	.loc 1 1292 5 view .LVU1031
+	.loc 1 1292 5 view .LVU991
 	bl	writeI2C
-.LVL253:
-	.loc 1 1293 5 is_stmt 1 view .LVU1032
+.LVL244:
+	.loc 1 1293 5 is_stmt 1 view .LVU992
 	movs	r2, #1
 	add	r1, sp, #52
 	movs	r0, #61
-	.loc 1 1293 31 is_stmt 0 view .LVU1033
+	.loc 1 1293 31 is_stmt 0 view .LVU993
 	strb	r4, [sp, #52]
-	.loc 1 1293 5 view .LVU1034
+	.loc 1 1293 5 view .LVU994
 	bl	writeI2C
-.LVL254:
-	.loc 1 1296 5 is_stmt 1 view .LVU1035
+.LVL245:
+	.loc 1 1296 5 is_stmt 1 view .LVU995
 	movs	r2, #1
 	add	r1, sp, #56
 	movs	r0, #79
-	.loc 1 1296 31 is_stmt 0 view .LVU1036
+	.loc 1 1296 31 is_stmt 0 view .LVU996
 	strb	r4, [sp, #56]
-	.loc 1 1296 5 view .LVU1037
+	.loc 1 1296 5 view .LVU997
 	bl	writeI2C
-.LVL255:
-	.loc 1 1297 5 is_stmt 1 view .LVU1038
+.LVL246:
+	.loc 1 1297 5 is_stmt 1 view .LVU998
 	movs	r2, #1
 	add	r1, sp, #60
 	movs	r0, #80
-	.loc 1 1297 31 is_stmt 0 view .LVU1039
+	.loc 1 1297 31 is_stmt 0 view .LVU999
 	strb	r4, [sp, #60]
-	.loc 1 1297 5 view .LVU1040
+	.loc 1 1297 5 view .LVU1000
 	bl	writeI2C
-.LVL256:
-	.loc 1 1298 5 is_stmt 1 view .LVU1041
+.LVL247:
+	.loc 1 1298 5 is_stmt 1 view .LVU1001
 	movs	r2, #1
 	add	r1, sp, #64
 	movs	r0, #81
-	.loc 1 1298 31 is_stmt 0 view .LVU1042
+	.loc 1 1298 31 is_stmt 0 view .LVU1002
 	strb	r5, [sp, #64]
-	.loc 1 1298 5 view .LVU1043
+	.loc 1 1298 5 view .LVU1003
 	bl	writeI2C
-.LVL257:
-	.loc 1 1299 5 is_stmt 1 view .LVU1044
+.LVL248:
+	.loc 1 1299 5 is_stmt 1 view .LVU1004
 	movs	r2, #1
 	add	r1, sp, #68
 	movs	r0, #82
-	.loc 1 1299 31 is_stmt 0 view .LVU1045
+	.loc 1 1299 31 is_stmt 0 view .LVU1005
 	strb	r7, [sp, #68]
-	.loc 1 1299 5 view .LVU1046
+	.loc 1 1299 5 view .LVU1006
 	bl	writeI2C
-.LVL258:
-	.loc 1 1300 5 is_stmt 1 view .LVU1047
-	.loc 1 1300 31 is_stmt 0 view .LVU1048
+.LVL249:
+	.loc 1 1300 5 is_stmt 1 view .LVU1007
+	.loc 1 1300 31 is_stmt 0 view .LVU1008
 	movs	r3, #94
-	.loc 1 1300 5 view .LVU1049
+	.loc 1 1300 5 view .LVU1009
 	movs	r2, #1
 	add	r1, sp, #72
 	movs	r0, #83
-	.loc 1 1300 31 view .LVU1050
+	.loc 1 1300 31 view .LVU1010
 	strb	r3, [sp, #72]
-	.loc 1 1300 5 view .LVU1051
+	.loc 1 1300 5 view .LVU1011
 	bl	writeI2C
-.LVL259:
-	.loc 1 1301 5 is_stmt 1 view .LVU1052
+.LVL250:
+	.loc 1 1301 5 is_stmt 1 view .LVU1012
 	movs	r2, #1
 	add	r1, sp, #76
 	movs	r0, #84
-	.loc 1 1301 31 is_stmt 0 view .LVU1053
+	.loc 1 1301 31 is_stmt 0 view .LVU1013
 	strb	r4, [sp, #76]
-	.loc 1 1301 5 view .LVU1054
+	.loc 1 1301 5 view .LVU1014
 	bl	writeI2C
-.LVL260:
-	.loc 1 1302 5 is_stmt 1 view .LVU1055
-	.loc 1 1302 31 is_stmt 0 view .LVU1056
+.LVL251:
+	.loc 1 1302 5 is_stmt 1 view .LVU1015
+	.loc 1 1302 31 is_stmt 0 view .LVU1016
 	movs	r3, #158
-	.loc 1 1302 5 view .LVU1057
+	.loc 1 1302 5 view .LVU1017
 	movs	r2, #1
 	add	r1, sp, #80
 	movs	r0, #88
-	.loc 1 1302 31 view .LVU1058
+	.loc 1 1302 31 view .LVU1018
 	strb	r3, [sp, #80]
-	.loc 1 1302 5 view .LVU1059
+	.loc 1 1302 5 view .LVU1019
 	bl	writeI2C
-.LVL261:
-	.loc 1 1305 5 is_stmt 1 view .LVU1060
-	.loc 1 1305 13 is_stmt 0 view .LVU1061
+.LVL252:
+	.loc 1 1305 5 is_stmt 1 view .LVU1020
+	.loc 1 1305 13 is_stmt 0 view .LVU1021
 	ldr	r3, .L48
 	ldm	r3, {r0, r1, r2, r3}
 	add	r4, sp, #104
 	stm	r4, {r0, r1, r2, r3}
-	.loc 1 1306 5 is_stmt 1 view .LVU1062
+	.loc 1 1306 5 is_stmt 1 view .LVU1022
 .LBB2:
-	.loc 1 1306 9 view .LVU1063
-.LVL262:
-	.loc 1 1306 19 view .LVU1064
+	.loc 1 1306 9 view .LVU1023
+.LVL253:
+	.loc 1 1306 19 view .LVU1024
 	add	r6, sp, #120
 	rsb	r5, r4, #123
-.LVL263:
+.LVL254:
 .L45:
-	.loc 1 1307 9 discriminator 3 view .LVU1065
+	.loc 1 1307 9 discriminator 3 view .LVU1025
 	adds	r0, r5, r4
 	movs	r2, #1
 	mov	r1, r4
 	uxtb	r0, r0
-	.loc 1 1306 19 is_stmt 0 discriminator 3 view .LVU1066
+	.loc 1 1306 19 is_stmt 0 discriminator 3 view .LVU1026
 	add	r4, r4, r2
-.LVL264:
-	.loc 1 1307 9 discriminator 3 view .LVU1067
+.LVL255:
+	.loc 1 1307 9 discriminator 3 view .LVU1027
 	bl	writeI2C
-.LVL265:
-	.loc 1 1306 25 is_stmt 1 discriminator 3 view .LVU1068
-	.loc 1 1306 19 discriminator 3 view .LVU1069
+.LVL256:
+	.loc 1 1306 25 is_stmt 1 discriminator 3 view .LVU1028
+	.loc 1 1306 19 discriminator 3 view .LVU1029
 	cmp	r4, r6
 	bne	.L45
 .LBE2:
-	.loc 1 1311 5 view .LVU1070
+	.loc 1 1311 5 view .LVU1030
 	add	r1, sp, #84
-	.loc 1 1311 31 is_stmt 0 view .LVU1071
+	.loc 1 1311 31 is_stmt 0 view .LVU1031
 	movs	r3, #56
-	.loc 1 1311 5 view .LVU1072
+	.loc 1 1311 5 view .LVU1032
 	movs	r2, #1
 	movs	r0, #65
-	.loc 1 1311 31 view .LVU1073
+	.loc 1 1311 31 view .LVU1033
 	strb	r3, [sp, #84]
-	.loc 1 1311 5 view .LVU1074
+	.loc 1 1311 5 view .LVU1034
 	bl	writeI2C
-.LVL266:
-	.loc 1 1314 5 is_stmt 1 view .LVU1075
+.LVL257:
+	.loc 1 1314 5 is_stmt 1 view .LVU1035
 	add	r1, sp, #88
-	.loc 1 1314 31 is_stmt 0 view .LVU1076
+	.loc 1 1314 31 is_stmt 0 view .LVU1036
 	movs	r3, #49
-	.loc 1 1314 5 view .LVU1077
+	.loc 1 1314 5 view .LVU1037
 	movs	r2, #1
 	movs	r0, #30
-	.loc 1 1314 31 view .LVU1078
+	.loc 1 1314 31 view .LVU1038
 	strb	r3, [sp, #88]
-	.loc 1 1314 5 view .LVU1079
+	.loc 1 1314 5 view .LVU1039
 	bl	writeI2C
-.LVL267:
-	.loc 1 1317 5 is_stmt 1 view .LVU1080
+.LVL258:
+	.loc 1 1317 5 is_stmt 1 view .LVU1040
 	add	r1, sp, #92
-	.loc 1 1317 31 is_stmt 0 view .LVU1081
+	.loc 1 1317 31 is_stmt 0 view .LVU1041
 	movs	r3, #32
-	.loc 1 1317 5 view .LVU1082
+	.loc 1 1317 5 view .LVU1042
 	movs	r2, #1
 	movs	r0, #86
-	.loc 1 1317 31 view .LVU1083
+	.loc 1 1317 31 view .LVU1043
 	strb	r3, [sp, #92]
-	.loc 1 1317 5 view .LVU1084
+	.loc 1 1317 5 view .LVU1044
 	bl	writeI2C
-.LVL268:
-	.loc 1 1318 5 is_stmt 1 view .LVU1085
+.LVL259:
+	.loc 1 1318 5 is_stmt 1 view .LVU1045
 	add	r1, sp, #96
-	.loc 1 1318 31 is_stmt 0 view .LVU1086
+	.loc 1 1318 31 is_stmt 0 view .LVU1046
 	movs	r3, #4
-	.loc 1 1318 5 view .LVU1087
+	.loc 1 1318 5 view .LVU1047
 	movs	r2, #1
 	movs	r0, #123
-	.loc 1 1318 31 view .LVU1088
+	.loc 1 1318 31 view .LVU1048
 	strb	r3, [sp, #96]
-	.loc 1 1318 5 view .LVU1089
+	.loc 1 1318 5 view .LVU1049
 	bl	writeI2C
-.LVL269:
-	.loc 1 1319 5 is_stmt 1 view .LVU1090
-	.loc 1 1319 31 is_stmt 0 view .LVU1091
+.LVL260:
+	.loc 1 1319 5 is_stmt 1 view .LVU1050
+	.loc 1 1319 31 is_stmt 0 view .LVU1051
 	movs	r3, #64
-	.loc 1 1319 5 view .LVU1092
+	.loc 1 1319 5 view .LVU1052
 	movs	r2, #1
 	add	r1, sp, #100
 	movs	r0, #79
-	.loc 1 1319 31 view .LVU1093
+	.loc 1 1319 31 view .LVU1053
 	strb	r3, [sp, #100]
-	.loc 1 1319 5 view .LVU1094
+	.loc 1 1319 5 view .LVU1054
 	bl	writeI2C
-.LVL270:
-	.loc 1 1321 5 is_stmt 1 view .LVU1095
+.LVL261:
+	.loc 1 1321 5 is_stmt 1 view .LVU1055
 	movs	r0, #100
 	bl	delay_ms
-.LVL271:
-	.loc 1 1322 1 is_stmt 0 view .LVU1096
+.LVL262:
+	.loc 1 1322 1 is_stmt 0 view .LVU1056
 	add	sp, sp, #124
 	.cfi_def_cfa_offset 20
 	@ sp needed
@@ -3152,7 +3053,7 @@ ov7670_qqvga_rgb565:
 	.file 7 "ov7670/../delay/delay.h"
 	.section	.debug_info,"",%progbits
 .Ldebug_info0:
-	.4byte	0x234e
+	.4byte	0x2237
 	.2byte	0x5
 	.byte	0x1
 	.byte	0x4
@@ -3799,7 +3700,7 @@ ov7670_qqvga_rgb565:
 	.4byte	.LLST5
 	.4byte	.LVUS5
 	.uleb128 0x5
-	.4byte	.LVL265
+	.4byte	.LVL256
 	.4byte	0x55c
 	.uleb128 0x1
 	.uleb128 0x1
@@ -3826,7 +3727,7 @@ ov7670_qqvga_rgb565:
 	.byte	0
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL236
+	.4byte	.LVL227
 	.4byte	0x55c
 	.4byte	0x608
 	.uleb128 0x1
@@ -3847,7 +3748,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL237
+	.4byte	.LVL228
 	.4byte	0x54b
 	.4byte	0x61c
 	.uleb128 0x1
@@ -3858,7 +3759,7 @@ ov7670_qqvga_rgb565:
 	.byte	0xc8
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL238
+	.4byte	.LVL229
 	.4byte	0x55c
 	.4byte	0x63a
 	.uleb128 0x1
@@ -3879,7 +3780,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL239
+	.4byte	.LVL230
 	.4byte	0x55c
 	.4byte	0x658
 	.uleb128 0x1
@@ -3900,7 +3801,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL240
+	.4byte	.LVL231
 	.4byte	0x55c
 	.4byte	0x676
 	.uleb128 0x1
@@ -3921,7 +3822,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL241
+	.4byte	.LVL232
 	.4byte	0x55c
 	.4byte	0x695
 	.uleb128 0x1
@@ -3943,7 +3844,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL242
+	.4byte	.LVL233
 	.4byte	0x55c
 	.4byte	0x6b9
 	.uleb128 0x1
@@ -3970,7 +3871,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL243
+	.4byte	.LVL234
 	.4byte	0x55c
 	.4byte	0x6d8
 	.uleb128 0x1
@@ -3991,7 +3892,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL244
+	.4byte	.LVL235
 	.4byte	0x55c
 	.4byte	0x6f8
 	.uleb128 0x1
@@ -4013,7 +3914,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL245
+	.4byte	.LVL236
 	.4byte	0x55c
 	.4byte	0x717
 	.uleb128 0x1
@@ -4034,7 +3935,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL246
+	.4byte	.LVL237
 	.4byte	0x55c
 	.4byte	0x737
 	.uleb128 0x1
@@ -4056,7 +3957,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL247
+	.4byte	.LVL238
 	.4byte	0x55c
 	.4byte	0x756
 	.uleb128 0x1
@@ -4077,7 +3978,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL248
+	.4byte	.LVL239
 	.4byte	0x55c
 	.4byte	0x776
 	.uleb128 0x1
@@ -4099,7 +4000,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL249
+	.4byte	.LVL240
 	.4byte	0x55c
 	.4byte	0x796
 	.uleb128 0x1
@@ -4121,7 +4022,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL250
+	.4byte	.LVL241
 	.4byte	0x55c
 	.4byte	0x7b5
 	.uleb128 0x1
@@ -4142,7 +4043,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL251
+	.4byte	.LVL242
 	.4byte	0x55c
 	.4byte	0x7d5
 	.uleb128 0x1
@@ -4164,7 +4065,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL252
+	.4byte	.LVL243
 	.4byte	0x55c
 	.4byte	0x7f5
 	.uleb128 0x1
@@ -4186,7 +4087,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL253
+	.4byte	.LVL244
 	.4byte	0x55c
 	.4byte	0x815
 	.uleb128 0x1
@@ -4208,7 +4109,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL254
+	.4byte	.LVL245
 	.4byte	0x55c
 	.4byte	0x835
 	.uleb128 0x1
@@ -4230,7 +4131,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL255
+	.4byte	.LVL246
 	.4byte	0x55c
 	.4byte	0x855
 	.uleb128 0x1
@@ -4252,7 +4153,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL256
+	.4byte	.LVL247
 	.4byte	0x55c
 	.4byte	0x875
 	.uleb128 0x1
@@ -4274,7 +4175,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL257
+	.4byte	.LVL248
 	.4byte	0x55c
 	.4byte	0x895
 	.uleb128 0x1
@@ -4296,7 +4197,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL258
+	.4byte	.LVL249
 	.4byte	0x55c
 	.4byte	0x8b5
 	.uleb128 0x1
@@ -4318,7 +4219,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL259
+	.4byte	.LVL250
 	.4byte	0x55c
 	.4byte	0x8d5
 	.uleb128 0x1
@@ -4340,7 +4241,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL260
+	.4byte	.LVL251
 	.4byte	0x55c
 	.4byte	0x8f5
 	.uleb128 0x1
@@ -4362,7 +4263,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL261
+	.4byte	.LVL252
 	.4byte	0x55c
 	.4byte	0x914
 	.uleb128 0x1
@@ -4384,7 +4285,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL266
+	.4byte	.LVL257
 	.4byte	0x55c
 	.4byte	0x933
 	.uleb128 0x1
@@ -4406,7 +4307,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL267
+	.4byte	.LVL258
 	.4byte	0x55c
 	.4byte	0x951
 	.uleb128 0x1
@@ -4427,7 +4328,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL268
+	.4byte	.LVL259
 	.4byte	0x55c
 	.4byte	0x970
 	.uleb128 0x1
@@ -4449,7 +4350,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL269
+	.4byte	.LVL260
 	.4byte	0x55c
 	.4byte	0x98f
 	.uleb128 0x1
@@ -4471,7 +4372,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL270
+	.4byte	.LVL261
 	.4byte	0x55c
 	.4byte	0x9ae
 	.uleb128 0x1
@@ -4493,7 +4394,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x5
-	.4byte	.LVL271
+	.4byte	.LVL262
 	.4byte	0x54b
 	.uleb128 0x1
 	.uleb128 0x1
@@ -4527,7 +4428,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x91
 	.sleb128 -17
 	.uleb128 0x2
-	.4byte	.LVL220
+	.4byte	.LVL211
 	.4byte	0x55c
 	.4byte	0xa11
 	.uleb128 0x1
@@ -4548,7 +4449,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL221
+	.4byte	.LVL212
 	.4byte	0x54b
 	.4byte	0xa25
 	.uleb128 0x1
@@ -4559,7 +4460,7 @@ ov7670_qqvga_rgb565:
 	.byte	0xc8
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL222
+	.4byte	.LVL213
 	.4byte	0x55c
 	.4byte	0xa43
 	.uleb128 0x1
@@ -4580,7 +4481,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL223
+	.4byte	.LVL214
 	.4byte	0x55c
 	.4byte	0xa61
 	.uleb128 0x1
@@ -4601,7 +4502,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL224
+	.4byte	.LVL215
 	.4byte	0x55c
 	.4byte	0xa80
 	.uleb128 0x1
@@ -4623,7 +4524,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL225
+	.4byte	.LVL216
 	.4byte	0x55c
 	.4byte	0xa9e
 	.uleb128 0x1
@@ -4644,7 +4545,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL226
+	.4byte	.LVL217
 	.4byte	0x55c
 	.4byte	0xabc
 	.uleb128 0x1
@@ -4665,7 +4566,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL227
+	.4byte	.LVL218
 	.4byte	0x55c
 	.4byte	0xadb
 	.uleb128 0x1
@@ -4687,7 +4588,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL228
+	.4byte	.LVL219
 	.4byte	0x55c
 	.4byte	0xaf9
 	.uleb128 0x1
@@ -4708,7 +4609,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL229
+	.4byte	.LVL220
 	.4byte	0x55c
 	.4byte	0xb17
 	.uleb128 0x1
@@ -4729,7 +4630,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL230
+	.4byte	.LVL221
 	.4byte	0x55c
 	.4byte	0xb35
 	.uleb128 0x1
@@ -4750,7 +4651,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL231
+	.4byte	.LVL222
 	.4byte	0x55c
 	.4byte	0xb53
 	.uleb128 0x1
@@ -4771,7 +4672,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL232
+	.4byte	.LVL223
 	.4byte	0x55c
 	.4byte	0xb72
 	.uleb128 0x1
@@ -4793,7 +4694,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL233
+	.4byte	.LVL224
 	.4byte	0x55c
 	.4byte	0xb90
 	.uleb128 0x1
@@ -4814,7 +4715,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x2
-	.4byte	.LVL234
+	.4byte	.LVL225
 	.4byte	0x55c
 	.4byte	0xbaf
 	.uleb128 0x1
@@ -4836,7 +4737,7 @@ ov7670_qqvga_rgb565:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x5
-	.4byte	.LVL235
+	.4byte	.LVL226
 	.4byte	0x55c
 	.uleb128 0x1
 	.uleb128 0x1
@@ -4864,7 +4765,7 @@ ov7670_qqvga_rgb565:
 	.4byte	.LFE119-.LFB119
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0xf3b
+	.4byte	0xe24
 	.uleb128 0xa
 	.ascii	"val\000"
 	.2byte	0x34c
@@ -5083,7 +4984,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x1
 	.byte	0x50
 	.uleb128 0x2
-	.byte	0x78
+	.byte	0x77
 	.sleb128 0
 	.uleb128 0x1
 	.uleb128 0x1
@@ -5249,212 +5150,14 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x1
 	.byte	0x31
 	.byte	0
-	.uleb128 0x2
+	.uleb128 0x5
 	.4byte	.LVL210
 	.4byte	0x55c
-	.4byte	0xe27
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
 	.uleb128 0x1
 	.byte	0x43
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x51
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -25
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x52
-	.uleb128 0x1
-	.byte	0x31
-	.byte	0
-	.uleb128 0x2
-	.4byte	.LVL211
-	.4byte	0x55c
-	.4byte	0xe46
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x50
-	.uleb128 0x2
-	.byte	0x8
-	.byte	0x3d
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x51
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -25
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x52
-	.uleb128 0x1
-	.byte	0x31
-	.byte	0
-	.uleb128 0x2
-	.4byte	.LVL212
-	.4byte	0x55c
-	.4byte	0xe65
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x50
-	.uleb128 0x2
-	.byte	0x8
-	.byte	0x4f
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x51
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -25
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x52
-	.uleb128 0x1
-	.byte	0x31
-	.byte	0
-	.uleb128 0x2
-	.4byte	.LVL213
-	.4byte	0x55c
-	.4byte	0xe84
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x50
-	.uleb128 0x2
-	.byte	0x8
-	.byte	0x50
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x51
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -25
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x52
-	.uleb128 0x1
-	.byte	0x31
-	.byte	0
-	.uleb128 0x2
-	.4byte	.LVL214
-	.4byte	0x55c
-	.4byte	0xea3
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x50
-	.uleb128 0x2
-	.byte	0x8
-	.byte	0x51
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x51
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -25
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x52
-	.uleb128 0x1
-	.byte	0x31
-	.byte	0
-	.uleb128 0x2
-	.4byte	.LVL215
-	.4byte	0x55c
-	.4byte	0xec2
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x50
-	.uleb128 0x2
-	.byte	0x8
-	.byte	0x52
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x51
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -25
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x52
-	.uleb128 0x1
-	.byte	0x31
-	.byte	0
-	.uleb128 0x2
-	.4byte	.LVL216
-	.4byte	0x55c
-	.4byte	0xee1
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x50
-	.uleb128 0x2
-	.byte	0x8
-	.byte	0x53
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x51
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -25
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x52
-	.uleb128 0x1
-	.byte	0x31
-	.byte	0
-	.uleb128 0x2
-	.4byte	.LVL217
-	.4byte	0x55c
-	.4byte	0xf00
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x50
-	.uleb128 0x2
-	.byte	0x8
-	.byte	0x54
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x51
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -25
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x52
-	.uleb128 0x1
-	.byte	0x31
-	.byte	0
-	.uleb128 0x2
-	.4byte	.LVL218
-	.4byte	0x55c
-	.4byte	0xf1f
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x50
-	.uleb128 0x2
-	.byte	0x8
-	.byte	0x58
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x51
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -25
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x52
-	.uleb128 0x1
-	.byte	0x31
-	.byte	0
-	.uleb128 0x5
-	.4byte	.LVL219
-	.4byte	0x55c
-	.uleb128 0x1
-	.uleb128 0x1
-	.byte	0x50
-	.uleb128 0x2
-	.byte	0x8
-	.byte	0x4c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x51
@@ -5475,12 +5178,12 @@ ov7670_qqvga_rgb565:
 	.4byte	.LFE118-.LFB118
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x1348
+	.4byte	0x1231
 	.uleb128 0xb
 	.4byte	.LASF81
 	.2byte	0x2f0
 	.byte	0xb
-	.4byte	0x1348
+	.4byte	0x1231
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -20
@@ -5502,7 +5205,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL152
 	.4byte	0x51c
-	.4byte	0xf96
+	.4byte	0xe7f
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5513,7 +5216,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL153
 	.4byte	0x4fc
-	.4byte	0xfb4
+	.4byte	0xe9d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5534,7 +5237,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL155
 	.4byte	0x52d
-	.4byte	0xfcb
+	.4byte	0xeb4
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5545,7 +5248,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL156
 	.4byte	0x4fc
-	.4byte	0xfe9
+	.4byte	0xed2
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5566,7 +5269,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL158
 	.4byte	0x52d
-	.4byte	0x1000
+	.4byte	0xee9
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5577,7 +5280,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL159
 	.4byte	0x55c
-	.4byte	0x101f
+	.4byte	0xf08
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5599,7 +5302,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL160
 	.4byte	0x54b
-	.4byte	0x1033
+	.4byte	0xf1c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5610,7 +5313,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL161
 	.4byte	0x55c
-	.4byte	0x1052
+	.4byte	0xf3b
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5632,7 +5335,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL162
 	.4byte	0x54b
-	.4byte	0x1065
+	.4byte	0xf4e
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5642,7 +5345,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL163
 	.4byte	0x55c
-	.4byte	0x1085
+	.4byte	0xf6e
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5665,7 +5368,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL164
 	.4byte	0x54b
-	.4byte	0x1098
+	.4byte	0xf81
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5675,7 +5378,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL165
 	.4byte	0x55c
-	.4byte	0x10b7
+	.4byte	0xfa0
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5697,7 +5400,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL166
 	.4byte	0x54b
-	.4byte	0x10ca
+	.4byte	0xfb3
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5707,7 +5410,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL167
 	.4byte	0x55c
-	.4byte	0x10ea
+	.4byte	0xfd3
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5730,7 +5433,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL168
 	.4byte	0x54b
-	.4byte	0x10fd
+	.4byte	0xfe6
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5740,7 +5443,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL169
 	.4byte	0x55c
-	.4byte	0x111c
+	.4byte	0x1005
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5762,7 +5465,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL170
 	.4byte	0x54b
-	.4byte	0x1130
+	.4byte	0x1019
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5773,7 +5476,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL171
 	.4byte	0x55c
-	.4byte	0x114f
+	.4byte	0x1038
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5795,7 +5498,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL172
 	.4byte	0x54b
-	.4byte	0x1163
+	.4byte	0x104c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5806,7 +5509,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL173
 	.4byte	0x55c
-	.4byte	0x1183
+	.4byte	0x106c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5829,7 +5532,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL174
 	.4byte	0x54b
-	.4byte	0x1197
+	.4byte	0x1080
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5840,7 +5543,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL175
 	.4byte	0x55c
-	.4byte	0x11b6
+	.4byte	0x109f
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5862,7 +5565,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL176
 	.4byte	0x54b
-	.4byte	0x11ca
+	.4byte	0x10b3
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5873,7 +5576,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL177
 	.4byte	0x55c
-	.4byte	0x11e9
+	.4byte	0x10d2
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5895,7 +5598,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL178
 	.4byte	0x54b
-	.4byte	0x11fd
+	.4byte	0x10e6
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5906,7 +5609,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL179
 	.4byte	0x55c
-	.4byte	0x121c
+	.4byte	0x1105
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5928,7 +5631,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL180
 	.4byte	0x54b
-	.4byte	0x1230
+	.4byte	0x1119
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5939,7 +5642,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL181
 	.4byte	0x55c
-	.4byte	0x1250
+	.4byte	0x1139
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5962,7 +5665,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL182
 	.4byte	0x54b
-	.4byte	0x1264
+	.4byte	0x114d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5973,7 +5676,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL183
 	.4byte	0x55c
-	.4byte	0x1284
+	.4byte	0x116d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -5996,7 +5699,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL184
 	.4byte	0x54b
-	.4byte	0x1298
+	.4byte	0x1181
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6007,7 +5710,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL185
 	.4byte	0x55c
-	.4byte	0x12b8
+	.4byte	0x11a1
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6030,7 +5733,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL186
 	.4byte	0x54b
-	.4byte	0x12cc
+	.4byte	0x11b5
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6041,7 +5744,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL187
 	.4byte	0x55c
-	.4byte	0x12ec
+	.4byte	0x11d5
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6064,7 +5767,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL188
 	.4byte	0x54b
-	.4byte	0x1300
+	.4byte	0x11e9
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6075,7 +5778,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL189
 	.4byte	0x55c
-	.4byte	0x1320
+	.4byte	0x1209
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6098,7 +5801,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL190
 	.4byte	0x54b
-	.4byte	0x1334
+	.4byte	0x121d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6119,7 +5822,7 @@ ov7670_qqvga_rgb565:
 	.byte	0
 	.uleb128 0x8
 	.4byte	0x42
-	.4byte	0x1358
+	.4byte	0x1241
 	.uleb128 0xc
 	.4byte	0x93
 	.byte	0x3
@@ -6147,12 +5850,12 @@ ov7670_qqvga_rgb565:
 	.4byte	.LFE115-.LFB115
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x177c
+	.4byte	0x1665
 	.uleb128 0xb
 	.4byte	.LASF81
 	.2byte	0x1da
 	.byte	0xb
-	.4byte	0x1348
+	.4byte	0x1231
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -20
@@ -6174,7 +5877,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL112
 	.4byte	0x51c
-	.4byte	0x13d7
+	.4byte	0x12c0
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6185,7 +5888,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL113
 	.4byte	0x4fc
-	.4byte	0x13f5
+	.4byte	0x12de
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6206,7 +5909,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL115
 	.4byte	0x52d
-	.4byte	0x140c
+	.4byte	0x12f5
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6217,7 +5920,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL116
 	.4byte	0x4fc
-	.4byte	0x142a
+	.4byte	0x1313
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6238,7 +5941,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL118
 	.4byte	0x52d
-	.4byte	0x1441
+	.4byte	0x132a
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6249,7 +5952,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL119
 	.4byte	0x55c
-	.4byte	0x145f
+	.4byte	0x1348
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6270,7 +5973,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL120
 	.4byte	0x54b
-	.4byte	0x1473
+	.4byte	0x135c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6281,7 +5984,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL121
 	.4byte	0x55c
-	.4byte	0x1491
+	.4byte	0x137a
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6302,7 +6005,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL122
 	.4byte	0x54b
-	.4byte	0x14a4
+	.4byte	0x138d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6312,7 +6015,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL123
 	.4byte	0x55c
-	.4byte	0x14c4
+	.4byte	0x13ad
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6335,7 +6038,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL124
 	.4byte	0x54b
-	.4byte	0x14d7
+	.4byte	0x13c0
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6345,7 +6048,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL125
 	.4byte	0x55c
-	.4byte	0x14f6
+	.4byte	0x13df
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6367,7 +6070,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL126
 	.4byte	0x54b
-	.4byte	0x1509
+	.4byte	0x13f2
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6377,7 +6080,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL127
 	.4byte	0x55c
-	.4byte	0x1529
+	.4byte	0x1412
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6400,7 +6103,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL128
 	.4byte	0x54b
-	.4byte	0x153c
+	.4byte	0x1425
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6410,7 +6113,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL129
 	.4byte	0x55c
-	.4byte	0x155c
+	.4byte	0x1445
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6433,7 +6136,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL130
 	.4byte	0x54b
-	.4byte	0x156f
+	.4byte	0x1458
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6443,7 +6146,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL131
 	.4byte	0x55c
-	.4byte	0x158e
+	.4byte	0x1477
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6465,7 +6168,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL132
 	.4byte	0x54b
-	.4byte	0x15a1
+	.4byte	0x148a
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6475,7 +6178,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL133
 	.4byte	0x55c
-	.4byte	0x15c0
+	.4byte	0x14a9
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6497,7 +6200,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL134
 	.4byte	0x54b
-	.4byte	0x15d3
+	.4byte	0x14bc
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6507,7 +6210,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL135
 	.4byte	0x55c
-	.4byte	0x15f2
+	.4byte	0x14db
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6529,7 +6232,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL136
 	.4byte	0x54b
-	.4byte	0x1605
+	.4byte	0x14ee
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6539,7 +6242,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL137
 	.4byte	0x55c
-	.4byte	0x1624
+	.4byte	0x150d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6561,7 +6264,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL138
 	.4byte	0x54b
-	.4byte	0x1637
+	.4byte	0x1520
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6571,7 +6274,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL139
 	.4byte	0x55c
-	.4byte	0x1656
+	.4byte	0x153f
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6593,7 +6296,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL140
 	.4byte	0x54b
-	.4byte	0x1669
+	.4byte	0x1552
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6603,7 +6306,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL141
 	.4byte	0x55c
-	.4byte	0x1689
+	.4byte	0x1572
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6626,7 +6329,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL142
 	.4byte	0x54b
-	.4byte	0x169c
+	.4byte	0x1585
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6636,7 +6339,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL143
 	.4byte	0x55c
-	.4byte	0x16bc
+	.4byte	0x15a5
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6659,7 +6362,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL144
 	.4byte	0x54b
-	.4byte	0x16cf
+	.4byte	0x15b8
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6669,7 +6372,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL145
 	.4byte	0x55c
-	.4byte	0x16ef
+	.4byte	0x15d8
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6692,7 +6395,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL146
 	.4byte	0x54b
-	.4byte	0x1702
+	.4byte	0x15eb
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6702,7 +6405,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL147
 	.4byte	0x55c
-	.4byte	0x1722
+	.4byte	0x160b
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6725,7 +6428,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL148
 	.4byte	0x54b
-	.4byte	0x1735
+	.4byte	0x161e
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6735,7 +6438,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL149
 	.4byte	0x55c
-	.4byte	0x1755
+	.4byte	0x163e
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6758,7 +6461,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL150
 	.4byte	0x54b
-	.4byte	0x1768
+	.4byte	0x1651
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6783,12 +6486,12 @@ ov7670_qqvga_rgb565:
 	.4byte	.LFE114-.LFB114
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x1b7c
+	.4byte	0x1a65
 	.uleb128 0xb
 	.4byte	.LASF81
 	.2byte	0x17b
 	.byte	0xd
-	.4byte	0x1348
+	.4byte	0x1231
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -20
@@ -6810,7 +6513,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL72
 	.4byte	0x51c
-	.4byte	0x17d7
+	.4byte	0x16c0
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6821,7 +6524,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL73
 	.4byte	0x4fc
-	.4byte	0x17f5
+	.4byte	0x16de
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6842,7 +6545,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL75
 	.4byte	0x52d
-	.4byte	0x180c
+	.4byte	0x16f5
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6853,7 +6556,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL76
 	.4byte	0x4fc
-	.4byte	0x182a
+	.4byte	0x1713
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6874,7 +6577,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL78
 	.4byte	0x52d
-	.4byte	0x1841
+	.4byte	0x172a
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6885,7 +6588,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL79
 	.4byte	0x55c
-	.4byte	0x185f
+	.4byte	0x1748
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6906,7 +6609,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL80
 	.4byte	0x54b
-	.4byte	0x1873
+	.4byte	0x175c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6917,7 +6620,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL81
 	.4byte	0x55c
-	.4byte	0x1891
+	.4byte	0x177a
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6938,7 +6641,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL82
 	.4byte	0x54b
-	.4byte	0x18a4
+	.4byte	0x178d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6948,7 +6651,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL83
 	.4byte	0x55c
-	.4byte	0x18c4
+	.4byte	0x17ad
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6971,7 +6674,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL84
 	.4byte	0x54b
-	.4byte	0x18d7
+	.4byte	0x17c0
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -6981,7 +6684,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL85
 	.4byte	0x55c
-	.4byte	0x18f6
+	.4byte	0x17df
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7003,7 +6706,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL86
 	.4byte	0x54b
-	.4byte	0x1909
+	.4byte	0x17f2
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7013,7 +6716,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL87
 	.4byte	0x55c
-	.4byte	0x1929
+	.4byte	0x1812
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7036,7 +6739,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL88
 	.4byte	0x54b
-	.4byte	0x193c
+	.4byte	0x1825
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7046,7 +6749,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL89
 	.4byte	0x55c
-	.4byte	0x195c
+	.4byte	0x1845
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7069,7 +6772,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL90
 	.4byte	0x54b
-	.4byte	0x196f
+	.4byte	0x1858
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7079,7 +6782,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL91
 	.4byte	0x55c
-	.4byte	0x198e
+	.4byte	0x1877
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7101,7 +6804,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL92
 	.4byte	0x54b
-	.4byte	0x19a1
+	.4byte	0x188a
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7111,7 +6814,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL93
 	.4byte	0x55c
-	.4byte	0x19c0
+	.4byte	0x18a9
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7133,7 +6836,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL94
 	.4byte	0x54b
-	.4byte	0x19d3
+	.4byte	0x18bc
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7143,7 +6846,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL95
 	.4byte	0x55c
-	.4byte	0x19f2
+	.4byte	0x18db
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7165,7 +6868,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL96
 	.4byte	0x54b
-	.4byte	0x1a05
+	.4byte	0x18ee
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7175,7 +6878,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL97
 	.4byte	0x55c
-	.4byte	0x1a24
+	.4byte	0x190d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7197,7 +6900,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL98
 	.4byte	0x54b
-	.4byte	0x1a37
+	.4byte	0x1920
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7207,7 +6910,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL99
 	.4byte	0x55c
-	.4byte	0x1a56
+	.4byte	0x193f
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7229,7 +6932,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL100
 	.4byte	0x54b
-	.4byte	0x1a69
+	.4byte	0x1952
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7239,7 +6942,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL101
 	.4byte	0x55c
-	.4byte	0x1a89
+	.4byte	0x1972
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7262,7 +6965,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL102
 	.4byte	0x54b
-	.4byte	0x1a9c
+	.4byte	0x1985
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7272,7 +6975,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL103
 	.4byte	0x55c
-	.4byte	0x1abc
+	.4byte	0x19a5
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7295,7 +6998,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL104
 	.4byte	0x54b
-	.4byte	0x1acf
+	.4byte	0x19b8
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7305,7 +7008,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL105
 	.4byte	0x55c
-	.4byte	0x1aef
+	.4byte	0x19d8
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7328,7 +7031,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL106
 	.4byte	0x54b
-	.4byte	0x1b02
+	.4byte	0x19eb
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7338,7 +7041,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL107
 	.4byte	0x55c
-	.4byte	0x1b22
+	.4byte	0x1a0b
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7361,7 +7064,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL108
 	.4byte	0x54b
-	.4byte	0x1b35
+	.4byte	0x1a1e
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7371,7 +7074,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL109
 	.4byte	0x55c
-	.4byte	0x1b55
+	.4byte	0x1a3e
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7394,7 +7097,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL110
 	.4byte	0x54b
-	.4byte	0x1b68
+	.4byte	0x1a51
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7419,7 +7122,7 @@ ov7670_qqvga_rgb565:
 	.4byte	.LFE113-.LFB113
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x1e03
+	.4byte	0x1cec
 	.uleb128 0xb
 	.4byte	.LASF81
 	.2byte	0x11e
@@ -7431,7 +7134,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL50
 	.4byte	0x51c
-	.4byte	0x1bb4
+	.4byte	0x1a9d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7442,7 +7145,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL51
 	.4byte	0x55c
-	.4byte	0x1bd2
+	.4byte	0x1abb
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7463,7 +7166,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL52
 	.4byte	0x54b
-	.4byte	0x1be6
+	.4byte	0x1acf
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7474,7 +7177,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL53
 	.4byte	0x55c
-	.4byte	0x1c04
+	.4byte	0x1aed
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7495,7 +7198,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL54
 	.4byte	0x54b
-	.4byte	0x1c17
+	.4byte	0x1b00
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7505,7 +7208,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL55
 	.4byte	0x55c
-	.4byte	0x1c3c
+	.4byte	0x1b25
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7533,7 +7236,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL56
 	.4byte	0x54b
-	.4byte	0x1c4f
+	.4byte	0x1b38
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7543,7 +7246,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL57
 	.4byte	0x55c
-	.4byte	0x1c73
+	.4byte	0x1b5c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7570,7 +7273,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL58
 	.4byte	0x55c
-	.4byte	0x1c98
+	.4byte	0x1b81
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7598,7 +7301,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL59
 	.4byte	0x54b
-	.4byte	0x1cab
+	.4byte	0x1b94
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7608,7 +7311,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL60
 	.4byte	0x55c
-	.4byte	0x1cca
+	.4byte	0x1bb3
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7630,7 +7333,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL61
 	.4byte	0x55c
-	.4byte	0x1cea
+	.4byte	0x1bd3
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7653,7 +7356,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL62
 	.4byte	0x55c
-	.4byte	0x1d0a
+	.4byte	0x1bf3
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7676,7 +7379,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL63
 	.4byte	0x55c
-	.4byte	0x1d2a
+	.4byte	0x1c13
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7699,7 +7402,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL64
 	.4byte	0x55c
-	.4byte	0x1d4a
+	.4byte	0x1c33
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7722,7 +7425,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL65
 	.4byte	0x55c
-	.4byte	0x1d6a
+	.4byte	0x1c53
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7745,7 +7448,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL66
 	.4byte	0x54b
-	.4byte	0x1d7d
+	.4byte	0x1c66
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7755,7 +7458,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL67
 	.4byte	0x55c
-	.4byte	0x1da1
+	.4byte	0x1c8a
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7782,7 +7485,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL68
 	.4byte	0x54b
-	.4byte	0x1db4
+	.4byte	0x1c9d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7792,7 +7495,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL69
 	.4byte	0x4fc
-	.4byte	0x1dd8
+	.4byte	0x1cc1
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7819,7 +7522,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL70
 	.4byte	0x52d
-	.4byte	0x1def
+	.4byte	0x1cd8
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7845,12 +7548,12 @@ ov7670_qqvga_rgb565:
 	.4byte	.LFE112-.LFB112
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x1f3f
+	.4byte	0x1e28
 	.uleb128 0xb
 	.4byte	.LASF81
 	.2byte	0x103
 	.byte	0xb
-	.4byte	0x1348
+	.4byte	0x1231
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -20
@@ -7877,7 +7580,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL35
 	.4byte	0x51c
-	.4byte	0x1e70
+	.4byte	0x1d59
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7888,7 +7591,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL36
 	.4byte	0x4fc
-	.4byte	0x1e8e
+	.4byte	0x1d77
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7909,7 +7612,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL38
 	.4byte	0x52d
-	.4byte	0x1eab
+	.4byte	0x1d94
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7926,7 +7629,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL39
 	.4byte	0x4fc
-	.4byte	0x1ec9
+	.4byte	0x1db2
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7947,7 +7650,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL41
 	.4byte	0x52d
-	.4byte	0x1ee6
+	.4byte	0x1dcf
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7964,7 +7667,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL44
 	.4byte	0x52d
-	.4byte	0x1efd
+	.4byte	0x1de6
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7975,7 +7678,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL45
 	.4byte	0x52d
-	.4byte	0x1f14
+	.4byte	0x1dfd
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -7986,7 +7689,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL47
 	.4byte	0x52d
-	.4byte	0x1f2b
+	.4byte	0x1e14
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8014,7 +7717,7 @@ ov7670_qqvga_rgb565:
 	.4byte	.LFE111-.LFB111
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x2104
+	.4byte	0x1fed
 	.uleb128 0x19
 	.ascii	"val\000"
 	.byte	0xa8
@@ -8025,7 +7728,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL20
 	.4byte	0x55c
-	.4byte	0x1f81
+	.4byte	0x1e6a
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8047,7 +7750,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL21
 	.4byte	0x54b
-	.4byte	0x1f95
+	.4byte	0x1e7e
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8058,7 +7761,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL22
 	.4byte	0x55c
-	.4byte	0x1fb4
+	.4byte	0x1e9d
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8080,7 +7783,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL23
 	.4byte	0x55c
-	.4byte	0x1fd3
+	.4byte	0x1ebc
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8102,7 +7805,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL24
 	.4byte	0x55c
-	.4byte	0x1ff3
+	.4byte	0x1edc
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8125,7 +7828,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL25
 	.4byte	0x55c
-	.4byte	0x2013
+	.4byte	0x1efc
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8148,7 +7851,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL26
 	.4byte	0x55c
-	.4byte	0x2033
+	.4byte	0x1f1c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8171,7 +7874,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL27
 	.4byte	0x55c
-	.4byte	0x2053
+	.4byte	0x1f3c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8194,7 +7897,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL28
 	.4byte	0x55c
-	.4byte	0x2073
+	.4byte	0x1f5c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8217,7 +7920,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL29
 	.4byte	0x55c
-	.4byte	0x2092
+	.4byte	0x1f7b
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8239,7 +7942,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL30
 	.4byte	0x55c
-	.4byte	0x20b2
+	.4byte	0x1f9b
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8262,7 +7965,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL31
 	.4byte	0x55c
-	.4byte	0x20d1
+	.4byte	0x1fba
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8284,7 +7987,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL32
 	.4byte	0x55c
-	.4byte	0x20f0
+	.4byte	0x1fd9
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8333,7 +8036,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL0
 	.4byte	0x55c
-	.4byte	0x2141
+	.4byte	0x202a
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8354,7 +8057,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL1
 	.4byte	0x54b
-	.4byte	0x2155
+	.4byte	0x203e
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8365,7 +8068,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL2
 	.4byte	0x55c
-	.4byte	0x2173
+	.4byte	0x205c
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8386,7 +8089,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL3
 	.4byte	0x55c
-	.4byte	0x2191
+	.4byte	0x207a
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8407,7 +8110,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL4
 	.4byte	0x55c
-	.4byte	0x21b0
+	.4byte	0x2099
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8429,7 +8132,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL5
 	.4byte	0x55c
-	.4byte	0x21cf
+	.4byte	0x20b8
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8451,7 +8154,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL6
 	.4byte	0x55c
-	.4byte	0x21ee
+	.4byte	0x20d7
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8473,7 +8176,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL7
 	.4byte	0x55c
-	.4byte	0x220d
+	.4byte	0x20f6
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8495,7 +8198,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL8
 	.4byte	0x55c
-	.4byte	0x222c
+	.4byte	0x2115
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8517,7 +8220,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL9
 	.4byte	0x55c
-	.4byte	0x224b
+	.4byte	0x2134
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8539,7 +8242,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL10
 	.4byte	0x54b
-	.4byte	0x225e
+	.4byte	0x2147
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8549,7 +8252,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL11
 	.4byte	0x55c
-	.4byte	0x227c
+	.4byte	0x2165
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8570,7 +8273,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL12
 	.4byte	0x55c
-	.4byte	0x229b
+	.4byte	0x2184
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8592,7 +8295,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL13
 	.4byte	0x55c
-	.4byte	0x22ba
+	.4byte	0x21a3
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8614,7 +8317,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL14
 	.4byte	0x55c
-	.4byte	0x22d9
+	.4byte	0x21c2
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8636,7 +8339,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL15
 	.4byte	0x55c
-	.4byte	0x22f7
+	.4byte	0x21e0
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8657,7 +8360,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL16
 	.4byte	0x54b
-	.4byte	0x230b
+	.4byte	0x21f4
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8668,7 +8371,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL17
 	.4byte	0x55c
-	.4byte	0x2329
+	.4byte	0x2212
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -8689,7 +8392,7 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x2
 	.4byte	.LVL18
 	.4byte	0x54b
-	.4byte	0x233d
+	.4byte	0x2226
 	.uleb128 0x1
 	.uleb128 0x1
 	.byte	0x50
@@ -9284,24 +8987,24 @@ ov7670_qqvga_rgb565:
 	.4byte	0
 .Ldebug_loc0:
 .LVUS5:
-	.uleb128 .LVU1064
-	.uleb128 .LVU1065
-	.uleb128 .LVU1065
-	.uleb128 .LVU1067
-	.uleb128 .LVU1067
-	.uleb128 .LVU1068
-	.uleb128 .LVU1068
-	.uleb128 .LVU1069
+	.uleb128 .LVU1024
+	.uleb128 .LVU1025
+	.uleb128 .LVU1025
+	.uleb128 .LVU1027
+	.uleb128 .LVU1027
+	.uleb128 .LVU1028
+	.uleb128 .LVU1028
+	.uleb128 .LVU1029
 .LLST5:
 	.byte	0x4
-	.uleb128 .LVL262-.Ltext0
-	.uleb128 .LVL263-.Ltext0
+	.uleb128 .LVL253-.Ltext0
+	.uleb128 .LVL254-.Ltext0
 	.uleb128 0x2
 	.byte	0x30
 	.byte	0x9f
 	.byte	0x4
-	.uleb128 .LVL263-.Ltext0
-	.uleb128 .LVL264-.Ltext0
+	.uleb128 .LVL254-.Ltext0
+	.uleb128 .LVL255-.Ltext0
 	.uleb128 0x8
 	.byte	0x74
 	.sleb128 0
@@ -9312,8 +9015,8 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x28
 	.byte	0x9f
 	.byte	0x4
-	.uleb128 .LVL264-.Ltext0
-	.uleb128 .LVL265-1-.Ltext0
+	.uleb128 .LVL255-.Ltext0
+	.uleb128 .LVL256-1-.Ltext0
 	.uleb128 0x8
 	.byte	0x71
 	.sleb128 0
@@ -9324,8 +9027,8 @@ ov7670_qqvga_rgb565:
 	.uleb128 0x28
 	.byte	0x9f
 	.byte	0x4
-	.uleb128 .LVL265-1-.Ltext0
-	.uleb128 .LVL265-.Ltext0
+	.uleb128 .LVL256-1-.Ltext0
+	.uleb128 .LVL256-.Ltext0
 	.uleb128 0x8
 	.byte	0x74
 	.sleb128 0
@@ -9585,9 +9288,6 @@ ov7670_qqvga_rgb565:
 	.ascii	"CCMR1\000"
 .LASF52:
 	.ascii	"CCMR2\000"
-.LASF93:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF1:
 	.ascii	"short int\000"
 .LASF44:
@@ -9733,6 +9433,9 @@ ov7670_qqvga_rgb565:
 	.ascii	"pu=cortex-m4 -mthumb-interwork -mfloat-abi=hard -mf"
 	.ascii	"pu=fpv4-sp-d16 -march=armv7e-m+fp -g -O2 -fsingle-p"
 	.ascii	"recision-constant\000"
+.LASF93:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF30:
 	.ascii	"AHB1ENR\000"
 .LASF82:

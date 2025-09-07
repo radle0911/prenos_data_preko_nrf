@@ -3092,13 +3092,12 @@ i2c1_addresa:
 	.section	.debug_str,"MS",%progbits,1
 .LASF45:
 	.ascii	"AHB1LPENR\000"
+.LASF61:
+	.ascii	"rxByteAckI2C\000"
 .LASF38:
 	.ascii	"APB1RSTR\000"
 .LASF41:
 	.ascii	"AHB2ENR\000"
-.LASF71:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF1:
 	.ascii	"short int\000"
 .LASF67:
@@ -3222,8 +3221,9 @@ i2c1_addresa:
 	.ascii	"pu=cortex-m4 -mthumb-interwork -mfloat-abi=hard -mf"
 	.ascii	"pu=fpv4-sp-d16 -march=armv7e-m+fp -g -O2 -fsingle-p"
 	.ascii	"recision-constant\000"
-.LASF61:
-	.ascii	"rxByteAckI2C\000"
+.LASF71:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF58:
 	.ascii	"txByteI2C1\000"
 .LASF40:
@@ -3234,10 +3234,10 @@ i2c1_addresa:
 	.ascii	"stopI2C1\000"
 .LASF35:
 	.ascii	"AHB1RSTR\000"
-.LASF37:
-	.ascii	"AHB3RSTR\000"
 .LASF19:
 	.ascii	"GPIO_TypeDef\000"
+.LASF37:
+	.ascii	"AHB3RSTR\000"
 .LASF18:
 	.ascii	"LCKR\000"
 .LASF49:

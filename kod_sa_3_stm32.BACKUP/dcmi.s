@@ -6503,6 +6503,8 @@ frame_buffer0:
 	.ascii	"OSPEEDR\000"
 .LASF68:
 	.ascii	"delay_ms\000"
+.LASF98:
+	.ascii	"DCMI_Init_OV7670\000"
 .LASF46:
 	.ascii	"APB1RSTR\000"
 .LASF93:
@@ -6635,8 +6637,8 @@ frame_buffer0:
 	.ascii	"M1AR\000"
 .LASF60:
 	.ascii	"APB1LPENR\000"
-.LASF98:
-	.ascii	"DCMI_Init_OV7670\000"
+.LASF85:
+	.ascii	"OV7670_CheckPins_Fluctuation\000"
 .LASF70:
 	.ascii	"printUSART2\000"
 .LASF15:
@@ -6653,9 +6655,6 @@ frame_buffer0:
 	.ascii	"DCMI_Init_OV7670_continuous_mode\000"
 .LASF96:
 	.ascii	"DCMI_Init_OV7670_Snapshot\000"
-.LASF101:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF57:
 	.ascii	"AHB2LPENR\000"
 .LASF73:
@@ -6685,8 +6684,9 @@ frame_buffer0:
 	.ascii	"pu=cortex-m4 -mthumb-interwork -mfloat-abi=hard -mf"
 	.ascii	"pu=fpv4-sp-d16 -march=armv7e-m+fp -g -O2 -fsingle-p"
 	.ascii	"recision-constant\000"
-.LASF85:
-	.ascii	"OV7670_CheckPins_Fluctuation\000"
+.LASF101:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF7:
 	.ascii	"short unsigned int\000"
 .LASF49:

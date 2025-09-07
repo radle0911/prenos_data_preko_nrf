@@ -932,91 +932,561 @@ rxSPI2_nRF_carrier:
 	.cfi_endproc
 .LFE119:
 	.size	rxSPI2_nRF_carrier, .-rxSPI2_nRF_carrier
+	.align	1
+	.p2align 2,,3
+	.global	initSPI3_nRF24lO1
+	.syntax unified
+	.thumb
+	.thumb_func
+	.type	initSPI3_nRF24lO1, %function
+initSPI3_nRF24lO1:
+.LVL31:
+.LFB120:
+	.loc 1 242 1 is_stmt 1 view -0
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	.loc 1 260 5 view .LVU326
+	.loc 1 260 8 is_stmt 0 view .LVU327
+	ldr	r1, .L114
+	.loc 1 261 10 view .LVU328
+	ldr	r3, .L114+4
+	.loc 1 274 10 view .LVU329
+	ldr	r2, .L114+8
+	.loc 1 242 1 view .LVU330
+	push	{r4}
+	.cfi_def_cfa_offset 4
+	.cfi_offset 4, -4
+	.loc 1 260 8 view .LVU331
+	ldr	r4, [r1, #48]
+	.loc 1 260 18 view .LVU332
+	orr	r4, r4, #2
+	str	r4, [r1, #48]
+	.loc 1 261 5 is_stmt 1 view .LVU333
+	.loc 1 261 10 is_stmt 0 view .LVU334
+	ldr	r4, [r3]
+	.loc 1 261 18 view .LVU335
+	bic	r4, r4, #4032
+	str	r4, [r3]
+	.loc 1 262 5 is_stmt 1 view .LVU336
+	.loc 1 262 10 is_stmt 0 view .LVU337
+	ldr	r4, [r3]
+	.loc 1 262 18 view .LVU338
+	orr	r4, r4, #2688
+	str	r4, [r3]
+	.loc 1 263 5 is_stmt 1 view .LVU339
+	.loc 1 263 10 is_stmt 0 view .LVU340
+	ldr	r4, [r3, #4]
+	.loc 1 263 19 view .LVU341
+	bic	r4, r4, #56
+	str	r4, [r3, #4]
+	.loc 1 264 5 is_stmt 1 view .LVU342
+	.loc 1 264 10 is_stmt 0 view .LVU343
+	ldr	r4, [r3, #8]
+	.loc 1 264 20 view .LVU344
+	orr	r4, r4, #2688
+	str	r4, [r3, #8]
+	.loc 1 265 5 is_stmt 1 view .LVU345
+	.loc 1 265 10 is_stmt 0 view .LVU346
+	ldr	r4, [r3, #12]
+	.loc 1 265 18 view .LVU347
+	bic	r4, r4, #4032
+	str	r4, [r3, #12]
+	.loc 1 267 5 is_stmt 1 view .LVU348
+	.loc 1 267 15 is_stmt 0 view .LVU349
+	ldr	r4, [r3, #32]
+	.loc 1 267 19 view .LVU350
+	bic	r4, r4, #6684672
+	bic	r4, r4, #24576
+	str	r4, [r3, #32]
+	.loc 1 268 5 is_stmt 1 view .LVU351
+	.loc 1 268 15 is_stmt 0 view .LVU352
+	ldr	r4, [r3, #32]
+	.loc 1 268 19 view .LVU353
+	orr	r4, r4, #6684672
+	orr	r4, r4, #24576
+	str	r4, [r3, #32]
+	.loc 1 273 5 is_stmt 1 view .LVU354
+	.loc 1 273 8 is_stmt 0 view .LVU355
+	ldr	r4, [r1, #48]
+	.loc 1 273 18 view .LVU356
+	orr	r4, r4, #8
+	str	r4, [r1, #48]
+	.loc 1 274 5 is_stmt 1 view .LVU357
+	.loc 1 274 10 is_stmt 0 view .LVU358
+	ldr	r4, [r2]
+	.loc 1 274 18 view .LVU359
+	bic	r4, r4, #49152
+	str	r4, [r2]
+	.loc 1 275 5 is_stmt 1 view .LVU360
+	.loc 1 275 10 is_stmt 0 view .LVU361
+	ldr	r4, [r2]
+	.loc 1 275 18 view .LVU362
+	orr	r4, r4, #16384
+	str	r4, [r2]
+	.loc 1 276 5 is_stmt 1 view .LVU363
+	.loc 1 276 10 is_stmt 0 view .LVU364
+	ldr	r4, [r2, #4]
+	.loc 1 276 19 view .LVU365
+	bic	r4, r4, #128
+	str	r4, [r2, #4]
+	.loc 1 277 5 is_stmt 1 view .LVU366
+	.loc 1 277 10 is_stmt 0 view .LVU367
+	ldr	r4, [r2, #8]
+	.loc 1 277 20 view .LVU368
+	orr	r4, r4, #32768
+	str	r4, [r2, #8]
+	.loc 1 278 5 is_stmt 1 view .LVU369
+	.loc 1 278 10 is_stmt 0 view .LVU370
+	ldr	r4, [r2, #12]
+	.loc 1 278 18 view .LVU371
+	bic	r4, r4, #49152
+	str	r4, [r2, #12]
+	.loc 1 280 5 is_stmt 1 view .LVU372
+	ldr	r4, [r2, #20]
+	orr	r4, r4, #128
+	str	r4, [r2, #20]
+	.loc 1 280 17 view .LVU373
+	.loc 1 285 5 view .LVU374
+	.loc 1 285 8 is_stmt 0 view .LVU375
+	ldr	r2, [r1, #64]
+	.loc 1 287 15 view .LVU376
+	sub	r3, r3, #116736
+	movs	r4, #4
+	.loc 1 285 18 view .LVU377
+	orr	r2, r2, #32768
+	str	r2, [r1, #64]
+	.loc 1 287 5 is_stmt 1 view .LVU378
+	.loc 1 287 15 is_stmt 0 view .LVU379
+	strh	r4, [r3]	@ movhi
+	.loc 1 288 5 is_stmt 1 view .LVU380
+	.loc 1 288 9 is_stmt 0 view .LVU381
+	ldrh	r2, [r3]
+	.loc 1 293 1 view .LVU382
+	ldr	r4, [sp], #4
+	.cfi_restore 4
+	.cfi_def_cfa_offset 0
+	.loc 1 288 9 view .LVU383
+	uxth	r2, r2
+	.loc 1 288 15 view .LVU384
+	orr	r2, r2, #768
+	strh	r2, [r3]	@ movhi
+	.loc 1 289 5 is_stmt 1 view .LVU385
+	.loc 1 289 9 is_stmt 0 view .LVU386
+	ldrh	r2, [r3]
+	uxth	r2, r2
+	.loc 1 289 15 view .LVU387
+	orrs	r2, r2, r0
+	strh	r2, [r3]	@ movhi
+	.loc 1 291 5 is_stmt 1 view .LVU388
+	.loc 1 291 9 is_stmt 0 view .LVU389
+	ldrh	r2, [r3]
+	uxth	r2, r2
+	.loc 1 291 15 view .LVU390
+	orr	r2, r2, #64
+	strh	r2, [r3]	@ movhi
+	.loc 1 293 1 view .LVU391
+	bx	lr
+.L115:
+	.align	2
+.L114:
+	.word	1073887232
+	.word	1073873920
+	.word	1073875968
+	.cfi_endproc
+.LFE120:
+	.size	initSPI3_nRF24lO1, .-initSPI3_nRF24lO1
+	.align	1
+	.p2align 2,,3
+	.global	rxByteSPI3_nRF
+	.syntax unified
+	.thumb
+	.thumb_func
+	.type	rxByteSPI3_nRF, %function
+rxByteSPI3_nRF:
+.LFB121:
+	.loc 1 298 1 is_stmt 1 view -0
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	.loc 1 299 3 view .LVU393
+	.loc 1 301 3 view .LVU394
+	.loc 1 301 12 is_stmt 0 view .LVU395
+	ldr	r2, .L125
+	movs	r3, #0
+	strh	r3, [r2, #12]	@ movhi
+	.loc 1 310 3 is_stmt 1 view .LVU396
+.L117:
+	.loc 1 310 10 discriminator 1 view .LVU397
+	.loc 1 310 16 is_stmt 0 discriminator 1 view .LVU398
+	ldrh	r3, [r2, #8]
+	.loc 1 310 10 discriminator 1 view .LVU399
+	lsls	r0, r3, #30
+	bpl	.L117
+	.loc 1 311 16 view .LVU400
+	ldr	r2, .L125
+.L118:
+	.loc 1 311 10 is_stmt 1 discriminator 1 view .LVU401
+	.loc 1 311 16 is_stmt 0 discriminator 1 view .LVU402
+	ldrh	r3, [r2, #8]
+	.loc 1 311 10 discriminator 1 view .LVU403
+	lsls	r1, r3, #31
+	bpl	.L118
+	.loc 1 312 14 view .LVU404
+	ldr	r2, .L125
+.L119:
+	.loc 1 312 10 is_stmt 1 discriminator 1 view .LVU405
+	.loc 1 312 14 is_stmt 0 discriminator 1 view .LVU406
+	ldrh	r3, [r2, #8]
+	.loc 1 312 10 discriminator 1 view .LVU407
+	lsls	r3, r3, #24
+	bmi	.L119
+	.loc 1 313 3 is_stmt 1 view .LVU408
+	.loc 1 313 14 is_stmt 0 view .LVU409
+	ldrh	r0, [r2, #12]
+.LVL32:
+	.loc 1 315 3 is_stmt 1 view .LVU410
+	.loc 1 316 1 is_stmt 0 view .LVU411
+	uxtb	r0, r0
+	.loc 1 316 1 view .LVU412
+	bx	lr
+.L126:
+	.align	2
+.L125:
+	.word	1073757184
+	.cfi_endproc
+.LFE121:
+	.size	rxByteSPI3_nRF, .-rxByteSPI3_nRF
+	.align	1
+	.p2align 2,,3
+	.global	txByteSPI3_nRF
+	.syntax unified
+	.thumb
+	.thumb_func
+	.type	txByteSPI3_nRF, %function
+txByteSPI3_nRF:
+.LVL33:
+.LFB122:
+	.loc 1 320 1 is_stmt 1 view -0
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	.loc 1 321 3 view .LVU414
+	.loc 1 323 3 view .LVU415
+	.loc 1 323 12 is_stmt 0 view .LVU416
+	ldr	r2, .L136
+	strh	r0, [r2, #12]	@ movhi
+	.loc 1 325 3 is_stmt 1 view .LVU417
+.LVL34:
+.L128:
+	.loc 1 325 10 discriminator 1 view .LVU418
+	.loc 1 325 16 is_stmt 0 discriminator 1 view .LVU419
+	ldrh	r3, [r2, #8]
+	.loc 1 325 10 discriminator 1 view .LVU420
+	lsls	r0, r3, #30
+	bpl	.L128
+	.loc 1 326 16 view .LVU421
+	ldr	r2, .L136
+.L129:
+	.loc 1 326 10 is_stmt 1 discriminator 1 view .LVU422
+	.loc 1 326 16 is_stmt 0 discriminator 1 view .LVU423
+	ldrh	r3, [r2, #8]
+	.loc 1 326 10 discriminator 1 view .LVU424
+	lsls	r1, r3, #31
+	bpl	.L129
+	.loc 1 327 14 view .LVU425
+	ldr	r2, .L136
+.L130:
+	.loc 1 327 10 is_stmt 1 discriminator 1 view .LVU426
+	.loc 1 327 14 is_stmt 0 discriminator 1 view .LVU427
+	ldrh	r3, [r2, #8]
+	.loc 1 327 10 discriminator 1 view .LVU428
+	lsls	r3, r3, #24
+	bmi	.L130
+	.loc 1 328 3 is_stmt 1 view .LVU429
+	.loc 1 328 13 is_stmt 0 view .LVU430
+	ldrh	r0, [r2, #12]
+.LVL35:
+	.loc 1 330 3 is_stmt 1 view .LVU431
+	.loc 1 331 1 is_stmt 0 view .LVU432
+	uxtb	r0, r0
+	.loc 1 331 1 view .LVU433
+	bx	lr
+.L137:
+	.align	2
+.L136:
+	.word	1073757184
+	.cfi_endproc
+.LFE122:
+	.size	txByteSPI3_nRF, .-txByteSPI3_nRF
+	.align	1
+	.p2align 2,,3
+	.global	txSPI3_nRF
+	.syntax unified
+	.thumb
+	.thumb_func
+	.type	txSPI3_nRF, %function
+txSPI3_nRF:
+.LVL36:
+.LFB123:
+	.loc 1 335 1 is_stmt 1 view -0
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	.loc 1 336 3 view .LVU435
+	.loc 1 337 3 view .LVU436
+	.loc 1 337 12 view .LVU437
+	cbz	r1, .L138
+.LBB32:
+.LBB33:
+	.loc 1 323 12 is_stmt 0 view .LVU438
+	ldr	r3, .L153
+	add	r1, r1, r0
+.LVL37:
+.L143:
+	.loc 1 323 12 view .LVU439
+.LBE33:
+.LBE32:
+	.loc 1 339 5 is_stmt 1 discriminator 3 view .LVU440
+	ldrb	r2, [r0], #1	@ zero_extendqisi2
+.LVL38:
+.LBB36:
+.LBI32:
+	.loc 1 319 9 discriminator 3 view .LVU441
+.LBB34:
+	.loc 1 321 3 discriminator 3 view .LVU442
+	.loc 1 323 3 discriminator 3 view .LVU443
+	.loc 1 323 12 is_stmt 0 discriminator 3 view .LVU444
+	strh	r2, [r3, #12]	@ movhi
+	.loc 1 325 3 is_stmt 1 discriminator 3 view .LVU445
+.LVL39:
+.L140:
+	.loc 1 325 10 view .LVU446
+	.loc 1 325 16 is_stmt 0 view .LVU447
+	ldrh	r2, [r3, #8]
+	.loc 1 325 10 view .LVU448
+	lsls	r2, r2, #30
+	bpl	.L140
+.L141:
+	.loc 1 326 10 is_stmt 1 view .LVU449
+	.loc 1 326 16 is_stmt 0 view .LVU450
+	ldrh	r2, [r3, #8]
+	.loc 1 326 10 view .LVU451
+	lsls	r2, r2, #31
+	bpl	.L141
+.L142:
+	.loc 1 327 10 is_stmt 1 view .LVU452
+	.loc 1 327 14 is_stmt 0 view .LVU453
+	ldrh	r2, [r3, #8]
+	.loc 1 327 10 view .LVU454
+	lsls	r2, r2, #24
+	bmi	.L142
+	.loc 1 328 3 is_stmt 1 view .LVU455
+.LBE34:
+.LBE36:
+	.loc 1 337 12 is_stmt 0 view .LVU456
+	cmp	r0, r1
+.LBB37:
+.LBB35:
+	.loc 1 328 13 view .LVU457
+	ldrh	r2, [r3, #12]
+.LVL40:
+	.loc 1 330 3 is_stmt 1 view .LVU458
+	.loc 1 330 3 is_stmt 0 view .LVU459
+.LBE35:
+.LBE37:
+	.loc 1 337 19 is_stmt 1 view .LVU460
+	.loc 1 337 12 view .LVU461
+	bne	.L143
+.LVL41:
+.L138:
+	.loc 1 341 1 is_stmt 0 view .LVU462
+	bx	lr
+.L154:
+	.align	2
+.L153:
+	.word	1073757184
+	.cfi_endproc
+.LFE123:
+	.size	txSPI3_nRF, .-txSPI3_nRF
+	.align	1
+	.p2align 2,,3
+	.global	rxSPI3_nRF
+	.syntax unified
+	.thumb
+	.thumb_func
+	.type	rxSPI3_nRF, %function
+rxSPI3_nRF:
+.LVL42:
+.LFB124:
+	.loc 1 345 1 is_stmt 1 view -0
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	.loc 1 346 3 view .LVU464
+	.loc 1 347 3 view .LVU465
+	.loc 1 347 14 view .LVU466
+	cbz	r1, .L155
+.LBB40:
+.LBB41:
+	.loc 1 301 12 is_stmt 0 view .LVU467
+	ldr	r3, .L170
+	add	r1, r1, r0
+.LVL43:
+	.loc 1 301 12 view .LVU468
+	mov	ip, #0	@ movhi
+.LVL44:
+.L160:
+	.loc 1 301 12 view .LVU469
+.LBE41:
+.LBE40:
+	.loc 1 348 5 is_stmt 1 discriminator 3 view .LVU470
+.LBB43:
+.LBI40:
+	.loc 1 297 9 discriminator 3 view .LVU471
+.LBB42:
+	.loc 1 299 3 discriminator 3 view .LVU472
+	.loc 1 301 3 discriminator 3 view .LVU473
+	.loc 1 301 12 is_stmt 0 discriminator 3 view .LVU474
+	strh	ip, [r3, #12]	@ movhi
+	.loc 1 310 3 is_stmt 1 discriminator 3 view .LVU475
+.L157:
+	.loc 1 310 10 view .LVU476
+	.loc 1 310 16 is_stmt 0 view .LVU477
+	ldrh	r2, [r3, #8]
+	.loc 1 310 10 view .LVU478
+	lsls	r2, r2, #30
+	bpl	.L157
+.L158:
+	.loc 1 311 10 is_stmt 1 view .LVU479
+	.loc 1 311 16 is_stmt 0 view .LVU480
+	ldrh	r2, [r3, #8]
+	.loc 1 311 10 view .LVU481
+	lsls	r2, r2, #31
+	bpl	.L158
+.L159:
+	.loc 1 312 10 is_stmt 1 view .LVU482
+	.loc 1 312 14 is_stmt 0 view .LVU483
+	ldrh	r2, [r3, #8]
+	.loc 1 312 10 view .LVU484
+	lsls	r2, r2, #24
+	bmi	.L159
+	.loc 1 313 3 is_stmt 1 view .LVU485
+	.loc 1 313 14 is_stmt 0 view .LVU486
+	ldrh	r2, [r3, #12]
+.LVL45:
+	.loc 1 315 3 is_stmt 1 view .LVU487
+	.loc 1 313 8 is_stmt 0 view .LVU488
+	strb	r2, [r0], #1
+.LVL46:
+	.loc 1 313 8 view .LVU489
+.LBE42:
+.LBE43:
+	.loc 1 347 22 is_stmt 1 view .LVU490
+	.loc 1 347 14 view .LVU491
+	cmp	r0, r1
+	bne	.L160
+.LVL47:
+.L155:
+	.loc 1 350 1 is_stmt 0 view .LVU492
+	bx	lr
+.L171:
+	.align	2
+.L170:
+	.word	1073757184
+	.cfi_endproc
+.LFE124:
+	.size	rxSPI3_nRF, .-rxSPI3_nRF
 .Letext0:
 	.file 2 "/usr/lib/gcc/arm-none-eabi/12.2.1/include/stdint.h"
 	.file 3 "/home/eldar/workspace/msut/STM32F407/Libraries/CMSIS/ST/STM32F4xx/Include/stm32f4xx.h"
 	.file 4 "spi/../usart/usart.h"
 	.section	.debug_info,"",%progbits
 .Ldebug_info0:
-	.4byte	0x711
+	.4byte	0x8b6
 	.2byte	0x5
 	.byte	0x1
 	.byte	0x4
 	.4byte	.Ldebug_abbrev0
-	.uleb128 0x1b
-	.4byte	.LASF70
+	.uleb128 0x21
+	.4byte	.LASF75
 	.byte	0x1d
-	.4byte	.LASF71
-	.4byte	.LASF72
+	.4byte	.LASF76
+	.4byte	.LASF77
 	.4byte	.Ltext0
 	.4byte	.Letext0-.Ltext0
 	.4byte	.Ldebug_line0
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x1
 	.byte	0x6
 	.4byte	.LASF0
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x2
 	.byte	0x5
 	.4byte	.LASF1
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x4
 	.byte	0x5
 	.4byte	.LASF2
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x8
 	.byte	0x5
 	.4byte	.LASF3
-	.uleb128 0x9
+	.uleb128 0xc
 	.4byte	.LASF5
 	.byte	0x2e
 	.byte	0x18
 	.4byte	0x4d
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x1
 	.byte	0x8
 	.4byte	.LASF4
-	.uleb128 0x9
+	.uleb128 0xc
 	.4byte	.LASF6
 	.byte	0x31
 	.byte	0x19
 	.4byte	0x64
-	.uleb128 0xa
+	.uleb128 0xd
 	.4byte	0x54
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x2
 	.byte	0x7
 	.4byte	.LASF7
-	.uleb128 0x9
+	.uleb128 0xc
 	.4byte	.LASF8
 	.byte	0x34
 	.byte	0x19
 	.4byte	0x7b
-	.uleb128 0xa
+	.uleb128 0xd
 	.4byte	0x6b
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x4
 	.byte	0x7
 	.4byte	.LASF9
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x8
 	.byte	0x7
 	.4byte	.LASF10
-	.uleb128 0x1c
+	.uleb128 0x22
 	.byte	0x4
 	.byte	0x5
 	.ascii	"int\000"
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x4
 	.byte	0x7
 	.4byte	.LASF11
-	.uleb128 0xf
+	.uleb128 0x12
 	.4byte	0x6b
 	.4byte	0xa6
-	.uleb128 0x10
+	.uleb128 0x13
 	.4byte	0x90
 	.byte	0
-	.uleb128 0xb
+	.uleb128 0xe
 	.byte	0x28
 	.2byte	0x28e
 	.4byte	0x127
@@ -1040,12 +1510,12 @@ rxSPI2_nRF_carrier:
 	.2byte	0x293
 	.4byte	0x76
 	.byte	0xc
-	.uleb128 0x3
+	.uleb128 0x4
 	.ascii	"IDR\000"
 	.2byte	0x294
 	.4byte	0x76
 	.byte	0x10
-	.uleb128 0x3
+	.uleb128 0x4
 	.ascii	"ODR\000"
 	.2byte	0x295
 	.4byte	0x76
@@ -1065,29 +1535,29 @@ rxSPI2_nRF_carrier:
 	.2byte	0x298
 	.4byte	0x76
 	.byte	0x1c
-	.uleb128 0x3
+	.uleb128 0x4
 	.ascii	"AFR\000"
 	.2byte	0x299
 	.4byte	0x136
 	.byte	0x20
 	.byte	0
-	.uleb128 0xf
+	.uleb128 0x12
 	.4byte	0x76
 	.4byte	0x136
-	.uleb128 0x10
+	.uleb128 0x13
 	.4byte	0x90
 	.byte	0
-	.uleb128 0xa
+	.uleb128 0xd
 	.4byte	0x127
-	.uleb128 0xc
+	.uleb128 0xf
 	.4byte	.LASF19
 	.2byte	0x29a
 	.4byte	0xa6
-	.uleb128 0xb
+	.uleb128 0xe
 	.byte	0x88
 	.2byte	0x2dd
 	.4byte	0x2b6
-	.uleb128 0x3
+	.uleb128 0x4
 	.ascii	"CR\000"
 	.2byte	0x2df
 	.4byte	0x76
@@ -1102,7 +1572,7 @@ rxSPI2_nRF_carrier:
 	.2byte	0x2e1
 	.4byte	0x76
 	.byte	0x8
-	.uleb128 0x3
+	.uleb128 0x4
 	.ascii	"CIR\000"
 	.2byte	0x2e2
 	.4byte	0x76
@@ -1217,7 +1687,7 @@ rxSPI2_nRF_carrier:
 	.2byte	0x2f8
 	.4byte	0x76
 	.byte	0x70
-	.uleb128 0x3
+	.uleb128 0x4
 	.ascii	"CSR\000"
 	.2byte	0x2f9
 	.4byte	0x76
@@ -1238,15 +1708,15 @@ rxSPI2_nRF_carrier:
 	.4byte	0x76
 	.byte	0x84
 	.byte	0
-	.uleb128 0xc
+	.uleb128 0xf
 	.4byte	.LASF47
 	.2byte	0x2fd
 	.4byte	0x146
-	.uleb128 0xb
+	.uleb128 0xe
 	.byte	0x24
 	.2byte	0x34f
 	.4byte	0x3a0
-	.uleb128 0x3
+	.uleb128 0x4
 	.ascii	"CR1\000"
 	.2byte	0x351
 	.4byte	0x5f
@@ -1256,7 +1726,7 @@ rxSPI2_nRF_carrier:
 	.2byte	0x352
 	.4byte	0x54
 	.byte	0x2
-	.uleb128 0x3
+	.uleb128 0x4
 	.ascii	"CR2\000"
 	.2byte	0x353
 	.4byte	0x5f
@@ -1266,7 +1736,7 @@ rxSPI2_nRF_carrier:
 	.2byte	0x354
 	.4byte	0x54
 	.byte	0x6
-	.uleb128 0x3
+	.uleb128 0x4
 	.ascii	"SR\000"
 	.2byte	0x355
 	.4byte	0x5f
@@ -1276,7 +1746,7 @@ rxSPI2_nRF_carrier:
 	.2byte	0x356
 	.4byte	0x54
 	.byte	0xa
-	.uleb128 0x3
+	.uleb128 0x4
 	.ascii	"DR\000"
 	.2byte	0x357
 	.4byte	0x5f
@@ -1337,153 +1807,289 @@ rxSPI2_nRF_carrier:
 	.4byte	0x54
 	.byte	0x22
 	.byte	0
-	.uleb128 0xc
+	.uleb128 0xf
 	.4byte	.LASF55
 	.2byte	0x363
 	.4byte	0x2c1
-	.uleb128 0x1d
-	.4byte	.LASF73
+	.uleb128 0x23
+	.4byte	.LASF78
 	.byte	0x4
 	.byte	0x10
 	.byte	0x6
 	.4byte	0x3be
-	.uleb128 0x1e
+	.uleb128 0x24
 	.4byte	0x3be
-	.uleb128 0x1f
+	.uleb128 0x25
 	.byte	0
-	.uleb128 0x11
+	.uleb128 0x14
 	.4byte	0x3c3
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x1
 	.byte	0x8
 	.4byte	.LASF56
-	.uleb128 0x6
+	.uleb128 0x15
 	.4byte	.LASF59
+	.2byte	0x158
+	.4byte	.LFB124
+	.4byte	.LFE124-.LFB124
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x43e
+	.uleb128 0x8
+	.4byte	.LASF57
+	.2byte	0x158
+	.byte	0x1b
+	.4byte	0x43e
+	.4byte	.LLST30
+	.4byte	.LVUS30
+	.uleb128 0x8
+	.4byte	.LASF58
+	.2byte	0x158
+	.byte	0x2a
+	.4byte	0x54
+	.4byte	.LLST31
+	.4byte	.LVUS31
+	.uleb128 0x16
+	.ascii	"k\000"
+	.2byte	0x15a
+	.4byte	0x54
+	.4byte	.LLST32
+	.4byte	.LVUS32
+	.uleb128 0x17
+	.4byte	0x4e6
+	.4byte	.LBI40
+	.byte	.LVU471
+	.4byte	.LLRL33
+	.2byte	0x15c
+	.byte	0xf
+	.uleb128 0x9
+	.4byte	.LLRL33
+	.uleb128 0x2
+	.4byte	0x4f5
+	.4byte	.LLST34
+	.4byte	.LVUS34
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x14
+	.4byte	0x42
+	.uleb128 0x15
+	.4byte	.LASF60
+	.2byte	0x14e
+	.4byte	.LFB123
+	.4byte	.LFE123-.LFB123
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x4bc
+	.uleb128 0x8
+	.4byte	.LASF57
+	.2byte	0x14e
+	.byte	0x1b
+	.4byte	0x43e
+	.4byte	.LLST25
+	.4byte	.LVUS25
+	.uleb128 0x8
+	.4byte	.LASF58
+	.2byte	0x14e
+	.byte	0x2a
+	.4byte	0x54
+	.4byte	.LLST26
+	.4byte	.LVUS26
+	.uleb128 0x16
+	.ascii	"k\000"
+	.2byte	0x150
+	.4byte	0x54
+	.4byte	.LLST27
+	.4byte	.LVUS27
+	.uleb128 0x17
+	.4byte	0x4bc
+	.4byte	.LBI32
+	.byte	.LVU441
+	.4byte	.LLRL28
+	.2byte	0x153
+	.byte	0x5
+	.uleb128 0x5
+	.4byte	0x4cb
+	.4byte	.LLST29
+	.4byte	.LVUS29
+	.uleb128 0x9
+	.4byte	.LLRL28
+	.uleb128 0x18
+	.4byte	0x4d8
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x19
+	.4byte	.LASF61
+	.2byte	0x13f
+	.4byte	0x42
+	.4byte	0x4e6
+	.uleb128 0x26
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x13f
+	.byte	0x20
+	.4byte	0x42
+	.uleb128 0x27
+	.ascii	"tmp\000"
+	.byte	0x1
+	.2byte	0x141
+	.byte	0xb
+	.4byte	0x42
+	.byte	0
+	.uleb128 0x19
+	.4byte	.LASF62
+	.2byte	0x129
+	.4byte	0x42
+	.4byte	0x503
+	.uleb128 0x28
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x12b
+	.byte	0xb
+	.4byte	0x42
+	.byte	0
+	.uleb128 0x6
+	.4byte	.LASF63
+	.byte	0xf1
+	.4byte	.LFB120
+	.4byte	.LFE120-.LFB120
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x525
+	.uleb128 0x10
+	.4byte	.LASF69
+	.byte	0xf1
+	.byte	0x21
+	.4byte	0x54
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0
+	.uleb128 0x6
+	.4byte	.LASF64
 	.byte	0xde
 	.4byte	.LFB119
 	.4byte	.LFE119-.LFB119
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x439
-	.uleb128 0x7
+	.4byte	0x594
+	.uleb128 0xa
 	.4byte	.LASF57
 	.byte	0xde
 	.byte	0x23
-	.4byte	0x439
+	.4byte	0x43e
 	.4byte	.LLST17
 	.4byte	.LVUS17
-	.uleb128 0x7
+	.uleb128 0xa
 	.4byte	.LASF58
 	.byte	0xde
 	.byte	0x32
 	.4byte	0x54
 	.4byte	.LLST18
 	.4byte	.LVUS18
-	.uleb128 0x12
+	.uleb128 0x1a
 	.ascii	"k\000"
 	.byte	0xe0
 	.4byte	0x54
 	.4byte	.LLST19
 	.4byte	.LVUS19
-	.uleb128 0x13
-	.4byte	0x4d6
+	.uleb128 0x1b
+	.4byte	0x62c
 	.4byte	.LBI26
 	.byte	.LVU303
 	.4byte	.LLRL20
 	.byte	0xe2
 	.byte	0xf
-	.uleb128 0x14
+	.uleb128 0x9
 	.4byte	.LLRL20
-	.uleb128 0x4
-	.4byte	0x4e4
+	.uleb128 0x2
+	.4byte	0x63a
 	.4byte	.LLST21
 	.4byte	.LVUS21
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x11
-	.4byte	0x42
 	.uleb128 0x6
-	.4byte	.LASF60
+	.4byte	.LASF65
 	.byte	0xd4
 	.4byte	.LFB118
 	.4byte	.LFE118-.LFB118
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x4b2
-	.uleb128 0x7
+	.4byte	0x608
+	.uleb128 0xa
 	.4byte	.LASF57
 	.byte	0xd4
 	.byte	0x23
-	.4byte	0x439
+	.4byte	0x43e
 	.4byte	.LLST12
 	.4byte	.LVUS12
-	.uleb128 0x7
+	.uleb128 0xa
 	.4byte	.LASF58
 	.byte	0xd4
 	.byte	0x32
 	.4byte	0x54
 	.4byte	.LLST13
 	.4byte	.LVUS13
-	.uleb128 0x12
+	.uleb128 0x1a
 	.ascii	"k\000"
 	.byte	0xd6
 	.4byte	0x54
 	.4byte	.LLST14
 	.4byte	.LVUS14
-	.uleb128 0x13
-	.4byte	0x4b2
+	.uleb128 0x1b
+	.4byte	0x608
 	.4byte	.LBI18
 	.byte	.LVU273
 	.4byte	.LLRL15
 	.byte	0xd9
 	.byte	0x5
 	.uleb128 0x5
-	.4byte	0x4c0
+	.4byte	0x616
 	.4byte	.LLST16
 	.4byte	.LVUS16
-	.uleb128 0x14
+	.uleb128 0x9
 	.4byte	.LLRL15
-	.uleb128 0x20
-	.4byte	0x4cb
+	.uleb128 0x18
+	.4byte	0x621
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x8
-	.4byte	.LASF61
+	.uleb128 0xb
+	.4byte	.LASF66
 	.byte	0xc5
 	.4byte	0x42
-	.4byte	0x4d6
-	.uleb128 0x15
+	.4byte	0x62c
+	.uleb128 0x1c
 	.4byte	.LASF57
 	.byte	0xc5
 	.byte	0x28
 	.4byte	0x42
-	.uleb128 0x16
+	.uleb128 0x1d
 	.ascii	"tmp\000"
 	.byte	0xc7
 	.4byte	0x42
 	.byte	0
-	.uleb128 0x8
-	.4byte	.LASF62
+	.uleb128 0xb
+	.4byte	.LASF67
 	.byte	0xaf
 	.4byte	0x42
-	.4byte	0x4f0
-	.uleb128 0xd
+	.4byte	0x646
+	.uleb128 0x11
 	.4byte	.LASF57
 	.byte	0xb1
 	.byte	0xb
 	.4byte	0x42
 	.byte	0
 	.uleb128 0x6
-	.4byte	.LASF63
+	.4byte	.LASF68
 	.byte	0x7c
 	.4byte	.LFB115
 	.4byte	.LFE115-.LFB115
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x512
-	.uleb128 0x17
+	.4byte	0x668
+	.uleb128 0x10
 	.4byte	.LASF69
 	.byte	0x7c
 	.byte	0x29
@@ -1491,8 +2097,8 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x1
 	.byte	0x50
 	.byte	0
-	.uleb128 0x21
-	.4byte	.LASF74
+	.uleb128 0x29
+	.4byte	.LASF79
 	.byte	0x1
 	.byte	0x68
 	.byte	0x6
@@ -1500,9 +2106,9 @@ rxSPI2_nRF_carrier:
 	.4byte	.LFE114-.LFB114
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x5ad
-	.uleb128 0x22
-	.4byte	0x5ad
+	.4byte	0x703
+	.uleb128 0x2a
+	.4byte	0x703
 	.4byte	.LBI12
 	.byte	.LVU132
 	.4byte	.LBB12
@@ -1510,45 +2116,45 @@ rxSPI2_nRF_carrier:
 	.byte	0x1
 	.byte	0x6a
 	.byte	0x6
-	.4byte	0x582
-	.uleb128 0x18
-	.4byte	0x5bb
-	.uleb128 0x4
-	.4byte	0x5c6
+	.4byte	0x6d8
+	.uleb128 0x1e
+	.4byte	0x711
+	.uleb128 0x2
+	.4byte	0x71c
 	.4byte	.LLST6
 	.4byte	.LVUS6
-	.uleb128 0x19
-	.4byte	0x5d2
+	.uleb128 0x1f
+	.4byte	0x728
 	.4byte	.LBI14
 	.byte	.LVU136
 	.4byte	.LBB14
 	.4byte	.LBE14-.LBB14
 	.byte	0x5b
 	.uleb128 0x5
-	.4byte	0x5e0
+	.4byte	0x736
 	.4byte	.LLST7
 	.4byte	.LVUS7
-	.uleb128 0x4
-	.4byte	0x5eb
+	.uleb128 0x2
+	.4byte	0x741
 	.4byte	.LLST8
 	.4byte	.LVUS8
 	.byte	0
 	.byte	0
-	.uleb128 0x23
+	.uleb128 0x2b
 	.4byte	.LVL12
 	.4byte	0x3ab
-	.4byte	0x599
-	.uleb128 0x1a
+	.4byte	0x6ef
+	.uleb128 0x20
 	.uleb128 0x1
 	.byte	0x50
 	.uleb128 0x5
 	.byte	0x3
 	.4byte	.LC1
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x2c
 	.4byte	.LVL13
 	.4byte	0x3ab
-	.uleb128 0x1a
+	.uleb128 0x20
 	.uleb128 0x1
 	.byte	0x50
 	.uleb128 0x5
@@ -1556,39 +2162,39 @@ rxSPI2_nRF_carrier:
 	.4byte	.LC0
 	.byte	0
 	.byte	0
-	.uleb128 0x8
-	.4byte	.LASF64
+	.uleb128 0xb
+	.4byte	.LASF70
 	.byte	0x56
 	.4byte	0x42
-	.4byte	0x5d2
-	.uleb128 0xd
-	.4byte	.LASF65
+	.4byte	0x728
+	.uleb128 0x11
+	.4byte	.LASF71
 	.byte	0x58
 	.byte	0xd
 	.4byte	0x42
-	.uleb128 0xd
-	.4byte	.LASF66
+	.uleb128 0x11
+	.4byte	.LASF72
 	.byte	0x59
 	.byte	0xd
 	.4byte	0x42
 	.byte	0
-	.uleb128 0x8
-	.4byte	.LASF67
+	.uleb128 0xb
+	.4byte	.LASF73
 	.byte	0x46
 	.4byte	0x42
-	.4byte	0x5f6
-	.uleb128 0x15
+	.4byte	0x74c
+	.uleb128 0x1c
 	.4byte	.LASF57
 	.byte	0x46
 	.byte	0x1c
 	.4byte	0x42
-	.uleb128 0x16
+	.uleb128 0x1d
 	.ascii	"tmp\000"
 	.byte	0x48
 	.4byte	0x42
 	.byte	0
-	.uleb128 0x25
-	.4byte	.LASF75
+	.uleb128 0x2d
+	.4byte	.LASF80
 	.byte	0x1
 	.byte	0x30
 	.byte	0x9
@@ -1597,8 +2203,8 @@ rxSPI2_nRF_carrier:
 	.4byte	.LFE111-.LFB111
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x625
-	.uleb128 0x26
+	.4byte	0x77b
+	.uleb128 0x2e
 	.4byte	.LASF57
 	.byte	0x1
 	.byte	0x32
@@ -1608,14 +2214,14 @@ rxSPI2_nRF_carrier:
 	.4byte	.LVUS0
 	.byte	0
 	.uleb128 0x6
-	.4byte	.LASF68
+	.4byte	.LASF74
 	.byte	0x7
 	.4byte	.LFB110
 	.4byte	.LFE110-.LFB110
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x647
-	.uleb128 0x17
+	.4byte	0x79d
+	.uleb128 0x10
 	.4byte	.LASF69
 	.byte	0x7
 	.byte	0x26
@@ -1623,78 +2229,106 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x1
 	.byte	0x50
 	.byte	0
-	.uleb128 0xe
-	.4byte	0x5d2
+	.uleb128 0x7
+	.4byte	0x728
 	.4byte	.LFB112
 	.4byte	.LFE112-.LFB112
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x675
+	.4byte	0x7cb
 	.uleb128 0x5
-	.4byte	0x5e0
+	.4byte	0x736
 	.4byte	.LLST1
 	.4byte	.LVUS1
-	.uleb128 0x4
-	.4byte	0x5eb
+	.uleb128 0x2
+	.4byte	0x741
 	.4byte	.LLST2
 	.4byte	.LVUS2
 	.byte	0
-	.uleb128 0xe
-	.4byte	0x5ad
+	.uleb128 0x7
+	.4byte	0x703
 	.4byte	.LFB113
 	.4byte	.LFE113-.LFB113
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x6c9
-	.uleb128 0x18
-	.4byte	0x5bb
-	.uleb128 0x4
-	.4byte	0x5c6
+	.4byte	0x81f
+	.uleb128 0x1e
+	.4byte	0x711
+	.uleb128 0x2
+	.4byte	0x71c
 	.4byte	.LLST3
 	.4byte	.LVUS3
-	.uleb128 0x19
-	.4byte	0x5d2
+	.uleb128 0x1f
+	.4byte	0x728
 	.4byte	.LBI6
 	.byte	.LVU105
 	.4byte	.LBB6
 	.4byte	.LBE6-.LBB6
 	.byte	0x5b
 	.uleb128 0x5
-	.4byte	0x5e0
+	.4byte	0x736
 	.4byte	.LLST4
 	.4byte	.LVUS4
-	.uleb128 0x4
-	.4byte	0x5eb
+	.uleb128 0x2
+	.4byte	0x741
 	.4byte	.LLST5
 	.4byte	.LVUS5
 	.byte	0
 	.byte	0
-	.uleb128 0xe
-	.4byte	0x4d6
+	.uleb128 0x7
+	.4byte	0x62c
 	.4byte	.LFB116
 	.4byte	.LFE116-.LFB116
 	.uleb128 0x1
 	.byte	0x9c
-	.4byte	0x6ea
-	.uleb128 0x4
-	.4byte	0x4e4
+	.4byte	0x840
+	.uleb128 0x2
+	.4byte	0x63a
 	.4byte	.LLST9
 	.4byte	.LVUS9
 	.byte	0
-	.uleb128 0x27
-	.4byte	0x4b2
+	.uleb128 0x7
+	.4byte	0x608
 	.4byte	.LFB117
 	.4byte	.LFE117-.LFB117
 	.uleb128 0x1
 	.byte	0x9c
+	.4byte	0x86e
 	.uleb128 0x5
-	.4byte	0x4c0
+	.4byte	0x616
 	.4byte	.LLST10
 	.4byte	.LVUS10
-	.uleb128 0x4
-	.4byte	0x4cb
+	.uleb128 0x2
+	.4byte	0x621
 	.4byte	.LLST11
 	.4byte	.LVUS11
+	.byte	0
+	.uleb128 0x7
+	.4byte	0x4e6
+	.4byte	.LFB121
+	.4byte	.LFE121-.LFB121
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x88f
+	.uleb128 0x2
+	.4byte	0x4f5
+	.4byte	.LLST22
+	.4byte	.LVUS22
+	.byte	0
+	.uleb128 0x2f
+	.4byte	0x4bc
+	.4byte	.LFB122
+	.4byte	.LFE122-.LFB122
+	.uleb128 0x1
+	.byte	0x9c
+	.uleb128 0x5
+	.4byte	0x4cb
+	.4byte	.LLST23
+	.4byte	.LVUS23
+	.uleb128 0x2
+	.4byte	0x4d8
+	.4byte	.LLST24
+	.4byte	.LVUS24
 	.byte	0
 	.byte	0
 	.section	.debug_abbrev,"",%progbits
@@ -1719,6 +2353,17 @@ rxSPI2_nRF_carrier:
 	.byte	0
 	.byte	0
 	.uleb128 0x2
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x17
+	.uleb128 0x2137
+	.uleb128 0x17
+	.byte	0
+	.byte	0
+	.uleb128 0x3
 	.uleb128 0x24
 	.byte	0
 	.uleb128 0xb
@@ -1729,7 +2374,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0xe
 	.byte	0
 	.byte	0
-	.uleb128 0x3
+	.uleb128 0x4
 	.uleb128 0xd
 	.byte	0
 	.uleb128 0x3
@@ -1746,17 +2391,6 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.uleb128 0x38
 	.uleb128 0xb
-	.byte	0
-	.byte	0
-	.uleb128 0x4
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x17
-	.uleb128 0x2137
-	.uleb128 0x17
 	.byte	0
 	.byte	0
 	.uleb128 0x5
@@ -1800,6 +2434,50 @@ rxSPI2_nRF_carrier:
 	.byte	0
 	.byte	0
 	.uleb128 0x7
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x6
+	.uleb128 0x40
+	.uleb128 0x18
+	.uleb128 0x7a
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x8
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 1
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x17
+	.uleb128 0x2137
+	.uleb128 0x17
+	.byte	0
+	.byte	0
+	.uleb128 0x9
+	.uleb128 0xb
+	.byte	0x1
+	.uleb128 0x55
+	.uleb128 0x17
+	.byte	0
+	.byte	0
+	.uleb128 0xa
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -1819,7 +2497,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x17
 	.byte	0
 	.byte	0
-	.uleb128 0x8
+	.uleb128 0xb
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -1845,7 +2523,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x9
+	.uleb128 0xc
 	.uleb128 0x16
 	.byte	0
 	.uleb128 0x3
@@ -1861,14 +2539,14 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xa
+	.uleb128 0xd
 	.uleb128 0x35
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xb
+	.uleb128 0xe
 	.uleb128 0x13
 	.byte	0x1
 	.uleb128 0xb
@@ -1885,7 +2563,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xc
+	.uleb128 0xf
 	.uleb128 0x16
 	.byte	0
 	.uleb128 0x3
@@ -1902,7 +2580,25 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xd
+	.uleb128 0x10
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 1
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0x11
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -1918,11 +2614,52 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xe
+	.uleb128 0x12
+	.uleb128 0x1
+	.byte	0x1
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x13
+	.uleb128 0x21
+	.byte	0
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2f
+	.uleb128 0x21
+	.sleb128 1
+	.byte	0
+	.byte	0
+	.uleb128 0x14
+	.uleb128 0xf
+	.byte	0
+	.uleb128 0xb
+	.uleb128 0x21
+	.sleb128 4
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x15
 	.uleb128 0x2e
 	.byte	0x1
-	.uleb128 0x31
-	.uleb128 0x13
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 1
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x39
+	.uleb128 0x21
+	.sleb128 6
+	.uleb128 0x27
+	.uleb128 0x19
 	.uleb128 0x11
 	.uleb128 0x1
 	.uleb128 0x12
@@ -1935,36 +2672,81 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xf
-	.uleb128 0x1
-	.byte	0x1
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x1
-	.uleb128 0x13
+	.uleb128 0x16
+	.uleb128 0x34
 	.byte	0
-	.byte	0
-	.uleb128 0x10
-	.uleb128 0x21
-	.byte	0
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2f
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
 	.uleb128 0x21
 	.sleb128 1
-	.byte	0
-	.byte	0
-	.uleb128 0x11
-	.uleb128 0xf
-	.byte	0
-	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x39
 	.uleb128 0x21
-	.sleb128 4
+	.sleb128 12
 	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x17
+	.uleb128 0x2137
+	.uleb128 0x17
+	.byte	0
+	.byte	0
+	.uleb128 0x17
+	.uleb128 0x1d
+	.byte	0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x52
+	.uleb128 0x1
+	.uleb128 0x2138
+	.uleb128 0xb
+	.uleb128 0x55
+	.uleb128 0x17
+	.uleb128 0x58
+	.uleb128 0x21
+	.sleb128 1
+	.uleb128 0x59
+	.uleb128 0x5
+	.uleb128 0x57
+	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0x18
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x31
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x12
+	.uleb128 0x19
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 1
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x39
+	.uleb128 0x21
+	.sleb128 9
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x20
+	.uleb128 0x21
+	.sleb128 1
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x1a
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -1985,7 +2767,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x17
 	.byte	0
 	.byte	0
-	.uleb128 0x13
+	.uleb128 0x1b
 	.uleb128 0x1d
 	.byte	0x1
 	.uleb128 0x31
@@ -2005,14 +2787,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0x14
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x55
-	.uleb128 0x17
-	.byte	0
-	.byte	0
-	.uleb128 0x15
+	.uleb128 0x1c
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -2028,7 +2803,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x16
+	.uleb128 0x1d
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -2045,25 +2820,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x17
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0x21
-	.sleb128 1
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x18
-	.byte	0
-	.byte	0
-	.uleb128 0x18
+	.uleb128 0x1e
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x31
@@ -2073,7 +2830,7 @@ rxSPI2_nRF_carrier:
 	.sleb128 -91
 	.byte	0
 	.byte	0
-	.uleb128 0x19
+	.uleb128 0x1f
 	.uleb128 0x1d
 	.byte	0x1
 	.uleb128 0x31
@@ -2096,7 +2853,7 @@ rxSPI2_nRF_carrier:
 	.sleb128 20
 	.byte	0
 	.byte	0
-	.uleb128 0x1a
+	.uleb128 0x20
 	.uleb128 0x49
 	.byte	0
 	.uleb128 0x2
@@ -2105,7 +2862,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x18
 	.byte	0
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x21
 	.uleb128 0x11
 	.byte	0x1
 	.uleb128 0x25
@@ -2124,7 +2881,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x17
 	.byte	0
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x22
 	.uleb128 0x24
 	.byte	0
 	.uleb128 0xb
@@ -2135,7 +2892,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x8
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
+	.uleb128 0x23
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -2156,26 +2913,64 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x1e
+	.uleb128 0x24
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x1f
+	.uleb128 0x25
 	.uleb128 0x18
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x20
-	.uleb128 0x34
+	.uleb128 0x26
+	.uleb128 0x5
 	.byte	0
-	.uleb128 0x31
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x21
+	.uleb128 0x27
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x28
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x29
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -2200,7 +2995,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x22
+	.uleb128 0x2a
 	.uleb128 0x1d
 	.byte	0x1
 	.uleb128 0x31
@@ -2223,7 +3018,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x23
+	.uleb128 0x2b
 	.uleb128 0x48
 	.byte	0x1
 	.uleb128 0x7d
@@ -2236,7 +3031,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x2c
 	.uleb128 0x48
 	.byte	0x1
 	.uleb128 0x7d
@@ -2247,7 +3042,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x25
+	.uleb128 0x2d
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -2276,7 +3071,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x26
+	.uleb128 0x2e
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -2295,7 +3090,7 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x17
 	.byte	0
 	.byte	0
-	.uleb128 0x27
+	.uleb128 0x2f
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x31
@@ -2319,6 +3114,180 @@ rxSPI2_nRF_carrier:
 	.byte	0
 	.4byte	0
 .Ldebug_loc0:
+.LVUS30:
+	.uleb128 0
+	.uleb128 .LVU469
+	.uleb128 .LVU469
+	.uleb128 0
+.LLST30:
+	.byte	0x4
+	.uleb128 .LVL42-.Ltext0
+	.uleb128 .LVL44-.Ltext0
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0x4
+	.uleb128 .LVL44-.Ltext0
+	.uleb128 .LFE124-.Ltext0
+	.uleb128 0x4
+	.byte	0xa3
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0x9f
+	.byte	0
+.LVUS31:
+	.uleb128 0
+	.uleb128 .LVU468
+	.uleb128 .LVU468
+	.uleb128 0
+.LLST31:
+	.byte	0x4
+	.uleb128 .LVL42-.Ltext0
+	.uleb128 .LVL43-.Ltext0
+	.uleb128 0x1
+	.byte	0x51
+	.byte	0x4
+	.uleb128 .LVL43-.Ltext0
+	.uleb128 .LFE124-.Ltext0
+	.uleb128 0x4
+	.byte	0xa3
+	.uleb128 0x1
+	.byte	0x51
+	.byte	0x9f
+	.byte	0
+.LVUS32:
+	.uleb128 .LVU466
+	.uleb128 .LVU469
+	.uleb128 .LVU469
+	.uleb128 .LVU489
+	.uleb128 .LVU491
+	.uleb128 .LVU492
+.LLST32:
+	.byte	0x4
+	.uleb128 .LVL42-.Ltext0
+	.uleb128 .LVL44-.Ltext0
+	.uleb128 0x2
+	.byte	0x30
+	.byte	0x9f
+	.byte	0x4
+	.uleb128 .LVL44-.Ltext0
+	.uleb128 .LVL46-.Ltext0
+	.uleb128 0x7
+	.byte	0x70
+	.sleb128 0
+	.byte	0xa3
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0x1c
+	.byte	0x9f
+	.byte	0x4
+	.uleb128 .LVL46-.Ltext0
+	.uleb128 .LVL47-.Ltext0
+	.uleb128 0x7
+	.byte	0x70
+	.sleb128 0
+	.byte	0xa3
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0x1c
+	.byte	0x9f
+	.byte	0
+.LVUS34:
+	.uleb128 .LVU487
+	.uleb128 .LVU488
+.LLST34:
+	.byte	0x4
+	.uleb128 .LVL45-.Ltext0
+	.uleb128 .LVL45-.Ltext0
+	.uleb128 0x1
+	.byte	0x52
+	.byte	0
+.LVUS25:
+	.uleb128 0
+	.uleb128 .LVU439
+	.uleb128 .LVU439
+	.uleb128 0
+.LLST25:
+	.byte	0x4
+	.uleb128 .LVL36-.Ltext0
+	.uleb128 .LVL37-.Ltext0
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0x4
+	.uleb128 .LVL37-.Ltext0
+	.uleb128 .LFE123-.Ltext0
+	.uleb128 0x4
+	.byte	0xa3
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0x9f
+	.byte	0
+.LVUS26:
+	.uleb128 0
+	.uleb128 .LVU439
+	.uleb128 .LVU439
+	.uleb128 0
+.LLST26:
+	.byte	0x4
+	.uleb128 .LVL36-.Ltext0
+	.uleb128 .LVL37-.Ltext0
+	.uleb128 0x1
+	.byte	0x51
+	.byte	0x4
+	.uleb128 .LVL37-.Ltext0
+	.uleb128 .LFE123-.Ltext0
+	.uleb128 0x4
+	.byte	0xa3
+	.uleb128 0x1
+	.byte	0x51
+	.byte	0x9f
+	.byte	0
+.LVUS27:
+	.uleb128 .LVU437
+	.uleb128 .LVU439
+	.uleb128 .LVU439
+	.uleb128 .LVU441
+	.uleb128 .LVU461
+	.uleb128 .LVU462
+.LLST27:
+	.byte	0x4
+	.uleb128 .LVL36-.Ltext0
+	.uleb128 .LVL37-.Ltext0
+	.uleb128 0x2
+	.byte	0x30
+	.byte	0x9f
+	.byte	0x4
+	.uleb128 .LVL37-.Ltext0
+	.uleb128 .LVL38-.Ltext0
+	.uleb128 0x7
+	.byte	0x70
+	.sleb128 0
+	.byte	0xa3
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0x1c
+	.byte	0x9f
+	.byte	0x4
+	.uleb128 .LVL40-.Ltext0
+	.uleb128 .LVL41-.Ltext0
+	.uleb128 0x7
+	.byte	0x70
+	.sleb128 0
+	.byte	0xa3
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0x1c
+	.byte	0x9f
+	.byte	0
+.LVUS29:
+	.uleb128 .LVU441
+	.uleb128 .LVU446
+.LLST29:
+	.byte	0x4
+	.uleb128 .LVL38-.Ltext0
+	.uleb128 .LVL39-.Ltext0
+	.uleb128 0x1
+	.byte	0x52
+	.byte	0
 .LVUS17:
 	.uleb128 0
 	.uleb128 .LVU301
@@ -2646,6 +3615,46 @@ rxSPI2_nRF_carrier:
 	.uleb128 0x1
 	.byte	0x50
 	.byte	0
+.LVUS22:
+	.uleb128 .LVU410
+	.uleb128 0
+.LLST22:
+	.byte	0x4
+	.uleb128 .LVL32-.Ltext0
+	.uleb128 .LFE121-.Ltext0
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0
+.LVUS23:
+	.uleb128 0
+	.uleb128 .LVU418
+	.uleb128 .LVU418
+	.uleb128 0
+.LLST23:
+	.byte	0x4
+	.uleb128 .LVL33-.Ltext0
+	.uleb128 .LVL34-.Ltext0
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0x4
+	.uleb128 .LVL34-.Ltext0
+	.uleb128 .LFE122-.Ltext0
+	.uleb128 0x4
+	.byte	0xa3
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0x9f
+	.byte	0
+.LVUS24:
+	.uleb128 .LVU431
+	.uleb128 0
+.LLST24:
+	.byte	0x4
+	.uleb128 .LVL35-.Ltext0
+	.uleb128 .LFE122-.Ltext0
+	.uleb128 0x1
+	.byte	0x50
+	.byte	0
 .Ldebug_loc3:
 	.section	.debug_aranges,"",%progbits
 	.4byte	0x1c
@@ -2686,27 +3695,45 @@ rxSPI2_nRF_carrier:
 	.uleb128 .LBB29-.Ltext0
 	.uleb128 .LBE29-.Ltext0
 	.byte	0
+.LLRL28:
+	.byte	0x4
+	.uleb128 .LBB32-.Ltext0
+	.uleb128 .LBE32-.Ltext0
+	.byte	0x4
+	.uleb128 .LBB36-.Ltext0
+	.uleb128 .LBE36-.Ltext0
+	.byte	0x4
+	.uleb128 .LBB37-.Ltext0
+	.uleb128 .LBE37-.Ltext0
+	.byte	0
+.LLRL33:
+	.byte	0x4
+	.uleb128 .LBB40-.Ltext0
+	.uleb128 .LBE40-.Ltext0
+	.byte	0x4
+	.uleb128 .LBB43-.Ltext0
+	.uleb128 .LBE43-.Ltext0
+	.byte	0
 .Ldebug_ranges3:
 	.section	.debug_line,"",%progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",%progbits,1
 .LASF36:
 	.ascii	"AHB1LPENR\000"
-.LASF59:
+.LASF64:
 	.ascii	"rxSPI2_nRF_carrier\000"
 .LASF26:
 	.ascii	"APB1RSTR\000"
 .LASF30:
 	.ascii	"AHB2ENR\000"
-.LASF72:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF1:
 	.ascii	"short int\000"
-.LASF75:
+.LASF80:
 	.ascii	"rxByteSPI1\000"
 .LASF43:
 	.ascii	"BDCR\000"
+.LASF62:
+	.ascii	"rxByteSPI3_nRF\000"
 .LASF46:
 	.ascii	"PLLI2SCFGR\000"
 .LASF45:
@@ -2723,13 +3750,13 @@ rxSPI2_nRF_carrier:
 	.ascii	"uint8_t\000"
 .LASF33:
 	.ascii	"APB1ENR\000"
-.LASF71:
+.LASF76:
 	.ascii	"spi/spi.c\000"
-.LASF66:
+.LASF72:
 	.ascii	"receivedByte\000"
 .LASF13:
 	.ascii	"OTYPER\000"
-.LASF62:
+.LASF67:
 	.ascii	"rxByteSPI2_nRF_carrier\000"
 .LASF31:
 	.ascii	"AHB3ENR\000"
@@ -2749,19 +3776,21 @@ rxSPI2_nRF_carrier:
 	.ascii	"APB2RSTR\000"
 .LASF16:
 	.ascii	"BSRRL\000"
-.LASF60:
+.LASF65:
 	.ascii	"txSPI2_nRF_carrier\000"
-.LASF64:
+.LASF70:
 	.ascii	"testSPI1_loopback\000"
-.LASF68:
+.LASF74:
 	.ascii	"initSPI1_accelerometer\000"
 .LASF4:
 	.ascii	"unsigned char\000"
 .LASF34:
 	.ascii	"APB2ENR\000"
-.LASF67:
+.LASF60:
+	.ascii	"txSPI3_nRF\000"
+.LASF73:
 	.ascii	"txByteSPI1\000"
-.LASF61:
+.LASF66:
 	.ascii	"txByteSPI2_nRF_carrier\000"
 .LASF0:
 	.ascii	"signed char\000"
@@ -2789,7 +3818,7 @@ rxSPI2_nRF_carrier:
 	.ascii	"APB1LPENR\000"
 .LASF58:
 	.ascii	"size\000"
-.LASF73:
+.LASF78:
 	.ascii	"printUSART2\000"
 .LASF56:
 	.ascii	"char\000"
@@ -2797,8 +3826,10 @@ rxSPI2_nRF_carrier:
 	.ascii	"SPI_TypeDef\000"
 .LASF53:
 	.ascii	"I2SPR\000"
-.LASF74:
+.LASF79:
 	.ascii	"provjera_loopback_test\000"
+.LASF59:
+	.ascii	"rxSPI3_nRF\000"
 .LASF57:
 	.ascii	"data\000"
 .LASF37:
@@ -2823,12 +3854,15 @@ rxSPI2_nRF_carrier:
 	.ascii	"RESERVED7\000"
 .LASF54:
 	.ascii	"RESERVED8\000"
-.LASF70:
+.LASF75:
 	.ascii	"GNU C17 12.2.1 20221205 -mlittle-endian -mthumb -mc"
 	.ascii	"pu=cortex-m4 -mthumb-interwork -mfloat-abi=hard -mf"
 	.ascii	"pu=fpv4-sp-d16 -march=armv7e-m+fp -g -O2 -fsingle-p"
 	.ascii	"recision-constant\000"
-.LASF65:
+.LASF77:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
+.LASF71:
 	.ascii	"sendByte\000"
 .LASF29:
 	.ascii	"AHB1ENR\000"
@@ -2836,9 +3870,13 @@ rxSPI2_nRF_carrier:
 	.ascii	"AHB1RSTR\000"
 .LASF19:
 	.ascii	"GPIO_TypeDef\000"
+.LASF61:
+	.ascii	"txByteSPI3_nRF\000"
 .LASF24:
 	.ascii	"AHB3RSTR\000"
 .LASF63:
+	.ascii	"initSPI3_nRF24lO1\000"
+.LASF68:
 	.ascii	"initSPI2_nRF24lO1_carrier\000"
 .LASF51:
 	.ascii	"I2SCFGR\000"

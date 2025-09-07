@@ -532,7 +532,7 @@ getDataLIS302DL:
 	.uleb128 0x15
 	.4byte	.LASF31
 	.byte	0x6
-	.byte	0x1e
+	.byte	0x1f
 	.byte	0x9
 	.4byte	0x4d
 	.uleb128 0x8
@@ -546,7 +546,7 @@ getDataLIS302DL:
 	.uleb128 0x16
 	.4byte	.LASF32
 	.byte	0x6
-	.byte	0x1f
+	.byte	0x20
 	.byte	0x9
 	.4byte	0x4d
 	.4byte	0x1a9
@@ -556,7 +556,7 @@ getDataLIS302DL:
 	.uleb128 0x8
 	.4byte	.LASF25
 	.byte	0x6
-	.byte	0x1d
+	.byte	0x1e
 	.4byte	0x1ba
 	.uleb128 0x6
 	.4byte	0x5f
@@ -1460,11 +1460,11 @@ getDataLIS302DL:
 	.ascii	"uint8_t\000"
 .LASF26:
 	.ascii	"utmp32\000"
-.LASF30:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF34:
 	.ascii	"accel_data\000"
+.LASF30:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF16:
 	.ascii	"PUPDR\000"
 .LASF3:

@@ -3565,13 +3565,13 @@ catstrMISC:
 	.ascii	"long long unsigned int\000"
 .LASF7:
 	.ascii	"uint8_t\000"
-.LASF33:
-	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
-	.ascii	"/prenos_data_preko_nrfV1.7\000"
 .LASF25:
 	.ascii	"i_part\000"
 .LASF23:
 	.ascii	"e_part\000"
+.LASF33:
+	.ascii	"/home/eldar/svi_projekti_msut/prenos_data_preko_nrf"
+	.ascii	"/kod_sa_3_stm32.BACKUP\000"
 .LASF6:
 	.ascii	"int32_t\000"
 .LASF5:
