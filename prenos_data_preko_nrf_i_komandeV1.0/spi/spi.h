@@ -10,6 +10,7 @@
 
 
 
+
 // baudrate prescaler
 // SPI1 fclk = 84MHz/psc
 #define SPI_BaudRate_Prescaler_2        ((uint16_t)0x0000)
@@ -53,6 +54,34 @@ uint8_t txByteSPI2_nRF_carrier(uint8_t data);
 
 void txSPI2_nRF_carrier(uint8_t * data, uint16_t size);
 void rxSPI2_nRF_carrier(uint8_t * data, uint16_t size);
+
+
+
+
+
+
+
+// --------------------------------------------- NRF24L01 SPI3 ---------------------------------------------------------------
+
+
+#define SPI3_CS_HIGH    GPIOD->ODR |= GPIO_ODR_ODR_7;
+#define SPI3_CS_LOW     GPIOD->ODR &= ~GPIO_ODR_ODR_7;
+
+
+
+void initSPI3_nRF24lO1(uint16_t prescaler);
+uint8_t rxByteSPI3_nRF(void);
+uint8_t txByteSPI3_nRF(uint8_t data);
+void txSPI3_nRF(uint8_t * data, uint16_t size);  // saljemo bit po bit
+void rxSPI3_nRF(uint8_t * data, uint16_t size);  // primamo bit po bit
+
+
+
+
+
+
+
+
 
 //-----------------------------------------
 #endif // !SPI_H

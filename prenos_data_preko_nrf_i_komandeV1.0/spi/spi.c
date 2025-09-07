@@ -226,3 +226,128 @@ void rxSPI2_nRF_carrier(uint8_t * data, uint16_t size)  // primamo bit po bit
     data[k] = rxByteSPI2_nRF_carrier();
   }
 }
+
+
+
+
+
+
+
+// WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW NRF24L01 SPI3 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+
+
+
+
+void initSPI3_nRF24lO1(uint16_t prescaler)
+{
+  // Prov inicijaliziramo pinove sa kojima je povezan SPI protokol
+  // na STM32 ploci
+  //
+  // Inicijalizacija na PB11 - PB15
+  //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+  // PD6 - nRF24L01 CE
+  // PD7 - nRF24L01 CS
+  //
+  //
+  // PB3 - nRF24L01 CLK
+  // PB4 - nRF24L01 MISO
+  // PB5 - nRF24L01 MOSI
+  //---------------------------------------------------------------------	
+  //
+  //
+  // CLK,MOSI i MISO
+  {
+    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
+    GPIOB->MODER &= ~(GPIO_MODER_MODER3 |GPIO_MODER_MODER4 |GPIO_MODER_MODER5); // Alternate function mode
+    GPIOB->MODER |= GPIO_MODER_MODER3_1 |GPIO_MODER_MODER4_1 |GPIO_MODER_MODER5_1; // Alternate function mode
+    GPIOB->OTYPER &= ~(GPIO_OTYPER_OT_3|GPIO_OTYPER_OT_4|GPIO_OTYPER_OT_5);
+    GPIOB->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR3_1 |GPIO_OSPEEDER_OSPEEDR4_1 |GPIO_OSPEEDER_OSPEEDR5_1; // fast speed
+    GPIOB->PUPDR &= ~(GPIO_PUPDR_PUPDR3|GPIO_PUPDR_PUPDR4|GPIO_PUPDR_PUPDR5);
+
+    GPIOB->AFR[0] &= ~(0x00666000);
+    GPIOB->AFR[0] |= 0x00666000;
+  }
+
+  // Potreban nam je i jedan neovisam gpio pin npr PD7 za high i low CS (chip select)
+  {
+    RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;
+    GPIOD->MODER &= ~(GPIO_MODER_MODER7);            // moder reset
+    GPIOD->MODER |= (GPIO_MODER_MODER7_0);           // general output mode
+    GPIOD->OTYPER &= ~(GPIO_OTYPER_OT_7);
+    GPIOD->OSPEEDR |= (GPIO_OSPEEDER_OSPEEDR7_1);    // fast speed
+    GPIOD->PUPDR &= ~(GPIO_PUPDR_PUPDR7);
+    // zatim odma podesavamo CS u HIGH tj ne koristi se 
+    SPI3_CS_HIGH;
+  }
+
+  // inicijalizacija SPI3
+  {
+    RCC->APB1ENR |= RCC_APB1ENR_SPI3EN;
+    //SPI3->CR1 |= SPI_CR1_MSTR;    // master configuration
+    SPI3->CR1 = SPI_CR1_MSTR;    // master configuration
+    SPI3->CR1 |= (SPI_CR1_SSM | SPI_CR1_SSI);
+    SPI3->CR1 |= prescaler;       // podesavamo BR[2:0] vrijednosti
+
+    SPI3->CR1 |= SPI_CR1_SPE;      // SPI enable
+  }
+}
+
+
+
+uint8_t rxByteSPI3_nRF(void)
+{
+  uint8_t data;
+
+  SPI3->DR = 0x00;    // ovo nisam bio upisao i nije radilo
+  /*
+✅ Zašto se u SPI šalje "dummy bajt" pri čitanju?
+    SPI je full-duplex protokol – svaki put kad master pošalje bajt, on istovremeno prima bajt nazad od slave uređaja.
+    Dakle:
+    Da bi master mogao da primi bajt → mora poslati nešto!
+    Taj bajt koji master pošalje ne mora imati značenje – zovemo ga "dummy byte".
+   */
+
+  while (!(SPI3->SR & SPI_SR_TXE));   // ✅ čekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
+  while (!(SPI3->SR & SPI_SR_RXNE));  // ✅ čekaj dok RX buffer NIJE PUN (bajt još nije primljen)
+  while (SPI3->SR & SPI_SR_BSY);      // ✅ čekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prenos
+  data = SPI3->DR;                    // ✅ pročitaj primljeni bajt iz DR registra
+
+  return data;
+}
+
+
+uint8_t txByteSPI3_nRF(uint8_t data)
+{
+  uint8_t tmp;
+
+  SPI3->DR = data;    // saljemo podatke
+
+  while (!(SPI3->SR & SPI_SR_TXE));   // ✅ čekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
+  while (!(SPI3->SR & SPI_SR_RXNE));  // ✅ čekaj dok RX buffer NIJE PUN (bajt još nije primljen)
+  while (SPI3->SR & SPI_SR_BSY);      // ✅ čekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prenos
+  tmp = SPI3->DR;
+
+  return tmp;
+}
+
+
+void txSPI3_nRF(uint8_t * data, uint16_t size)  // saljemo bit po bit
+{
+  uint16_t k;
+  for(k=0;k<size;k++)
+  {
+    txByteSPI3_nRF(data[k]);
+  }
+}
+
+
+void rxSPI3_nRF(uint8_t * data, uint16_t size)  // primamo bit po bit
+{
+  uint16_t k;
+  for (k=0; k<size; k++) {
+    data[k] = rxByteSPI3_nRF();
+  }
+}
+
+
+

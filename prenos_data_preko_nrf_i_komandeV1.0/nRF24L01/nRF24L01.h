@@ -125,7 +125,10 @@
 
 #define NRF24L01_MAX_CHANNEL				127
 #define NRF24L01_ACTIVE_CHANNEL				1
+#define NRF24L01_ACTIVE_CHANNEL_80		    80
 #define NRF24L01_PIPE_LENGTH				32 							// (1-32)
+#define NRF24L01_PIPE_LENGTH_16				16 							// (1-32)
+#define NRF24L01_PIPE_LENGTH_3				3 							// (1-32)
 
 #define NRF24L01_TX_WAIT_PERIOD				100							// [x1ms]
 		
@@ -158,6 +161,14 @@ extern const char c_nrf_slave_addr[6];
 #define NRF_CE_HIGH     GPIOB->ODR |= 0x0800; 
 #define NRF_CE_LOW      GPIOB->ODR &= ~0x0800; 
 
+
+
+
+#define NRF_CE_HIGH_SPI3     GPIOD->ODR |= GPIO_ODR_ODR_6; 
+#define NRF_CE_LOW_SPI3      GPIOD->ODR &= ~GPIO_ODR_ODR_6; 
+
+
+
 // Funkcije koristene za zadatak CONTINUOUS CARRIER (prve funk)
 // ---------------------------------------------------------------------
 void setRegNRF24L01(uint8_t registar, uint8_t * reg_value, uint8_t n_value);
@@ -187,6 +198,42 @@ void setTxModeNRF24L01(void);
 void flushTxNRF24L01(void);
 uint8_t	txOverNRF24L01(void);
 void setMaxSpeedNRF24L01();
+
+
+
+
+
+
+// WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW NRF novi WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWww
+
+extern volatile uint8_t g_nrf24l01_novi_node_type;
+extern volatile uint8_t* g_node_address_novi;
+extern volatile uint8_t nrf_mode_novi;
+
+void initnRF24L01_SPI3(uint8_t node_type);
+void setRegNRF24L01_SPI3(uint8_t registar, uint8_t *reg_value, uint8_t n_value);  // funk. za upisivanje podataka u nRF24L01 modul pomocu SPI3 
+void setRxAddrNRF24L01_SPI3(uint8_t * addr, uint8_t reg);
+void conRegNRF24L01_SPI3(uint8_t reg, uint8_t reg_val);
+void setRxModeNRF24L01_SPI3(void);
+void flushRxNRF24L01_SPI3(void);
+void setTxAddrNRF24L01_SPI3(uint8_t *daddr);
+uint8_t getRegNRF24L01_SPI3(uint8_t reg);
+void txPacketNRF24L01_SPI3(uint8_t* data);
+void setTxModeNRF24L01_SPI3(void);
+void flushTxNRF24L01_SPI3(void);
+uint8_t txStatusNRF_SPI3();
+uint8_t txDataNRF24L01_SPI3(uint8_t *daddr, uint8_t *data);    // data_address, data
+uint8_t dataReadyNRF24L01_SPI3(void);
+void rxDataNRF24L01_SPI3(uint8_t * data);
+
+
+
+
+
+
+
+
+
 
 // ---------------------------------------------------------------------
 //WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW

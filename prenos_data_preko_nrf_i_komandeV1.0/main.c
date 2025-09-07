@@ -37,7 +37,9 @@ volatile uint8_t buffer_ready = 0; // 0 = ništa, 1 = M0AR spreman, 2 = M1AR spr
 volatile uint8_t frame_ready = 0;
 volatile uint8_t citamo_buffer = 0;
 
-
+// za kontrolu autica
+int8_t accel_data[ACC_DATA_LENGTH];
+void startMasterNodeSYS();
 
 int main(void)
 {
@@ -67,6 +69,7 @@ int main(void)
 
 
   if (node_type == NRF24L01_NODE_TYPE_TX) {
+
 
 
   printUSART2("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n");
@@ -121,6 +124,8 @@ int main(void)
   }else { // NOTE: Ovo je za RX blok (kontrolor)
     initLIS320DL(); // akcelerometar
     delay_ms(10);
+    initnRF24L01_SPI3(NRF24L01_NODE_TYPE_TX);
+    delay_ms(1000);
   }
 
   conRegNRF24L01(NRF24L01_EN_AA, 0x00);     // gasimo ACK
@@ -136,10 +141,8 @@ int main(void)
   if (node_type == NRF24L01_NODE_TYPE_TX) {
     //autic_double_buffer();
     autic_dma_interrupt();
-    // komande_rx();
   }else {
     kontroler_double_buffer();  // za ovo se ne bi trebalo imati nista mjenjati
-    // komande_tx();
   }
 
   return 0;
@@ -180,23 +183,32 @@ void autic_double_buffer()
 
 
 
-void sendFrameNRF(volatile uint16_t* frame_buffer, uint32_t length)
+void sendFrameNRF(volatile uint16_t* frame_buffer, uint32_t length) 
 {
-    uint8_t packet[32];
+  uint8_t packet[32];  // maksimalno što nRF24L01 može poslati odjednom
+  uint32_t i, j = 0;
 
-    // pošalji start-frame marker u posebnom paketu
-    packet[0] = FRAME_START_1;
-    packet[1] = FRAME_START_2;
-    txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);  // šalje samo ova dva bajta, ostatak paketa se ignoriše
+  // --- 1) Pošalji start frame signale (2 bajta) ---
+  packet[0] = 0xAA;  // primjer, start byte 1
+  packet[1] = 0x55;  // primjer, start byte 2
+  txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);  // šalje samo ova dva bajta, ostatak paketa se ignoriše
 
-    uint32_t total_bytes = length * 2;  // jer su pikseli 16-bit
-    uint8_t* byte_ptr = (uint8_t*)frame_buffer;
+  for (i = 0; i < length; i++) {
+    // niz od 16 bita se pretvara u 2 bajta
+    packet[j++] = (uint8_t)(frame_buffer[i] & 0xFF);        // low byte
+    packet[j++] = (uint8_t)((frame_buffer[i] >> 8) & 0xFF); // high byte
 
-    for (uint32_t i = 0; i < total_bytes; i += 32) {
-        uint32_t chunk = (total_bytes - i >= 32) ? 32 : (total_bytes - i);
-        memcpy(packet, byte_ptr + i, chunk);
-        txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);  // šalje samo ova dva bajta, ostatak paketa se ignoriše
+    // kad popunimo paket do 32 bajta, šaljemo ga
+    if (j == 32) {
+      txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);
+      j = 0;
     }
+  }
+
+  // ako ostane još nešto što nije poslano (manje od 32 bajta)
+  if (j > 0) {
+    txDataNRF24L01((uint8_t*)c_nrf_slave_addr, packet);
+  }
 }
 
 
@@ -214,81 +226,105 @@ void receiveFrameNRF(uint16_t* frame_buffer, uint32_t length)
 {
     uint8_t packet[32];
     uint32_t bytes_received = 0;
-    uint32_t total_bytes = length * 2;
+    uint32_t total_bytes = length * 2; // svaki pixel = 2 bajta
+  //
+  //
+  //
+
+
+  uint8_t* send_msg = (uint8_t*)accel_data; // ovo je za kontrolu autica !!!
 
     while (1) {
+        // čekaj paket
         if (dataReadyNRF24L01() == NRF_DATA_READY) {
             rxDataNRF24L01(packet);
 
-            // provjera da li je start-frame
+            // Ako paket počinje sa FRAME_START, resetujemo buffer
             if (packet[0] == FRAME_START_1 && packet[1] == FRAME_START_2) {
-                bytes_received = 0;
-                continue;
+                bytes_received = 0;  // počinje novi frame
+                continue;            // preskoči start bajtove
             }
 
-            uint32_t remaining = total_bytes - bytes_received;
-            uint32_t copy_size = (remaining >= 32) ? 32 : remaining;
+            // kopiraj podatke u frame buffer
+            for (int i = 0; i < 32 && bytes_received < total_bytes; i++) {
+                uint32_t index = bytes_received / 2;
+                if (bytes_received % 2 == 0) {
+                    // low byte
+                    frame_buffer[index] = packet[i];
+                } else {
+                    // high byte
+                    frame_buffer[index] |= ((uint16_t)packet[i] << 8);
+                }
+                bytes_received++;
+            }
 
-            memcpy(((uint8_t*)frame_buffer) + bytes_received, packet, copy_size);
-            bytes_received += copy_size;
-
+            // ako je frame kompletiran
             if (bytes_received >= total_bytes) {
-                send_frame_buffer(frame_buffer, length);
+                send_frame_buffer(frame_buffer, FRAME_MAX);  // pošalji dalje
+                startMasterNodeSYS();   // ugasena while petlja
+               // bytes_received = 0; // spreman za novi frame
                 break;
             }
         }
+
+
+    // ovdje daposalje kontrolu 
+
+    //startMasterNodeSYS();   // ugasena while petlja
+    
     }
 }
 
 
 
+//int8_t accel_data[ACC_DATA_LENGTH];
+void startMasterNodeSYS(){
+  uint8_t* send_msg = (uint8_t*)accel_data;
+ // while (1) {
+    getDataLIS302DL(accel_data);
+    txDataNRF24L01_SPI3((uint8_t*)c_nrf_slave_addr, send_msg);
+
+    // ------------------------------------------------------------
+    // zelena (PD12 = CCR1) 
+    TIM4->CCR1 = (accel_data[0] < -5 ) ? -accel_data[0] * 14 : 0;
+    // narandzasta (PD13 = CCR2)
+    TIM4->CCR2 = (accel_data[1] > 5 ) ? accel_data[1] * 14 : 0;
+
+    // plava (PD15 = CCR4)
+    TIM4->CCR4 = (accel_data[1] < -5 ) ? -accel_data[1] * 14 : 0;
+
+    // crvena (PD14 = CCR3)
+    TIM4->CCR3 = (accel_data[0] > 5 ) ? accel_data[0] * 14 : 0;
+    // ------------------------------------------------------------
+    //printUSART2("-> |[%d],[%d],[%d]|\n",accel_data[0],accel_data[1],accel_data[2]);
+  //}
+}
 
 
+void startSlaveNodeSYS(){
+  uint8_t is_data_ready;
+  int8_t nrf_data[ACC_DATA_LENGTH];
+  while (1) {
+    //setTxAddrNRF24L01(c_nrf_master_addr);
+    is_data_ready = dataReadyNRF24L01_SPI3();
+    if (is_data_ready == NRF_DATA_READY) {
+      rxDataNRF24L01_SPI3(nrf_data);
+      printUSART2("-> |[%d],[%d],[%d]|\n",nrf_data[0],nrf_data[1],nrf_data[2]);
+      // ------------------------------------------------------------
+      // zelena (PD12 = CCR1) 
+      TIM4->CCR1 = (nrf_data[0] < -5 ) ? -nrf_data[0] * 14 : 0;
+      // narandzasta (PD13 = CCR2)
+      TIM4->CCR2 = (nrf_data[1] > 5 ) ? nrf_data[1] * 14 : 0;
 
+      // plava (PD15 = CCR4)
+      TIM4->CCR4 = (nrf_data[1] < -5 ) ? -nrf_data[1] * 14 : 0;
 
-
-
-
-
-
-
-
-
-
-//
-//// ovo smo koristili samo da provjerimo da li radi circular buffer 
-//// onaj IRQ se poziva i za M0AR i za M1AR
-//void DMA2_Stream1_IRQHandler(void)
-//{
-//  if(DMA2->LISR & DMA_LISR_HTIF1) {     // half-transfer interupt flag
-//    DMA2->LIFCR = DMA_LIFCR_CHTIF1;  // clear flag
-//    //citamo_buffer = 0;
-//    //        printUSART2("1.\n");
-//  }
-//  if(DMA2->LISR & DMA_LISR_TCIF1) {     // transfer complete interupt flag
-//    DMA2->LIFCR = DMA_LIFCR_CTCIF1;  // clear flag
-//    //citamo_buffer = 1;
-//    //        printUSART2("2\n");
-//  }
-//}
-//
-
-
-//
-//void DMA2_Stream1_IRQHandler(void)
-//{
-//    if (DMA2->LISR & DMA_LISR_TCIF1) // Transfer Complete
-//    {
-//        DMA2->LIFCR |= DMA_LIFCR_CTCIF1; // clear flag
-//        frame_ready = 1; // samo postavi flag
-//    }
-//}
-//
-//
-
-
-
-
+      // crvena (PD14 = CCR3)
+      TIM4->CCR3 = (nrf_data[0] > 5 ) ? nrf_data[0] * 14 : 0;
+      // ------------------------------------------------------------
+    }
+  }
+}
 
 
 
@@ -341,161 +377,36 @@ void autic_dma_interrupt() {
 
 
 
-
-/*
-
- NOTE: ovo sada ispod je za non-blockin primanje podataka :
-        👉 Ovu processFrameNonBlocking() funkciju pozivaš u glavnoj while(1) petlji.
-        Ako nema paketa, samo odmah izađe.
-        Ako naiđe na 0xAA 0x55, prebaci se u receiving mode.
-        Kada sakupi length uzoraka, vrati se u stanje čekanja headera.
-        Ovim načinom nikad ne blokiraš CPU – možeš paralelno raditi i druge stvari (npr. obrađivati UART, LED, senzore).
-
-
-#define STATE_WAIT_HEADER 0
-#define STATE_RECEIVING   1
-
-typedef struct {
-    uint8_t state;
-    uint32_t index;
-    uint32_t expected_length;
-} FrameReceiver;
-
-FrameReceiver rx = { STATE_WAIT_HEADER, 0, 0 };
-
-void processFrameNonBlocking(uint16_t* frame_buffer, uint32_t length) {
-    uint8_t packet[32];
-    int8_t status;
-
-    // provjeri da li je stigao neki paket
-    status = dataReadyNRF24L01();
-    if (status != NRF_DATA_READY) {
-        return; // nema ništa -> odmah izlazimo (non-blocking)
-    }
-
-    rxDataNRF24L01(packet);
-
-    if (rx.state == STATE_WAIT_HEADER) {
-        if (packet[0] == 0xAA && packet[1] == 0x55) {
-            rx.state = STATE_RECEIVING;
-            rx.index = 0;
-            rx.expected_length = length;
-        }
-    } 
-    else if (rx.state == STATE_RECEIVING) {
-        for (int i = 0; i < 32; i += 2) {
-            if (rx.index < rx.expected_length) {
-                frame_buffer[rx.index++] =
-                    ((uint16_t)packet[i+1] << 8) | packet[i];
-            } else {
-                rx.state = STATE_WAIT_HEADER; // frame gotov
-                break;
-            }
-        }
-    }
-}
+//
+//// ovo smo koristili samo da provjerimo da li radi circular buffer 
+//// onaj IRQ se poziva i za M0AR i za M1AR
+//void DMA2_Stream1_IRQHandler(void)
+//{
+//  if(DMA2->LISR & DMA_LISR_HTIF1) {     // half-transfer interupt flag
+//    DMA2->LIFCR = DMA_LIFCR_CHTIF1;  // clear flag
+//    //citamo_buffer = 0;
+//    //        printUSART2("1.\n");
+//  }
+//  if(DMA2->LISR & DMA_LISR_TCIF1) {     // transfer complete interupt flag
+//    DMA2->LIFCR = DMA_LIFCR_CTCIF1;  // clear flag
+//    //citamo_buffer = 1;
+//    //        printUSART2("2\n");
+//  }
+//}
+//
 
 
-
-
-
-
-NOTE: iii imamo ovo: 
-Odlično 💡, znači sad pravimo event/callback varijantu – umjesto da ti stalno provjeravaš da li je frame gotov, 
-funkcija sama zove tvoj “callback” kad se frame kompletira. To je zgodno jer razdvaja prijem podataka i obradu.
-Evo primjer:
-
-
-#define STATE_WAIT_HEADER 0
-#define STATE_RECEIVING   1
-
-typedef struct {
-    uint8_t state;
-    uint32_t index;
-    uint32_t expected_length;
-    uint16_t* buffer;
-    void (*onFrameComplete)(uint16_t* buf, uint32_t len); // callback pointer
-} FrameReceiver;
-
-FrameReceiver rx;
-
-void initFrameReceiver(uint16_t* buf, uint32_t len, 
-                       void (*callback)(uint16_t* buf, uint32_t len)) {
-    rx.state = STATE_WAIT_HEADER;
-    rx.index = 0;
-    rx.expected_length = len;
-    rx.buffer = buf;
-    rx.onFrameComplete = callback;
-}
-
-void processFrameNonBlocking(void) {
-    uint8_t packet[32];
-    int8_t status;
-
-    status = dataReadyNRF24L01();
-    if (status != NRF_DATA_READY) {
-        return; // nema podataka, izlazimo
-    }
-
-    rxDataNRF24L01(packet);
-
-    if (rx.state == STATE_WAIT_HEADER) {
-        if (packet[0] == 0xAA && packet[1] == 0x55) {
-            rx.state = STATE_RECEIVING;
-            rx.index = 0;
-        }
-    } 
-    else if (rx.state == STATE_RECEIVING) {
-        for (int i = 0; i < 32; i += 2) {
-            if (rx.index < rx.expected_length) {
-                rx.buffer[rx.index++] =
-                    ((uint16_t)packet[i+1] << 8) | packet[i];
-            } else {
-                // frame završen -> zovemo callback
-                if (rx.onFrameComplete) {
-                    rx.onFrameComplete(rx.buffer, rx.expected_length);
-                }
-                rx.state = STATE_WAIT_HEADER;
-                break;
-            }
-        }
-    }
-}
-
-
-
-WARN: A koristiš ga ovako:
-
-
-#define FRAME_MAX 19200
-uint16_t frame_buffer[FRAME_MAX];
-
-void myFrameHandler(uint16_t* buf, uint32_t len) {
-    // ovdje ti obradiš frame (npr. šalješ na USART ili renderuješ)
-    printUSART2("Frame primljen! dužina=%lu\n", len);
-}
-
-int main(void) {
-    initFrameReceiver(frame_buffer, FRAME_MAX, myFrameHandler);
-
-    while (1) {
-        processFrameNonBlocking();
-        // druge stvari (blink LED, senzori, itd.)
-    }
-}
-
-NOTE: 
-✅ Prednost: čim kompletira frame, automatski ti “javi” kroz myFrameHandler().
-✅ Nema blokiranja, CPU slobodan između paketa.
-
-
- */
-
-
-
-
-
-
+//
+//void DMA2_Stream1_IRQHandler(void)
+//{
+//    if (DMA2->LISR & DMA_LISR_TCIF1) // Transfer Complete
+//    {
+//        DMA2->LIFCR |= DMA_LIFCR_CTCIF1; // clear flag
+//        frame_ready = 1; // samo postavi flag
+//    }
+//}
+//
+//
 
 
 
