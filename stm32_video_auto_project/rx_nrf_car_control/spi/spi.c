@@ -49,19 +49,19 @@ uint8_t rxByteSPI1(void)
 {
   uint8_t data;
 
-  SPI1->DR = 0x00;    // ovo nisam bio upisao i nije radilo
+  SPI1->DR = 0x00;
   /*
-✅ Zašto se u SPI šalje "dummy bajt" pri čitanju?
+    Zašto se u SPI šalje "dummy bajt" pri čitanju?
     SPI je full-duplex protokol – svaki put kad master pošalje bajt, on istovremeno prima bajt nazad od slave uređaja.
     Dakle:
     Da bi master mogao da primi bajt → mora poslati nešto!
     Taj bajt koji master pošalje ne mora imati značenje – zovemo ga "dummy byte".
    */
 
-  while (!(SPI1->SR & SPI_SR_TXE));   // ✅ čekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
-  while (!(SPI1->SR & SPI_SR_RXNE));  // ✅ čekaj dok RX buffer NIJE PUN (bajt još nije primljen)
-  while (SPI1->SR & SPI_SR_BSY);      // ✅ čekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prenos
-  data = SPI1->DR;                    // ✅ pročitaj primljeni bajt iz DR registra
+  while (!(SPI1->SR & SPI_SR_TXE));   // Cekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
+  while (!(SPI1->SR & SPI_SR_RXNE));  // Cekaj dok RX buffer NIJE PUN (bajt još nije primljen)
+  while (SPI1->SR & SPI_SR_BSY);      // Cekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prijenos
+  data = SPI1->DR;                    // pročitaj primljeni bajt iz DR registra
 
   return data;
 }
@@ -71,11 +71,11 @@ uint8_t txByteSPI1(uint8_t data)
 {
   uint8_t tmp;
 
-  SPI1->DR = data;    // saljemo podatke
+  SPI1->DR = data;    
 
-  while (!(SPI1->SR & SPI_SR_TXE));   // ✅ čekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
-  while (!(SPI1->SR & SPI_SR_RXNE));  // ✅ čekaj dok RX buffer NIJE PUN (bajt još nije primljen)
-  while (SPI1->SR & SPI_SR_BSY);      // ✅ čekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prenos
+  while (!(SPI1->SR & SPI_SR_TXE));   // Cekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
+  while (!(SPI1->SR & SPI_SR_RXNE));  // Cekaj dok RX buffer NIJE PUN (bajt još nije primljen)
+  while (SPI1->SR & SPI_SR_BSY);      // Cekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prijenos
   tmp = SPI1->DR;
 
   return tmp;
@@ -154,7 +154,7 @@ void initSPI2_nRF24lO1_carrier(uint16_t prescaler)
     GPIOB->OTYPER &= ~(GPIO_OTYPER_OT_12);
     GPIOB->OSPEEDR |= (GPIO_OSPEEDER_OSPEEDR12_1);    // fast speed
     GPIOB->PUPDR &= ~(GPIO_PUPDR_PUPDR12);
-    // zatim odma podesavamo CS u HIGH tj ne koristi se 
+
     SPI2_CS_HIGH;
   }
 
@@ -176,19 +176,19 @@ uint8_t rxByteSPI2_nRF_carrier(void)
 {
   uint8_t data;
 
-  SPI2->DR = 0x00;    // ovo nisam bio upisao i nije radilo
+  SPI2->DR = 0x00;
   /*
-✅ Zašto se u SPI šalje "dummy bajt" pri čitanju?
+    Zašto se u SPI šalje "dummy bajt" pri čitanju?
     SPI je full-duplex protokol – svaki put kad master pošalje bajt, on istovremeno prima bajt nazad od slave uređaja.
     Dakle:
     Da bi master mogao da primi bajt → mora poslati nešto!
     Taj bajt koji master pošalje ne mora imati značenje – zovemo ga "dummy byte".
    */
 
-  while (!(SPI2->SR & SPI_SR_TXE));   // ✅ čekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
-  while (!(SPI2->SR & SPI_SR_RXNE));  // ✅ čekaj dok RX buffer NIJE PUN (bajt još nije primljen)
-  while (SPI2->SR & SPI_SR_BSY);      // ✅ čekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prenos
-  data = SPI2->DR;                    // ✅ pročitaj primljeni bajt iz DR registra
+  while (!(SPI2->SR & SPI_SR_TXE));   // Cekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
+  while (!(SPI2->SR & SPI_SR_RXNE));  // Cekaj dok RX buffer NIJE PUN (bajt još nije primljen)
+  while (SPI2->SR & SPI_SR_BSY);      // Cekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prijenos
+  data = SPI2->DR;                    //  pročitaj primljeni bajt iz DR registra
 
   return data;
 }
@@ -198,18 +198,18 @@ uint8_t txByteSPI2_nRF_carrier(uint8_t data)
 {
   uint8_t tmp;
 
-  SPI2->DR = data;    // saljemo podatke
+  SPI2->DR = data;
 
-  while (!(SPI2->SR & SPI_SR_TXE));   // ✅ čekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
-  while (!(SPI2->SR & SPI_SR_RXNE));  // ✅ čekaj dok RX buffer NIJE PUN (bajt još nije primljen)
-  while (SPI2->SR & SPI_SR_BSY);      // ✅ čekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prenos
+  while (!(SPI2->SR & SPI_SR_TXE));   // Cekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
+  while (!(SPI2->SR & SPI_SR_RXNE));  // Cekaj dok RX buffer NIJE PUN (bajt još nije primljen)
+  while (SPI2->SR & SPI_SR_BSY);      // Cekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prenos
   tmp = SPI2->DR;
 
   return tmp;
 }
 
 
-void txSPI2_nRF_carrier(uint8_t * data, uint16_t size)  // saljemo bit po bit
+void txSPI2_nRF_carrier(uint8_t * data, uint16_t size)
 {
   uint16_t k;
   for(k=0;k<size;k++)
@@ -219,7 +219,7 @@ void txSPI2_nRF_carrier(uint8_t * data, uint16_t size)  // saljemo bit po bit
 }
 
 
-void rxSPI2_nRF_carrier(uint8_t * data, uint16_t size)  // primamo bit po bit
+void rxSPI2_nRF_carrier(uint8_t * data, uint16_t size)  
 {
   uint16_t k;
   for (k=0; k<size; k++) {
@@ -294,19 +294,19 @@ uint8_t rxByteSPI3_nRF(void)
 {
   uint8_t data;
 
-  SPI3->DR = 0x00;    // ovo nisam bio upisao i nije radilo
+  SPI3->DR = 0x00;
   /*
-✅ Zašto se u SPI šalje "dummy bajt" pri čitanju?
+    Zašto se u SPI šalje "dummy bajt" pri čitanju?
     SPI je full-duplex protokol – svaki put kad master pošalje bajt, on istovremeno prima bajt nazad od slave uređaja.
     Dakle:
     Da bi master mogao da primi bajt → mora poslati nešto!
     Taj bajt koji master pošalje ne mora imati značenje – zovemo ga "dummy byte".
    */
 
-  while (!(SPI3->SR & SPI_SR_TXE));   // ✅ čekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
-  while (!(SPI3->SR & SPI_SR_RXNE));  // ✅ čekaj dok RX buffer NIJE PUN (bajt još nije primljen)
-  while (SPI3->SR & SPI_SR_BSY);      // ✅ čekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prenos
-  data = SPI3->DR;                    // ✅ pročitaj primljeni bajt iz DR registra
+  while (!(SPI3->SR & SPI_SR_TXE));   // Cekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
+  while (!(SPI3->SR & SPI_SR_RXNE));  // Cekaj dok RX buffer NIJE PUN (bajt još nije primljen)
+  while (SPI3->SR & SPI_SR_BSY);      // Cekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prijenos
+  data = SPI3->DR;                    // pročitaj primljeni bajt iz DR registra
 
   return data;
 }
@@ -316,18 +316,18 @@ uint8_t txByteSPI3_nRF(uint8_t data)
 {
   uint8_t tmp;
 
-  SPI3->DR = data;    // saljemo podatke
+  SPI3->DR = data;
 
-  while (!(SPI3->SR & SPI_SR_TXE));   // ✅ čekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
-  while (!(SPI3->SR & SPI_SR_RXNE));  // ✅ čekaj dok RX buffer NIJE PUN (bajt još nije primljen)
-  while (SPI3->SR & SPI_SR_BSY);      // ✅ čekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prenos
+  while (!(SPI3->SR & SPI_SR_TXE));   // Cekaj dok TX buffer nije PRAZAN (spreman za slanje novog bajta)
+  while (!(SPI3->SR & SPI_SR_RXNE));  // Cekaj dok RX buffer NIJE PUN (bajt još nije primljen)
+  while (SPI3->SR & SPI_SR_BSY);      // Cekaj dok SPI još radi (prenosi), tj. dok nije završen ceo prijenos
   tmp = SPI3->DR;
 
   return tmp;
 }
 
 
-void txSPI3_nRF(uint8_t * data, uint16_t size)  // saljemo bit po bit
+void txSPI3_nRF(uint8_t * data, uint16_t size)  
 {
   uint16_t k;
   for(k=0;k<size;k++)
@@ -337,7 +337,7 @@ void txSPI3_nRF(uint8_t * data, uint16_t size)  // saljemo bit po bit
 }
 
 
-void rxSPI3_nRF(uint8_t * data, uint16_t size)  // primamo bit po bit
+void rxSPI3_nRF(uint8_t * data, uint16_t size)  
 {
   uint16_t k;
   for (k=0; k<size; k++) {

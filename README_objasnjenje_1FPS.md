@@ -19,3 +19,5 @@ Dakle 6 FPS je nerealno za nRF24 na ovako velikim frameovima.
 3. Gdje gubiš FPS
    Čak i da je link perfektan, CPU overhead ubija sve.
    Realno sad si limitiran na 1–1.5 FPS, što je baš ono što vidiš.
+
+tar -xJvf stm32_video_auto_project.tar.xz
